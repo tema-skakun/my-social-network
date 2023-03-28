@@ -2,15 +2,14 @@
 	grid-area: n;
 	background-color: cornflowerblue;
 	padding: 20px;
-	font-size: 20px;
 }
 
 .item {
 	color: white;
 	text-decoration: none;
 }
-
-.active {
+	
+	.active {
 	color: gold;
 	text-decoration: none;
 }

@@ -1,16 +1,17 @@
 import MyPosts from './MyPosts/MyPosts';
+import ProfileInfo from './ProfileInfo/ProfileInfo';
+import style from './Profile.module.css';
 
 const Profile = () => {
 	return (
 		<div>
-			<div>
-				<img src='https://www.nasa.gov/sites/default/files/styles/full_width/public/thumbnails/image/main_image_star-forming_region_carina_nircam_final-1280.jpg' />
+			<ProfileInfo />
+			<div className={style.newPost}>
+				<textarea></textarea>
 			</div>
-			<div>
-				ava + description
+			<div className={style.newPost}>
+				<button>Add post</button>
 			</div>
-			<textarea></textarea>
-			<button>Search</button>
 			<MyPosts />
 		</div>
 	)

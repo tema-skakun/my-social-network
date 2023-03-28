@@ -3,9 +3,9 @@ import Post from './Post/Post';
 
 const MyPosts = () => {
 	return (
-		<div>
+		<div className={style.posts}>
 			<div>
-				My posts
+				<h3>My posts</h3>
 			</div>
 			<div>
 				New post
