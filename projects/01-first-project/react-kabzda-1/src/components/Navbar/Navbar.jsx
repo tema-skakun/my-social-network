@@ -21,6 +21,20 @@ const Navbar = () => {
 					Messages
 				</NavLink>
 			</div>
+
+			<div className={style.item}>
+				<NavLink
+					to='/friends'
+					className={navData =>
+						navData.isActive ? style.active : style.item}
+				>
+					Friends
+				</NavLink>
+			</div>
+
+
+
+
 			<div className={style.item}>
 				<NavLink
 					to='/news'

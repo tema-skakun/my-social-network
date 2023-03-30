@@ -2,7 +2,8 @@ import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import style from './Profile.module.css';
 
-const Profile = () => {
+
+const Profile = (props) => {
 	return (
 		<div>
 			<ProfileInfo />
@@ -12,7 +13,9 @@ const Profile = () => {
 			<div className={style.newPost}>
 				<button>Add post</button>
 			</div>
-			<MyPosts />
+			<div>
+				<MyPosts posts={props.state.posts} />
+			</div>
 		</div>
 	)
 }
