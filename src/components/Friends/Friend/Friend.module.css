@@ -1,0 +1,13 @@
+.friend {
+    display: grid;
+    grid-template-columns: 100px 100px;
+    align-items: center;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.friend img {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+}

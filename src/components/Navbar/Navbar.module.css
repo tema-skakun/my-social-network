@@ -1,5 +1,5 @@
 .nav {
-	grid-area: n;
+	grid-area: navbar;
 	background-color: cornflowerblue;
 	padding: 20px;
 }
@@ -9,7 +9,7 @@
 	text-decoration: none;
 }
 	
-	.active {
+.active {
 	color: gold;
 	text-decoration: none;
 }

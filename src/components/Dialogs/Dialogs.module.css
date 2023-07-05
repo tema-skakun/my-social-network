@@ -1,14 +1,24 @@
 .dialogs {
     display: grid;
     grid-template-columns: 4fr 10fr;
+
 }
 
 .dialogsItems {
     padding: 10px;
+    text-decoration: none;
+    align-items: center;
+}
+
+.dialogsItems img{
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
 }
 
 .dialog {
     text-decoration: none;
+    align-items: center;
 }
 
 .active {

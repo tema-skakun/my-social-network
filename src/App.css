@@ -7,8 +7,8 @@
   display: grid;
   width: 1200px;
   grid-template-areas:
-  "h h"
-  "n c";
+  "header header"
+  "navbar content";
 
 
   grid-template-rows: 60px 1fr;
@@ -17,7 +17,7 @@
 }
 
 .app-wrapper-content {
-	grid-area: c;
-	background-color: rgba(172, 95, 95, 0.866);
+	grid-area: content;
+	background-color: rgba(196, 133, 133, 0.86);
 }
 
