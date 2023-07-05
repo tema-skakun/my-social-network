@@ -32,9 +32,6 @@ const Navbar = () => {
 				</NavLink>
 			</div>
 
-
-
-
 			<div className={style.item}>
 				<NavLink
 					to='/news'

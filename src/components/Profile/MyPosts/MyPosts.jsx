@@ -5,14 +5,14 @@ const MyPosts = (props) => {
 	let postsElements =
 		props.posts.map( p => <Post message={p.message} likesCount={p.likesCount} /> );
 	return (
-		<div className={style.posts}>
+		<div className={style.postsBlock}>
 			<div>
 				<h3>My posts</h3>
 			</div>
 			<div>
 				New post
 			</div>
-			<div>
+			<div className={style.posts}>
 				{ postsElements }
 			</div>
 		</div>
