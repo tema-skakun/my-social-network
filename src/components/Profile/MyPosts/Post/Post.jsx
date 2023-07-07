@@ -3,7 +3,8 @@ import style from './Post.module.css'
 const Post = (props) => {
 	return (
 		<div className={style.item}>
-			<img src='https://static.vecteezy.com/system/resources/previews/004/819/322/non_2x/female-avatar-woman-profile-icon-for-network-vector.jpg' />
+			<img alt={'avatar'}
+				 src='https://static.vecteezy.com/system/resources/previews/004/819/322/non_2x/female-avatar-woman-profile-icon-for-network-vector.jpg' />
 			{props.message}
 			<div>
 				<span>like</span> {props.likesCount}

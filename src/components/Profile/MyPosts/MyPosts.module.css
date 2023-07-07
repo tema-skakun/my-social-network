@@ -5,3 +5,8 @@
 .posts {
     margin-top: 10px;
 }
+
+.newPost {
+    padding: 10px;
+    /* margin: 10px; */
+}
