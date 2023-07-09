@@ -64,15 +64,19 @@ let store = {
         }
     },
 
-    getState() {
-        return this._state;
-    },
-
     _callSubscriber() {
         console.log('state was change');
     },
 
-    addPost() {
+    getState() {
+        return this._state;
+    },
+
+    subscribe(observer) {
+        this._callSubscriber = observer;//патерн observer (наблюдатель)
+    },
+
+    _addPost() {
         let newPost = {
             id: 3,
             message: this._state.profilePage.newPostText,
@@ -83,12 +87,12 @@ let store = {
         this._callSubscriber(this._state);
     },
 
-    updateNewPostText(postText) {
+    _updateNewPostText(postText) {
         this._state.profilePage.newPostText = (postText);
         this._callSubscriber(this._state);
     },
 
-    addMessage() {
+    _addMessage() {
         let newMsg = {
             id: 8,
             message: this._state.dialogsPage.newMsgText
@@ -98,15 +102,21 @@ let store = {
         this._callSubscriber(this._state);
     },
 
-    updateNewMsgText(msgText) {
+    _updateNewMsgText(msgText) {
         this._state.dialogsPage.newMsgText = (msgText);
         this._callSubscriber(this._state);
     },
 
-    subscribe(observer) {
-        this._callSubscriber = observer;//патерн observer (наблюдатель)
-    },
-
+    dispatch(action) {
+        if (action.type === 'ADD-POST')
+            this._addPost();
+        else if (action.type === 'UPDATE-NEW-POST-TEXT')
+            this._updateNewPostText(action.postText);
+        else if (action.type === 'ADD-MESSAGE')
+            this._addMessage();
+        else if (action.type === 'UPDATE-NEW-MSG-TEXT')
+            this._updateNewMsgText(action.msgText);
+    }
 }
 
 window.store = store;
