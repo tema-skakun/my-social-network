@@ -1,17 +1,18 @@
 import style from './Messages.module.css'
 import React from "react";
 import MessageItem from "./MessageItem/MessageItem";
+import {addMessageAC, onMsgChangeAC} from "../../../redux/state";
 
 const Messages = (props) => {
     let messagesElements = props.messages.map(m => <MessageItem message={m.message} key={m.id}/>);
     let newMessage = React.createRef();
     let addMessage = () => {
-        props.dispatch({type: 'ADD-MESSAGE'});
+        props.dispatch(addMessageAC());
     }
 
     let onMsgChange = () => {
         let text = newMessage.current.value;
-        props.dispatch({type: 'UPDATE-NEW-MSG-TEXT', msgText: text});
+        props.dispatch(onMsgChangeAC(text));
     }
 
     return (

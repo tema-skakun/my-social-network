@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const UPDATE_NEW_MSG_TEXT = 'UPDATE-NEW-MSG-TEXT';
+
 let store = {
     _state: {
         profilePage: {
@@ -117,6 +122,22 @@ let store = {
         else if (action.type === 'UPDATE-NEW-MSG-TEXT')
             this._updateNewMsgText(action.msgText);
     }
+}
+
+export const addPostAC = () => {
+    return {type: ADD_POST}
+}
+
+export const onPostChangeAC = (text) => {
+    return {type: UPDATE_NEW_POST_TEXT, postText: text}
+}
+
+export const addMessageAC = () => {
+    return {type: ADD_MESSAGE}
+}
+
+export const onMsgChangeAC = (text) => {
+    return {type: UPDATE_NEW_MSG_TEXT, msgText: text}
 }
 
 window.store = store;
