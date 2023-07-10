@@ -1,7 +1,6 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MSG_TEXT = 'UPDATE-NEW-MSG-TEXT';
+import dialogsReducer from "./dialogsReducer";
+import profileReducer from "./profileReducer";
+import sidebarReducer from "./sidebarReducer";
 
 let store = {
     _state: {
@@ -10,7 +9,7 @@ let store = {
                 {id: 1, message: 'Hello world!', likesCount: 10},
                 {id: 2, message: "It's my first post", likesCount: 30},
             ],
-            newPostText: 'tema_skakun'
+            newPostText: ""
         },
 
         dialogsPage: {
@@ -48,7 +47,7 @@ let store = {
                 {id: 6, message: 'Whatever'},
                 {id: 7, message: 'bb gl'}
             ],
-            newMsgText: 'write your message',
+            newMsgText: "",
         },
 
         sidebarPage: {
@@ -64,7 +63,11 @@ let store = {
                     name: 'Spider-Man',
                     avatarLink: 'https://assets.reedpopcdn.com/spider-man-walkthrough-guide-5014-1537780065472.jpg/BROK/thumbnail/1200x1200/quality/100/spider-man-walkthrough-guide-5014-1537780065472.jpg'
                 },
-                {id: 4, name: 'Wonder Woman', avatarLink: 'https://avatarfiles.alphacoders.com/116/116579.jpg'},
+                {
+                    id: 4,
+                    name: 'Wonder Woman',
+                    avatarLink: 'https://avatarfiles.alphacoders.com/116/116579.jpg'
+                },
             ]
         }
     },
@@ -73,71 +76,20 @@ let store = {
         console.log('state was change');
     },
 
-    getState() {
-        return this._state;
-    },
-
     subscribe(observer) {
         this._callSubscriber = observer;//патерн observer (наблюдатель)
     },
 
-    _addPost() {
-        let newPost = {
-            id: 3,
-            message: this._state.profilePage.newPostText,
-            likesCount: 2
-        };
-        this._state.profilePage.posts.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this._callSubscriber(this._state);
-    },
-
-    _updateNewPostText(postText) {
-        this._state.profilePage.newPostText = (postText);
-        this._callSubscriber(this._state);
-    },
-
-    _addMessage() {
-        let newMsg = {
-            id: 8,
-            message: this._state.dialogsPage.newMsgText
-        };
-        this._state.dialogsPage.messages.push(newMsg);
-        this._state.dialogsPage.newMsgText = '';
-        this._callSubscriber(this._state);
-    },
-
-    _updateNewMsgText(msgText) {
-        this._state.dialogsPage.newMsgText = (msgText);
-        this._callSubscriber(this._state);
+    getState() {
+        return this._state;
     },
 
     dispatch(action) {
-        if (action.type === 'ADD-POST')
-            this._addPost();
-        else if (action.type === 'UPDATE-NEW-POST-TEXT')
-            this._updateNewPostText(action.postText);
-        else if (action.type === 'ADD-MESSAGE')
-            this._addMessage();
-        else if (action.type === 'UPDATE-NEW-MSG-TEXT')
-            this._updateNewMsgText(action.msgText);
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.sidebarPage = sidebarReducer(this._state.sidebarPage, action);
+        this._callSubscriber(this._state);
     }
-}
-
-export const addPostAC = () => {
-    return {type: ADD_POST}
-}
-
-export const onPostChangeAC = (text) => {
-    return {type: UPDATE_NEW_POST_TEXT, postText: text}
-}
-
-export const addMessageAC = () => {
-    return {type: ADD_MESSAGE}
-}
-
-export const onMsgChangeAC = (text) => {
-    return {type: UPDATE_NEW_MSG_TEXT, msgText: text}
 }
 
 window.store = store;
