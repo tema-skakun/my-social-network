@@ -14,7 +14,6 @@ const MyPosts = (props) => {
 		let text = e.target.value;
 		props.dispatch(onPostChangeAC(text));
 	}
-
 	return (
 		<div className={style.postsBlock}>
 			<div>
