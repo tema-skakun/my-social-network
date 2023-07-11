@@ -8,7 +8,7 @@ const store = configureStore({
     reducer: {
         profilePage: profileReducer,
         dialogsPage: dialogsReducer,
-        sidebar: sidebarReducer
+        sidebarPage: sidebarReducer,
     },
 });
 

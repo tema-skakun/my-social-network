@@ -4,14 +4,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
-import {Provider} from 'react-redux';
+// import {Provider} from 'react-redux';
 // import store from './redux/store';
 import store from './redux/redux-toolkit-store';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 export let rerenderEntireTree = (state) => {
     root.render(
-        <Provider store={store}>
+        // <Provider store={store}>
             <BrowserRouter>
                 <React.StrictMode>
                     <App
@@ -20,10 +20,12 @@ export let rerenderEntireTree = (state) => {
                     />
                 </React.StrictMode>
             </BrowserRouter>
-        </Provider>
+        // </Provider>
     );
 };
 
 rerenderEntireTree(store.getState());
 
-store.subscribe(rerenderEntireTree)
+store.subscribe( () => {
+    rerenderEntireTree(store.getState());//need send state because redux-toolkit don't make it
+} )
