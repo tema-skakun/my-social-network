@@ -1,7 +1,7 @@
 import style from './Dialogs.module.css'
 import React from "react";
 import DialogItems from './DialogItems/DialogItems';
-import Messages from './Messages/Messages';
+import MessagesContainer from "./Messages/MessagesContainer";
 
 const Dialogs = (props) => {
     return (
@@ -10,10 +10,9 @@ const Dialogs = (props) => {
                 <DialogItems dialogs={props.state.dialogs}/>
             </div>
             <div className={style.messages}>
-                <Messages
-                    messages={props.state.messages}
+                <MessagesContainer
+                    state={props.state}
                     dispatch={props.dispatch}
-                    newMsgText={props.state.newMsgText}
                 />
             </div>
         </div>

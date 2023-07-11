@@ -1,17 +1,16 @@
 import style from './Messages.module.css'
 import React from "react";
 import MessageItem from "./MessageItem/MessageItem";
-import {addMessageAC, onMsgChangeAC} from "../../../redux/dialogsReducer";
 
 const Messages = (props) => {
-    let messagesElements = props.messages.map(m => <MessageItem message={m.message} key={m.id}/>);
+    let messagesElements = props.state.messages.map(m => <MessageItem message={m.message} key={m.id}/>);
     let addMessage = () => {
-        props.dispatch(addMessageAC());
+        props.sendMessage();
     }
 
     let onMsgChange = (e) => {
         let text = e.target.value;
-        props.dispatch(onMsgChangeAC(text));
+        props.onMsgBodyChange(text);
     }
 
     return (
@@ -23,7 +22,7 @@ const Messages = (props) => {
                 <textarea
                     placeholder='enter your message...'
                     onChange={onMsgChange}
-                    value={props.newMsgText}/>
+                    value={props.state.newMsgText}/>
             </div>
             <div>
                 <button onClick={addMessage}>send</button>
