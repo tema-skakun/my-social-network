@@ -1,4 +1,3 @@
-import React from "react";
 import {addMessageAC, onMsgChangeAC} from "../../../redux/dialogsReducer";
 import Messages from "./Messages";
 import {connect} from "react-redux";

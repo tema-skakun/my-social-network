@@ -53,8 +53,8 @@ const dialogsReducer = (state = initialState, action) => {
             };
         case UPDATE_NEW_MSG_TEXT:
             return {
-                ...state,
-                newMsgText: action.msgText
+                ...state,//make shallow copy
+                newMsgText: action.msgText//overwrite new data
             };
         default:
             return state;
