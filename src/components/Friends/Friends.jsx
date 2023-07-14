@@ -7,9 +7,7 @@ const Friends = (props) => {
     return (
         <div className={style.friends}>
             My friends
-            <div>
-                {friendsElements}
-            </div>
+            {friendsElements}
         </div>
 
     )
