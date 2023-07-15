@@ -4,10 +4,14 @@ import axios from 'axios';
 import userImg from '../../assets/images/user.jpeg'
 
 const Users = (props) => {
-    if (props.usersPage.users.length === 0) {
 
-        axios.get("https://social-network.samuraijs.com/api/1.0/users")
-            .then(respons => {props.setUsers(respons.data.items)})
+    let getUsers = () => {
+        if (props.usersPage.users.length === 0) {
+
+            axios.get("https://social-network.samuraijs.com/api/1.0/users")
+                .then(respons => {props.setUsers(respons.data.items)})
+    }
+
 
         // props.setUsers([
         //         {
@@ -51,6 +55,9 @@ const Users = (props) => {
             unfollow={props.unfollow}/>)
     return (
         <div className={style.users}>
+            <span>
+                <button onClick={getUsers}>get users</button>
+            </span>
             Users
             {usersElement}
         </div>
