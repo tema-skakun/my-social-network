@@ -8,5 +8,5 @@ As part of this project, I want to implement:
   - searching and adding users to friends;
   - news feed;
   - page with music;
-  - profile settingsж
+  - profile settings;
   - changing the application language.
