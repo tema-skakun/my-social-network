@@ -1,9 +1,12 @@
 import style from './UserItems.module.css'
+import {NavLink} from "react-router-dom";
 
 const UserItems = (props) => {
     return (
         <div className={style.user}>
-            <img src={props.photoUrl} alt={props.fullName}/>
+            <NavLink to={'/profile/' + props.id}>
+                <img src={props.photoUrl} alt={props.fullName}/>
+            </NavLink>
             <div>
                 <div>
                     {props.fullName}

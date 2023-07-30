@@ -3,7 +3,14 @@
 }
 
 .descriptionBlock img {
-    width:985px;
-    height:280px;
-    object-fit:cover; /*позволяет обрезать картинку под размер*/
+    width: 985px;
+    height: 280px;
+    object-fit: cover; /*позволяет обрезать картинку под размер*/
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    /*object-fit: cover;*/
+    border-radius: 20px;
 }
