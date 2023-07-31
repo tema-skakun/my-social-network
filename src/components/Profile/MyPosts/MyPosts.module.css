@@ -1,12 +1,27 @@
 .postsBlock {
+    display: grid;
+    grid-template-rows: 50px 100px 1fr;
     padding: 10px;
 }
 
-.posts {
-    margin-top: 10px;
+.head {
+    grid-row: 1 / 2;
 }
 
 .newPost {
-    padding: 10px;
-    /* margin: 10px; */
+    grid-row: 2 / 3;
+    align-self: center;
+    justify-self: start;
+}
+
+.newPost textarea {
+    width: 100%; /* Set the width to fill the available space */
+    height: 50px; /* Set the desired height, e.g., 100px */
+    resize: vertical; /* Allow vertical resizing */
+    padding: 5px; /* Add some padding for better appearance */
+}
+
+.posts {
+    grid-row: 3 / 4;
+    margin-top: 10px;
 }

@@ -1,4 +1,12 @@
 .profile {
     display: grid;
+    grid-template-rows: 600px 1fr;
+}
+
+.description {
+
+}
+
+.posts {
 
 }

@@ -16,20 +16,16 @@ const MyPosts = (props) => {
 
     return (
         <div className={style.postsBlock}>
-            <div>
+            <div className={style.head}>
                 <h3>My posts</h3>
             </div>
             <div className={style.newPost}>
+                New post
 				<textarea
                     placeholder='enter your post text...'
                     onChange={onPostChange}
                     value={props.profilePage.newPostText}/>
-            </div>
-            <div className={style.newPost}>
                 <button onClick={addPost}>add post</button>
-            </div>
-            <div>
-                New post
             </div>
             <div className={style.posts}>
                 {postsElements}

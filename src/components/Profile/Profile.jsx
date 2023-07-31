@@ -9,8 +9,12 @@ const Profile = (props) => {
 		return <Preloader/>
 	return (
 		<div className={style.profile}>
-			<ProfileInfo propfile={props.profile}/>
-			<MyPostsContainer/>
+			<div className={style.description}>
+				<ProfileInfo propfile={props.profile}/>
+			</div>
+			<div className={style.posts}>
+				<MyPostsContainer/>
+			</div>
 		</div>
 	)
 }
