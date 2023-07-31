@@ -23,5 +23,7 @@
 
 .posts {
     grid-row: 3 / 4;
-    margin-top: 10px;
+    display: grid;
+    padding: 10px;
+    grid-row-gap: 10px;
 }
