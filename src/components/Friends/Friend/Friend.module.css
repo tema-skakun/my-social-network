@@ -6,7 +6,7 @@
     text-decoration: none;
     border: 1px solid #4f4242;
     border-radius: 10px;
-    grid-gap: 10px;
+    grid-gap: 10px;/*между картинкой и текстом*/
 }
 
 .friend img {
