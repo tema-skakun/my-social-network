@@ -2,7 +2,7 @@ import style from './Friends.module.css'
 import Friend from "./Friend/Friend";
 
 const Friends = (props) => {
-    let friendsElements = props.sidebarPage.friends.map(f => <Friend name={f.name} avatarLink={f.avatarLink}/>);
+    let friendsElements = props.sidebarPage.friends.map(f => <Friend name={f.name} avatarLink={f.avatarLink} key={f.id}/>);
 
     return (
         <div className={style.friends}>

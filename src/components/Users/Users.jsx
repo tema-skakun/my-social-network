@@ -4,7 +4,6 @@ import userImg from "../../assets/images/user.jpeg";
 import style from "./Users.module.css";
 
 let Users = (props) => {
-
     let usersElement = props.usersPage.users.map(u =>
         <UserItems
             key={u.id}
