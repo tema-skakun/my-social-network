@@ -1,6 +1,8 @@
 .header {
 	grid-area: header;
 	background-color: aquamarine;
+	display: grid;
+	grid-template-columns: 100px 200px;
 }
 
 .header img {
@@ -8,7 +10,8 @@
 }
 
 .loginBlock {
-	float: right;
+	justify-self: end;
+	align-self: center;
 }
 
 .loginBlock a {
