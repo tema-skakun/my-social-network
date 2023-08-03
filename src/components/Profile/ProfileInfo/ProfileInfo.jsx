@@ -1,4 +1,5 @@
 import style from './ProfileInfo.module.css'
+import userImg from "../../../assets/images/user.jpeg";
 
 const ProfileInfo = (props) => {
     return (
@@ -10,7 +11,7 @@ const ProfileInfo = (props) => {
                 />
             </div>
             <div className={style.avatar}>
-                <img src={props.propfile.photos.large} alt={'avatar'}/>
+                <img src={props.propfile.photos.large ? props.propfile.photos.large : userImg} alt={'avatar'}/>
             </div>
             <div className={style.description}>
                 <div>{"name: " + props.propfile.fullName}</div>
