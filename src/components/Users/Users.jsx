@@ -22,14 +22,16 @@ let Users = (props) => {
     let pageCount = Math.ceil(props.totalUsersCount / props.pageSize);
 
     let pages = [];
-    for (let i = 1; i <= pageCount; ++i)
+    for (let i = 1; i <= pageCount; ++i) {
         pages.push(i);
+    }
 
     return (
         <div className={style.users}>
             <div>
                 {pages.map(p => {
-                    return <span className={props.currentPage === p && style.selectedPage}
+                    return <span key={p}
+                                 className={props.currentPage === p ? style.selectedPage : style.notSelectedPage}
                                  onClick={(e) => {
                                      props.onPageChanged(p);
                                  }}>{p}</span>
