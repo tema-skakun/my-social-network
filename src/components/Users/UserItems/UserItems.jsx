@@ -14,20 +14,28 @@ const UserItems = (props) => {
                 </div>
                 <div>
                     {props.followed
-                        ? <button onClick={() => {
-                            UsersAPI.unfollow(props.id)
-                                .then(response => {
-                                            if (response.resultCode === 0)
-                                                props.unfollow(props.id)
-                                        })
-                        }}>unfollow</button>
-                        : <button onClick={() => {
-                            UsersAPI.follow(props.id)
-                                .then(response => {
-                                    if (response.resultCode === 0)
-                                        props.follow(props.id);
-                                })
-                        }}>follow</button>}
+                        ? <button
+                            disabled={props.followingInProgress.some(id => id === props.id)}
+                            onClick={() => {
+                                props.toggleFollowingProgress(true, props.id);//запрещаю повторное нажатие кнопки
+                                UsersAPI.unfollow(props.id)
+                                    .then(response => {
+                                        if (response.resultCode === 0)
+                                            props.unfollow(props.id);
+                                        props.toggleFollowingProgress(false, props.id);//разрешаю повторное нажатие кнопки
+                                    });
+                            }}>unfollow</button>
+                        : <button
+                            disabled={props.followingInProgress.some(id => id === props.id)}
+                            onClick={() => {
+                                props.toggleFollowingProgress(true, props.id);//запрещаю повторное нажатие кнопки
+                                UsersAPI.follow(props.id)
+                                    .then(response => {
+                                        if (response.resultCode === 0)
+                                            props.follow(props.id);
+                                        props.toggleFollowingProgress(false, props.id);//разрешаю повторное нажатие кнопки
+                                    });
+                            }}>follow</button>}
                 </div>
                 <div>
                     {props.status}

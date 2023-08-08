@@ -6,7 +6,6 @@ import style from "./Users.module.css";
 let Users = (props) => {
     let usersElement = props.usersPage.users.map(u =>
         <UserItems
-            key={u.id}
             id={u.id}
             fullName={u.name}
             followed={u.followed}
@@ -14,7 +13,11 @@ let Users = (props) => {
             photoUrl={u.photos.small ? u.photos.small : userImg}
             location={'u.location'}
             follow={props.follow}
-            unfollow={props.unfollow}/>)
+            unfollow={props.unfollow}
+            toggleFollowingProgress={props.toggleFollowingProgress}
+            followingInProgress={props.followingInProgress}
+            key={u.id}
+        />)
 
     let pageCount = Math.ceil(props.totalUsersCount / props.pageSize);
 
