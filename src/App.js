@@ -1,5 +1,4 @@
 import {Routes, Route} from "react-router-dom";
-import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
@@ -9,6 +8,7 @@ import FriendsContainer from "./components/Friends/Friend/FriendsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import './App.css';
 
 const App = () => {
     return (

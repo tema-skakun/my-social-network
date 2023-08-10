@@ -1,4 +1,4 @@
-import {UsersAPI} from "../api/api";
+import {AuthAPI} from "../api/api";
 
 const SET_USER_DATA = 'SET-USER-DATA';
 
@@ -18,14 +18,14 @@ const authReducer = (state = initialState, action) => {
     }
 }
 
-export const setAuthUserDataSuccess = (userId, email, login) => ({type: SET_USER_DATA, data: {userId, email, login}});
-export const setAuthUserData = () => {//thunk
+export const setAuthUserData = (userId, email, login) => ({type: SET_USER_DATA, data: {userId, email, login}});
+export const getAuthUserData = () => {//thunk
     return (dispatch) => {
-        UsersAPI.getLogin()
+        AuthAPI.me()
             .then(response => {
                 if (response.resultCode === 0) {
                     let {id, email, login} = response.data;
-                    dispatch(setAuthUserDataSuccess(id, email, login));
+                    dispatch(setAuthUserData(id, email, login));
                 }
             })
     }

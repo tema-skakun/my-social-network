@@ -38,14 +38,14 @@ const profileReducer = (state = initialState, action) => {
 
 export const addPostAC = () => {return {type: ADD_POST}}
 export const onPostChangeAC = (text) => {return {type: UPDATE_NEW_POST_TEXT, postText: text}}
-export const setUserProfileSuccess = (profile) => {return {type: SET_USER_PROFILE, profile}}
-export const setUserProfile = (userId) => {//thunk
+export const setUserProfile = (profile) => {return {type: SET_USER_PROFILE, profile}}
+export const getUserProfile = (userId) => {//thunk
     return (dispatch) => {
         if (!userId)
             userId = 2;
         UsersAPI.getProfile(userId)
             .then(response => {
-                dispatch(setUserProfileSuccess(response));
+                dispatch(setUserProfile(response));
             })
     }
 }
