@@ -1,6 +1,5 @@
 import style from './UserItems.module.css'
 import {NavLink} from "react-router-dom";
-import {UsersAPI} from "../../../api/api";
 
 const UserItems = (props) => {
     return (
@@ -17,25 +16,17 @@ const UserItems = (props) => {
                         ? <button
                             disabled={props.followingInProgress.some(id => id === props.id)}
                             onClick={() => {
-                                props.toggleFollowingProgress(true, props.id);//запрещаю повторное нажатие кнопки
-                                UsersAPI.unfollow(props.id)
-                                    .then(response => {
-                                        if (response.resultCode === 0)
-                                            props.unfollow(props.id);
-                                        props.toggleFollowingProgress(false, props.id);//разрешаю повторное нажатие кнопки
-                                    });
-                            }}>unfollow</button>
+                                props.unfollow(props.id);
+                            }}>
+                            unfollow
+                        </button>
                         : <button
                             disabled={props.followingInProgress.some(id => id === props.id)}
                             onClick={() => {
-                                props.toggleFollowingProgress(true, props.id);//запрещаю повторное нажатие кнопки
-                                UsersAPI.follow(props.id)
-                                    .then(response => {
-                                        if (response.resultCode === 0)
-                                            props.follow(props.id);
-                                        props.toggleFollowingProgress(false, props.id);//разрешаю повторное нажатие кнопки
-                                    });
-                            }}>follow</button>}
+                                props.follow(props.id);
+                            }}>
+                            follow
+                        </button>}
                 </div>
                 <div>
                     {props.status}

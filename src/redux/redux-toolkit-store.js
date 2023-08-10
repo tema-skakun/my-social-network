@@ -4,6 +4,7 @@ import dialogsReducer from "./dialogsReducer";
 import sidebarReducer from "./sidebarReducer";
 import usersReducer from "./usersReducer";
 import authReducer from "./authReducer";
+import thunkMiddleware from "redux-thunk";
 
 const store = configureStore({
 
@@ -14,8 +15,9 @@ const store = configureStore({
         usersPage: usersReducer,
         auth: authReducer,
     },
+    applyMiddleware: [thunkMiddleware],
 });
 
-window.store = store;
+window.store = store;//to view the store in the console
 
 export default store;
