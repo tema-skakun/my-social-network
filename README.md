@@ -1,7 +1,7 @@
 ## my-social-network
 
 This is a Single Page Application is implemented on the React library, state management is implemented using Redux-Toolkit.
-The backend is implemented as a REST API (https://social-network.samuraijs.com/), and I interact with it using the Axios library.
+The backend is implemented as a REST API ([API documentation](https://social-network.samuraijs.com/docs)), and I interact with it using the Axios library.
 
 ![project architecture](https://github.com/tema-skakun/my-social-network/blob/main/public/architecture_of_project.png)
 
