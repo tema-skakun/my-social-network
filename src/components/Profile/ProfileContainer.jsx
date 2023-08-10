@@ -3,7 +3,6 @@ import React from "react";
 import Profile from "./Profile";
 import {setUserProfile} from "../../redux/profileReducer";
 import { useParams } from 'react-router-dom';
-import {UsersAPI} from "../../api/api";
 
 export function withRouter(Children){
     return(props)=>{
@@ -14,13 +13,7 @@ export function withRouter(Children){
 
 class ProfileContainer extends React.Component {
     componentDidMount() {
-        let userId = this.props.match.params.userId;
-        if (!userId)
-            userId = 2;
-        UsersAPI.getProfile(userId)
-            .then(response => {
-                this.props.setUserProfile(response);
-            })
+        this.props.setUserProfile(this.props.match.params.userId);
     }
 
     render() {

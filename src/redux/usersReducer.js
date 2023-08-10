@@ -74,7 +74,7 @@ export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, current
 export const setUsersTotalCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount});
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
 export const toggleFollowingProgress = (isFetching, userId) => ({type: TOGGLE_IS_FOLLOWING, isFetching, userId});
-export const getUsers = (currentPage, pageSize) => {
+export const getUsers = (currentPage, pageSize) => {//thunk
     return (dispatch) => {
         dispatch(toggleIsFetching(true));
         UsersAPI.getUsers(currentPage, pageSize)
@@ -86,7 +86,7 @@ export const getUsers = (currentPage, pageSize) => {
             })
     }
 }
-export const follow = (userId) => {
+export const follow = (userId) => {//thunk
     return (dispatch) => {
         dispatch(toggleFollowingProgress(true, userId));//запрещаю повторное нажатие кнопки
         UsersAPI.follow(userId)
@@ -97,7 +97,7 @@ export const follow = (userId) => {
             });
     }
 }
-export const unfollow = (userId) => {
+export const unfollow = (userId) => {//thunk
     return (dispatch) => {
         dispatch(toggleFollowingProgress(true, userId));//запрещаю повторное нажатие кнопки
         UsersAPI.unfollow(userId)
