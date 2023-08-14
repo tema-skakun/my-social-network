@@ -4,7 +4,8 @@ import Dialogs from "./Dialogs";
 
 function mapStateToProps (state){
     return {
-        dialogsPage: state.dialogsPage
+        dialogsPage: state.dialogsPage,
+        isAuth: state.auth.isAuth,
     }
 }
 

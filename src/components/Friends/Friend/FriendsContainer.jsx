@@ -3,7 +3,8 @@ import Friends from "../Friends";
 
 function mapStateToProps (state){
     return {
-        sidebarPage: state.sidebarPage
+        sidebarPage: state.sidebarPage,
+        isAuth: state.auth.isAuth,
     }
 }
 
