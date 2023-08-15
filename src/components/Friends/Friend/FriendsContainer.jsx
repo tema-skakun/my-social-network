@@ -1,10 +1,10 @@
 import {connect} from "react-redux";
 import Friends from "../Friends";
+import {withAuthRedirect} from "../../../hoc/withAuthRedirect";
 
 function mapStateToProps (state){
     return {
         sidebarPage: state.sidebarPage,
-        isAuth: state.auth.isAuth,
     }
 }
 
@@ -15,6 +15,8 @@ function mapStateToProps (state){
 //     }
 // }
 
-const FriendsContainer = connect(mapStateToProps, ) (Friends);
+let AuthRedirectComponent = withAuthRedirect(Friends);//HOC to check auth
+
+const FriendsContainer = connect(mapStateToProps, ) (AuthRedirectComponent);
 
 export default FriendsContainer;
