@@ -4,11 +4,12 @@ import Profile from "./Profile";
 import {getUserProfile} from "../../redux/profileReducer";
 import {useParams} from 'react-router-dom';
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {compose} from "@reduxjs/toolkit";
 
-export function withRouter(Children){
-    return(props)=>{
-        const match  = {params: useParams()};
-        return <Children {...props}  match = {match}/>
+export function withRouter(Children) {
+    return (props) => {
+        const match = {params: useParams()};
+        return <Children {...props} match={match}/>
     }
 }
 
@@ -33,8 +34,12 @@ let mapStateToProps = (state) => {
     )
 }
 
-let AuthRedirectComponent = withAuthRedirect(ProfileContainer);//HOC to check auth
+// let AuthRedirectComponent = withAuthRedirect(ProfileContainer);//HOC to check auth
+// let withUrlProfileContainer = withRouter(AuthRedirectComponent);
+// export default connect(mapStateToProps, {getUserProfile})(withUrlProfileContainer);
 
-let withUrlProfileContainer = withRouter(AuthRedirectComponent);
-
-export default connect(mapStateToProps, {getUserProfile})(withUrlProfileContainer);
+export default compose(
+    connect(mapStateToProps, {getUserProfile}),
+    withRouter,
+    withAuthRedirect
+)(ProfileContainer);
