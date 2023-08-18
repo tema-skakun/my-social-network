@@ -25,10 +25,21 @@ export const UsersAPI = {
             })
     },
     getProfile(id) {
+        console.warn('Obsolete method. Please use ProfileAPI object.')//added notification
+        return ProfileAPI.getProfile(id);//added new object, but kept compatibility
+    }
+}
+
+export const ProfileAPI = {
+    getProfile(id) {
         return instance.get(`profile/${id}`)
-            .then(response => {
-                return response.data;
-            })
+            .then(response => {return response.data;})
+    },
+    getStatus(id) {
+        return instance.get(`profile/status/` + id);
+    },
+    updateStatus(status) {
+        return instance.put(`profile/status/`, {status : status});
     }
 }
 
