@@ -4,6 +4,7 @@ const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_STATUS = 'SET-STATUS';
+const SET_AVATAR = 'SET-AVATAR';
 
 let initialState = {
     posts: [
@@ -12,7 +13,8 @@ let initialState = {
     ],
     newPostText: '',
     profile: null,
-    status: ''
+    status: '',
+    avatar: null,
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -35,6 +37,8 @@ const profileReducer = (state = initialState, action) => {
             return {...state, profile: action.profile};
         case SET_STATUS:
             return {...state, status: action.status};
+        case SET_AVATAR:
+            return {...state, avatar: action.avatar};
         default:
             return state;
     }
@@ -51,6 +55,9 @@ export const setUserProfile = (profile) => {
 }
 export const setStatus = (status) => {
     return {type: SET_STATUS, status}
+}
+export const setAvatar = (avatar) => {
+    return {type: SET_AVATAR, avatar}
 }
 
 //thunks
@@ -81,5 +88,17 @@ export const updateStatus = (status) => {//thunk
             })
     }
 }
+export const updateAvatar = (avatar) => {//thunk
+    return (dispatch) => {
+        ProfileAPI.updateAvatar(avatar)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(setAvatar(avatar));
+                }
+            })
+    }
+}
+
+
 
 export default profileReducer;

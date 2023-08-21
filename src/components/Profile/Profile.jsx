@@ -12,7 +12,9 @@ const Profile = (props) => {
 			<div className={style.description}>
 				<ProfileInfo propfile={props.profile}
 							 status={props.status}
-							 updateStatus={props.updateStatus}/>
+							 updateStatus={props.updateStatus}
+							 updateAvatar={props.updateAvatar}
+				/>
 			</div>
 			<div className={style.posts}>
 				<MyPostsContainer/>

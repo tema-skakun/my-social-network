@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import React from "react";
 import Profile from "./Profile";
-import {getStatus, getUserProfile, updateStatus} from "../../redux/profileReducer";
+import {getStatus, getUserProfile, updateAvatar, updateStatus} from "../../redux/profileReducer";
 import {useParams} from 'react-router-dom';
 import {compose} from "@reduxjs/toolkit";
 
@@ -46,7 +46,7 @@ let mapStateToProps = (state) => {
 // export default connect(mapStateToProps, {getUserProfile})(withUrlProfileContainer);
 
 export default compose(
-    connect(mapStateToProps, {getUserProfile, getStatus, updateStatus}),
+    connect(mapStateToProps, {getUserProfile, getStatus, updateStatus, updateAvatar}),
     withRouter,
     // withAuthRedirect//
 )(ProfileContainer);
