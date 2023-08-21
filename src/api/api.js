@@ -49,9 +49,10 @@ export const ProfileAPI = {
         const formData = new FormData();
         formData.append('image', avatar);
         return instance.put(`profile/photo`, formData,
-            {headers: {
+            {
+                headers: {
                     "Content-Type": "multipart/form-data"
-            }
+                }
             });
     }
 }

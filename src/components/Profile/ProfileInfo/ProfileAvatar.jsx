@@ -2,8 +2,6 @@ import React from "react";
 import userImg from "../../../assets/images/user.jpeg";
 import style from "./ProfileInfo.module.css";
 
-// const [selectedFile, setSelectedFile] = useState(null);
-
 export default class ProfileAvatar extends React.Component {
 
     state = {
@@ -12,7 +10,6 @@ export default class ProfileAvatar extends React.Component {
     }
 
     activateEditMode = () => {
-        // console.log("activate");
         this.setState(
             {
                 editMode: true,
