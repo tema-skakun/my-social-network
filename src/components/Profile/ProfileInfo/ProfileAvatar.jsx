@@ -32,7 +32,7 @@ export default class ProfileAvatar extends React.Component {
         });
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps) {
         if (prevProps.avatar !== this.props.avatar) {
             this.setState({
                 avatar: this.props.avatar,

@@ -1,5 +1,4 @@
 const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MSG_TEXT = 'UPDATE-NEW-MSG-TEXT';
 
 let initialState = {
     dialogs: [
@@ -11,7 +10,8 @@ let initialState = {
         {
             id: 2,
             name: 'Boris',
-            avatarLink: 'https://99px.ru/sstorage/1/2015/11/image_11111151003517187270.jpg'},
+            avatarLink: 'https://99px.ru/sstorage/1/2015/11/image_11111151003517187270.jpg'
+        },
         {
             id: 3,
             name: 'Paul',
@@ -25,7 +25,8 @@ let initialState = {
         {
             id: 5,
             name: 'Anton',
-            avatarLink: 'https://bipbap.ru/wp-content/uploads/2017/11/5_ja7.jpg'},
+            avatarLink: 'https://bipbap.ru/wp-content/uploads/2017/11/5_ja7.jpg'
+        },
         {
             id: 6,
             name: 'Alexander',
@@ -44,15 +45,14 @@ let initialState = {
 
     ],
     messages: [
-    {id: 1, message: 'Hi'},
-    {id: 2, message: 'How are you?'},
-    {id: 3, message: 'Yo'},
-    {id: 4, message: 'Wazzzaaa?'},
-    {id: 5, message: 'go dota'},
-    {id: 6, message: 'Whatever'},
-    {id: 7, message: 'bb gl'}
-],
-    newMsgText: '',
+        {id: 1, message: 'Hi'},
+        {id: 2, message: 'How are you?'},
+        {id: 3, message: 'Yo'},
+        {id: 4, message: 'Wazzzaaa?'},
+        {id: 5, message: 'go dota'},
+        {id: 6, message: 'Whatever'},
+        {id: 7, message: 'bb gl'}
+    ],
 };
 
 const dialogsReducer = (state = initialState, action) => {
@@ -60,29 +60,19 @@ const dialogsReducer = (state = initialState, action) => {
         case ADD_MESSAGE:
             let newMsg = {
                 id: 8,
-                message: state.newMsgText
+                message: action.newMessageBody
             };
             return {
                 ...state,
                 messages: [...state.messages, newMsg],
-                newMsgText: '',
-            };
-        case UPDATE_NEW_MSG_TEXT:
-            return {
-                ...state,//make shallow copy
-                newMsgText: action.msgText//overwrite new data
             };
         default:
             return state;
     }
 }
 
-export const addMessageAC = () => {
-    return {type: ADD_MESSAGE}
-}
-
-export const onMsgChangeAC = (text) => {
-    return {type: UPDATE_NEW_MSG_TEXT, msgText: text}
+export const addMessageAC = (newMessageBody) => {
+    return {type: ADD_MESSAGE, newMessageBody}
 }
 
 export default dialogsReducer;

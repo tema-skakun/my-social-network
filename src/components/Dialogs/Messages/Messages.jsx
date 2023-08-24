@@ -1,16 +1,13 @@
 import style from './Messages.module.css'
 import React from "react";
 import MessageItem from "./MessageItem/MessageItem";
+import {AddMessageReduxForm} from "./AddMessage/AddMessage";
 
 const Messages = (props) => {
     let messagesElements = props.state.messages.map(m => <MessageItem message={m.message} key={m.id}/>);
-    let addMessage = () => {
-        props.sendMessage();
-    }
 
-    let onMsgChange = (e) => {
-        let text = e.target.value;
-        props.onMsgBodyChange(text);
+    let addNewMessageBody = (values) => {
+        props.sendMessage(values.newMessageBody);
     }
 
     return (
@@ -18,15 +15,7 @@ const Messages = (props) => {
             <div className={style.messages}>
                 {messagesElements}
             </div>
-            <div>
-                <textarea
-                    placeholder='enter your message...'
-                    onChange={onMsgChange}
-                    value={props.state.newMsgText}/>
-            </div>
-            <div>
-                <button onClick={addMessage}>send</button>
-            </div>
+            <AddMessageReduxForm onSubmit={addNewMessageBody}/>
         </div>
 
     );

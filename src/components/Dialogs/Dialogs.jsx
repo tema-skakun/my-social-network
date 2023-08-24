@@ -10,11 +10,7 @@ const Dialogs = (props) => {
                 <DialogItems dialogs={props.dialogsPage.dialogs}/>
             </div>
             <div className={style.messages}>
-                <Messages
-                    state={props.dialogsPage}
-                    sendMessage={props.sendMessage}
-                    onMsgBodyChange={props.onMsgBodyChange}
-                />
+                <Messages state={props.dialogsPage} sendMessage={props.sendMessage}/>
             </div>
         </div>
     )
