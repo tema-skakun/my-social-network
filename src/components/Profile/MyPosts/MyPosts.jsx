@@ -4,7 +4,9 @@ import React from "react";
 import {AddPostReduxForm} from "./AddPost/AddPost";
 
 const MyPosts = (props) => {
-    let postsElements = props.profilePage.posts.map(p => <Post message={p.message} likesCount={p.likesCount} key={p.id}/>);
+    let postsElements = props.profilePage.posts.map(p => <Post message={p.message}
+                                                               likesCount={p.likesCount}
+                                                               key={p.id}/>);
 
     let onAddPost = (values) => {
         props.addPost(values.newPostText);
