@@ -64,13 +64,10 @@ export const AuthAPI = {
                 return response.data;
             })
     },
-    login(form) {
-        const formData = new FormData();
-        formData.append('data', form);
-        return instance.post(`auth/login`, formData, {
-            headers: {
-                "Content-Type": "multipart/form-data"
-            }
-        });
-    }
+    login(email, password, rememberMe = false) {
+        return instance.post(`auth/login`, {email, password, rememberMe});
+    },
+    logout() {
+        return instance.delete(`auth/login`);
+    },
 }

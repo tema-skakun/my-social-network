@@ -20,7 +20,4 @@ function mapStateToProps(state) {
 // const FriendsContainer = connect(mapStateToProps, ) (AuthRedirectComponent);
 // export default FriendsContainer;
 
-export default compose(
-    connect(mapStateToProps,),
-    withAuthRedirect
-)(Friends);
+export default compose(connect(mapStateToProps), withAuthRedirect)(Friends);

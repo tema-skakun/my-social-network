@@ -8,12 +8,14 @@ const Header = (props) => {
                 <NavLink to={'/profile'}>
                     <img
                         src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPHRvtFUvNT9Rrpz2HE4gu05hPPg8m7DweCg&usqp=CAU'
-                        alt={'frederico'}
+                        alt={'my-social-network'}
                     />
                 </NavLink>
             </div>
             <div className={style.loginBlock}>
-                {props.isAuth ? props.login : <NavLink to={'/login'}>Login</NavLink>}
+                {props.isAuth
+                    ? <div>{props.login} <button onClick={props.logout}>Logout</button></div>
+                    : <NavLink to={'/login'}>Login</NavLink>}
             </div>
         </header>
     )
