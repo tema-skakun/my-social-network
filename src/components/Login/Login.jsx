@@ -3,8 +3,9 @@ import {Input} from "../common/FormControls/FormControls";
 import {maxLengthCreator, required} from "../../utils/validators";
 import {connect} from "react-redux";
 import {login} from "../../redux/authReducer";
-import * as React from "react";
+import React from "react";
 import {Navigate} from "react-router-dom";
+import style from "../common/FormControls/FormControls.module.css"
 
 const maxLength30 = maxLengthCreator(30);
 
@@ -32,6 +33,10 @@ const LoginForm = (props) => {
                        name={"rememberMe"}
                 />remember me
             </div>
+            {props.error &&
+                <div className={style.formSummaryError}>
+                    {props.error}
+                </div>}
             <div>
                 <button>Login</button>
             </div>
@@ -45,7 +50,7 @@ const Login = (props) => {
     const onSubmit = (formData) => {
         props.login(formData.email, formData.password, formData.rememberMe);
     }
-    if(props.isAuth)
+    if (props.isAuth)
         return <Navigate to={"/profile"}/>
     return (
         <div>
