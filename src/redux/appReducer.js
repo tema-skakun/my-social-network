@@ -9,7 +9,6 @@ let initialState = {
 const appReducer = (state = initialState, action) => {
     switch (action.type) {
         case INITIALIZED_SUCCESS:
-            debugger
             return {...state, initialized: true};
         default:
             return state;
@@ -17,9 +16,9 @@ const appReducer = (state = initialState, action) => {
 }
 
 const initializedSuccess = () => ({type: INITIALIZED_SUCCESS});
-export const initialApp = () => (dispatch) => {
+export const  initialApp = () => (dispatch) => {
     let promise = dispatch(getAuthUserData());
-    Promise.all([promise]).then(() => {dispatch(initializedSuccess)})
+    Promise.all([promise]).then(() => {dispatch(initializedSuccess())})
 }
 
 export default appReducer;

@@ -18,28 +18,3 @@ export const Textarea = (props) => {
 export const Input = (props) => {
     return <FormControl typefield="input" {...props}/>
 }
-
-//
-// export const Textarea = ({input, meta, ...props}) => {
-//     const hasError = meta.touched && meta.error;
-//     return (
-//         <div className={style.formControl + " " + (hasError ? style.error : "")}>
-//             <div>
-//                 <textarea {...input} {...props}/>
-//             </div>
-//             {hasError && <span>{meta.error}</span>}
-//         </div>
-//     )
-// }
-
-// export const Input = ({input, meta, ...props}) => {
-//     const hasError = meta.touched && meta.error;
-//     return (
-//         <div className={style.formControl + " " + (hasError ? style.error : "")}>
-//             <div>
-//                 <input {...input} {...props}/>
-//             </div>
-//             {hasError && <span>{meta.error}</span>}
-//         </div>
-//     )
-// }
