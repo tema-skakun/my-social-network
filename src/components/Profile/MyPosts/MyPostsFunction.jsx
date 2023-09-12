@@ -3,20 +3,20 @@ import Post from './Post/Post';
 import React from "react";
 import {AddPostReduxForm} from "./AddPost/AddPost";
 
-class MyPosts extends React.Component {
 
-    shouldComponentUpdate(nextProps, nextState, nextContext) {
-        return nextProps.profilePage.posts !== this.props.profilePage.posts;
-    }
-
-    render() {
-        let postsElements = this.props.profilePage.posts.map(p => <Post message={p.message}
-                                                                        likesCount={p.likesCount}
-                                                                        key={p.id}/>);
+//не работает!!!
+// при рендере отрисовывает много раз
+// при добавлении поста - подает
+const MyPostsFunction = React.memo(props => {
+        let postsElements = props.profilePage.posts.map(p => <Post message={p.message}
+                                                                   likesCount={p.likesCount}
+                                                                   key={p.id}/>);
 
         let onAddPost = (values) => {
             this.props.addPost(values.newPostText);
         }
+
+        console.log("render");
 
         return (
             <div className={style.postsBlock}>
@@ -30,6 +30,6 @@ class MyPosts extends React.Component {
             </div>
         )
     }
-}
+)
 
-export default MyPosts;
+export default MyPostsFunction;
