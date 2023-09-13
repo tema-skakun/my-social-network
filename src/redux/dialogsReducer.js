@@ -1,4 +1,7 @@
 const ADD_MESSAGE = 'ADD-MESSAGE';
+const DELETE_MESSAGE = 'DELETE-MESSAGE';
+const ADD_DIALOG = 'ADD-DIALOG';
+const DELETE_DIALOG = 'DELETE-DIALOG';
 
 let initialState = {
     dialogs: [
@@ -66,6 +69,20 @@ const dialogsReducer = (state = initialState, action) => {
                 ...state,
                 messages: [...state.messages, newMsg],
             };
+        case DELETE_MESSAGE:
+            return {...state, messages: state.messages.filter(m => m.id !== action.id)};
+        case ADD_DIALOG:
+            let newDlg = {
+                id: action.id,
+                name: action.name,
+                avatarLink: action.avatar
+            };
+            return {
+                ...state,
+                dialogs: [...state.dialogs, newDlg],
+            };
+        case DELETE_DIALOG:
+            return {...state, dialogs: state.dialogs.filter(d => d.id !== action.id)};
         default:
             return state;
     }
@@ -74,5 +91,13 @@ const dialogsReducer = (state = initialState, action) => {
 export const addMessageAC = (newMessageBody) => {
     return {type: ADD_MESSAGE, newMessageBody}
 }
-
+export const deleteMessage = (id) => {
+    return {type: DELETE_MESSAGE, id}
+}
+export const addDialog = (id, name, avatar) => {
+    return {type: ADD_DIALOG, id, name, avatar}
+}
+export const deleteDialog = (id) => {
+    return {type: DELETE_DIALOG, id}
+}
 export default dialogsReducer;

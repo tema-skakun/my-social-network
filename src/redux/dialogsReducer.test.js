@@ -1,5 +1,4 @@
-import profileReducer, {addPostAC, deletePost} from "./profileReducer";
-import dialogsReducer, {addMessageAC} from "./dialogsReducer";
+import dialogsReducer, {addDialog, addMessageAC, deleteDialog, deleteMessage} from "./dialogsReducer";
 
 // 1.1. test data
 let state = {
@@ -76,20 +75,47 @@ it(`message should be correct`, () => {
     expect(newState.messages[7].message).toBe("my-social-network");
 });
 
-// it(`length of messages should be decremented`, () => {
-//     // 1.2. test action
-//     let action = deleteMessage(1);
-//     // 2. action
-//     let newState = dialogsReducer(state, action);
-//     // 3. expectation
-//     expect(newState.messages.length).toBe(6);
-// });
+it(`length of messages should be decremented`, () => {
+    // 1.2. test action
+    let action = deleteMessage(1);
+    // 2. action
+    let newState = dialogsReducer(state, action);
+    // 3. expectation
+    expect(newState.messages.length).toBe(6);
+});
 
-// it(`length of posts shouldn't be decremented if id was incorrect`, () => {
-//     // 1.2. test action
-//     let action = deletePost(1000);
-//     // 2. action
-//     let newState = profileReducer(state, action);
-//     // 3. expectation
-//     expect(newState.posts.length).toBe(2);
-// });
+it(`length of messages shouldn't be decremented if id was incorrect`, () => {
+    // 1.2. test action
+    let action = deleteMessage(1000);
+    // 2. action
+    let newState = dialogsReducer(state, action);
+    // 3. expectation
+    expect(newState.messages.length).toBe(7);
+});
+
+it(`length of dialogs should be incremented`, () => {
+    // 1.2. test action
+    let action = addDialog(9, "Artem", "https://avatanplus.com/files/resources/original/583a1a320fd46158a2f65391.png");
+    // 2. action
+    let newState = dialogsReducer(state, action);
+    // 3. expectation
+    expect(newState.dialogs.length).toBe(9);
+});
+
+it(`length of dialogs should be decremented`, () => {
+    // 1.2. test action
+    let action = deleteDialog(1);
+    // 2. action
+    let newState = dialogsReducer(state, action);
+    // 3. expectation
+    expect(newState.dialogs.length).toBe(7);
+});
+
+it(`length of dialogs shouldn't be decremented if id was incorrect`, () => {
+    // 1.2. test action
+    let action = deleteDialog(1000);
+    // 2. action
+    let newState = dialogsReducer(state, action);
+    // 3. expectation
+    expect(newState.dialogs.length).toBe(8);
+});
