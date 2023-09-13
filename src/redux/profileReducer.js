@@ -4,6 +4,7 @@ const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_STATUS = 'SET-STATUS';
 const SET_AVATAR = 'SET-AVATAR';
+const DELETE_POST = 'DELETE-POST';
 
 let initialState = {
     posts: [
@@ -34,6 +35,8 @@ const profileReducer = (state = initialState, action) => {
             return {...state, status: action.status};
         case SET_AVATAR:
             return {...state, avatar: action.avatar};
+        case DELETE_POST:
+            return {...state, posts: state.posts.filter(p => p.id !== action.id)};
         default:
             return state;
     }
@@ -50,6 +53,10 @@ export const setStatus = (status) => {
 }
 export const setAvatar = (avatar) => {
     return {type: SET_AVATAR, avatar}
+}
+
+export const deletePost = (id) => {
+    return {type: DELETE_POST, id}
 }
 
 //thunks

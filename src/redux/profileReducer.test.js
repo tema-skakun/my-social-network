@@ -1,4 +1,4 @@
-import profileReducer, {addPostAC} from "./profileReducer";
+import profileReducer, {addPostAC, deletePost} from "./profileReducer";
 
 // 1.1. test data
 let state = {
@@ -24,5 +24,13 @@ it(`message of post should be correct`, () => {
     let newState = profileReducer(state, action);
     // 3. expectation
     expect(newState.posts[2].message).toBe("my-social-network");
-})
+});
 
+it(`length of posts should be decremented`, () => {
+    // 1.2. test action
+    let action = deletePost(1);
+    // 2. action
+    let newState = profileReducer(state, action);
+    // 3. expectation
+    expect(newState.posts.length).toBe(1);
+});
