@@ -62,42 +62,33 @@ export const deletePost = (id) => {
 //thunks
 
 export const getUserProfile = (userId) => {//thunk
-    return (dispatch) => {
-        ProfileAPI.getProfile(userId)
-            .then(response => {
-                dispatch(setUserProfile(response));
-            })
+    return async (dispatch) => {
+        let response = await ProfileAPI.getProfile(userId);//.then(response => {
+        dispatch(setUserProfile(response));
     }
 }
 export const getStatus = (userId) => {//thunk
-    return (dispatch) => {
-        ProfileAPI.getStatus(userId)
-            .then(response => {
-                dispatch(setStatus(response.data));
-            })
+    return async (dispatch) => {
+        let response = await ProfileAPI.getStatus(userId);//.then(response => {
+        dispatch(setStatus(response.data));
     }
 }
 export const updateStatus = (status) => {//thunk
-    return (dispatch) => {
-        ProfileAPI.updateStatus(status)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(setStatus(status));
-                }
-            })
+    return async (dispatch) => {
+        let response = await ProfileAPI.updateStatus(status);//.then(response => {
+        if (response.data.resultCode === 0) {
+            dispatch(setStatus(status));
+        }
     }
 }
 export const updateAvatar = (avatar) => {//thunk
-    return (dispatch) => {
-        ProfileAPI.updateAvatar(avatar)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(setAvatar(avatar));
-                }
-            })
+    return async (dispatch) => {
+        let response = await ProfileAPI.updateAvatar(avatar);//.then(response => {
+        if (response.data.resultCode === 0) {
+            dispatch(setAvatar(avatar));
+        }
     }
 }
-
 
 
 export default profileReducer;

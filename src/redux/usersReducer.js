@@ -75,37 +75,33 @@ export const setUsersTotalCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_C
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
 export const toggleFollowingProgress = (isFetching, userId) => ({type: TOGGLE_IS_FOLLOWING, isFetching, userId});
 export const requestUsers = (pageNumber, pageSize) => {//thunk
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleIsFetching(true));
-        UsersAPI.getUsers(pageNumber, pageSize)
-            .then(data => {
-                dispatch(setCurrentPage(pageNumber));
-                dispatch(toggleIsFetching(false));
-                dispatch(setUsers(data.items));
-                dispatch(setUsersTotalCount(data.totalCount));
-            })
+        let data = await UsersAPI.getUsers(pageNumber, pageSize);//.then(data => {
+        dispatch(setCurrentPage(pageNumber));
+        dispatch(toggleIsFetching(false));
+        dispatch(setUsers(data.items));
+        if (data.totalCount === undefined)
+            data.totalCount = 1;
+        dispatch(setUsersTotalCount(data.totalCount));
     }
 }
 export const follow = (userId) => {//thunk
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleFollowingProgress(true, userId));//запрещаю повторное нажатие кнопки
-        UsersAPI.follow(userId)
-            .then(response => {
-                if (response.resultCode === 0)
-                    dispatch(followSuccess(userId));
-                dispatch(toggleFollowingProgress(false, userId));//разрешаю повторное нажатие кнопки
-            });
+        let response = await UsersAPI.follow(userId);//.then(response => {
+        if (response.resultCode === 0)
+            dispatch(followSuccess(userId));
+        dispatch(toggleFollowingProgress(false, userId));//разрешаю повторное нажатие кнопки
     }
 }
 export const unfollow = (userId) => {//thunk
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleFollowingProgress(true, userId));//запрещаю повторное нажатие кнопки
-        UsersAPI.unfollow(userId)
-            .then(response => {
-                if (response.resultCode === 0)
-                    dispatch(unfollowSuccess(userId));
-                dispatch(toggleFollowingProgress(false, userId));//разрешаю повторное нажатие кнопки
-            });
+        let response = await UsersAPI.unfollow(userId);//.then(response => {
+        if (response.resultCode === 0)
+            dispatch(unfollowSuccess(userId));
+        dispatch(toggleFollowingProgress(false, userId));//разрешаю повторное нажатие кнопки
     }
 }
 

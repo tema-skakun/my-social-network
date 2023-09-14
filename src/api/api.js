@@ -26,10 +26,10 @@ export const UsersAPI = {
                 return response.data;
             })
     },
-    getProfile(id) {
-        console.warn('Obsolete method. Please use ProfileAPI object.')//added notification
-        return ProfileAPI.getProfile(id);//added new object, but kept compatibility
-    }
+    // getProfile(id) {
+    //     console.warn('Obsolete method. Please use ProfileAPI object.')//added notification
+    //     return ProfileAPI.getProfile(id);//added new object, but kept compatibility
+    // }
 }
 
 export const ProfileAPI = {
@@ -67,13 +67,13 @@ export const AuthAPI = {
     login(email, password, rememberMe = false) {
         return (
             instance.post(`auth/login`, {email, password, rememberMe})
-                // .then(response => response.data)
-    )
+            // .then(response => response.data)
+        )
     },
     logout() {
         return (
             instance.delete(`auth/login`)
-                // .then(response => response.data)
-    )
+            // .then(response => response.data)
+        )
     },
 }
