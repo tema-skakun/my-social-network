@@ -1,7 +1,7 @@
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const DELETE_MESSAGE = 'DELETE-MESSAGE';
-const ADD_DIALOG = 'ADD-DIALOG';
-const DELETE_DIALOG = 'DELETE-DIALOG';
+const ADD_MESSAGE = 'my-social-network/dialogs/ADD-MESSAGE';
+const DELETE_MESSAGE = 'my-social-network/dialogs/DELETE-MESSAGE';
+const ADD_DIALOG = 'my-social-network/dialogs/ADD-DIALOG';
+const DELETE_DIALOG = 'my-social-network/dialogs/DELETE-DIALOG';
 
 let initialState = {
     dialogs: [

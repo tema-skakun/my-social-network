@@ -1,6 +1,6 @@
 import {getAuthUserData} from "./authReducer";
 
-const INITIALIZED_SUCCESS = 'INITIALIZED-SUCCESS';
+const INITIALIZED_SUCCESS = 'my-social-network/app/INITIALIZED-SUCCESS';
 
 let initialState = {
     initialized: false,

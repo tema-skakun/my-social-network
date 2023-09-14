@@ -1,7 +1,7 @@
 import {AuthAPI} from "../api/api";
 import {stopSubmit} from "redux-form"
 
-const SET_USER_DATA = 'SET-USER-DATA';
+const SET_USER_DATA = 'my-social-network/auth/SET-USER-DATA';
 
 let initialState = {
     usersId: null,
