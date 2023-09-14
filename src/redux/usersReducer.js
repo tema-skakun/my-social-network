@@ -86,23 +86,22 @@ export const requestUsers = (pageNumber, pageSize) => {//thunk
         dispatch(setUsersTotalCount(data.totalCount));
     }
 }
-export const follow = (userId) => {//thunk
-    return async (dispatch) => {
-        dispatch(toggleFollowingProgress(true, userId));//запрещаю повторное нажатие кнопки
-        let response = await UsersAPI.follow(userId);//.then(response => {
-        if (response.resultCode === 0)
-            dispatch(followSuccess(userId));
-        dispatch(toggleFollowingProgress(false, userId));//разрешаю повторное нажатие кнопки
-    }
+const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator) => {
+    dispatch(toggleFollowingProgress(true, userId));//запрещаю повторное нажатие кнопки
+    let response = await apiMethod(userId);//.then(response => {
+    if (response.resultCode === 0)
+        dispatch(actionCreator(userId));
+    dispatch(toggleFollowingProgress(false, userId));//разрешаю повторное нажатие кнопки
 }
-export const unfollow = (userId) => {//thunk
-    return async (dispatch) => {
-        dispatch(toggleFollowingProgress(true, userId));//запрещаю повторное нажатие кнопки
-        let response = await UsersAPI.unfollow(userId);//.then(response => {
-        if (response.resultCode === 0)
-            dispatch(unfollowSuccess(userId));
-        dispatch(toggleFollowingProgress(false, userId));//разрешаю повторное нажатие кнопки
-    }
+export const follow = (userId) => {
+    return (dispatch) => {
+        followUnfollowFlow(dispatch, userId, UsersAPI.follow.bind(UsersAPI), followSuccess);
+    };
+}
+export const unfollow = (userId) => {
+    return (dispatch) => {
+        followUnfollowFlow(dispatch, userId, UsersAPI.unfollow.bind(UsersAPI), unfollowSuccess);
+    };
 }
 
 export default usersReducer;
