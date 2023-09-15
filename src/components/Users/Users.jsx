@@ -2,6 +2,7 @@ import React from "react";
 import UserItem from "./UserItems/UserItem";
 import userImg from "../../assets/images/user.jpeg";
 import style from "./Users.module.css";
+import Pagination from "../common/Pagination/Pagination";
 
 let Users = ({
                  usersPage, follow, unfollow,
@@ -22,25 +23,14 @@ let Users = ({
             key={u.id}
         />)
 
-    let pageCount = Math.ceil(totalUsersCount / pageSize);
-
-    let pages = [];
-    for (let i = 1; i <= pageCount; ++i) {
-        pages.push(i);
-    }
-
     return (
         <div className={style.users}>
-            <div>
-                {pages.map(p => {
-                    return <span key={p}
-                                 className={currentPage === p ? style.selectedPage : style.notSelectedPage}
-                                 onClick={(e) => {
-                                     onPageChanged(p);
-                                 }}>{p}
-                    </span>
-                })}
-            </div>
+            <Pagination
+                totalUsersCount={totalUsersCount}
+                pageSize={pageSize}
+                currentPage={currentPage}
+                onPageChanged={onPageChanged}
+            />
             Users
             {usersElement}
         </div>
