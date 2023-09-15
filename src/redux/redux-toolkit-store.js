@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import profileReducer from "./profileReducer";
 import dialogsReducer from "./dialogsReducer";
-import sidebarReducer from "./sidebarReducer";
+import friendsReducer from "./friendsReducer";
 import usersReducer from "./usersReducer";
 import authReducer from "./authReducer";
 import appReducer from "./appReducer";
@@ -13,7 +13,7 @@ const store = configureStore({
     reducer: {
         profilePage: profileReducer,
         dialogsPage: dialogsReducer,
-        sidebarPage: sidebarReducer,
+        friendsPage: friendsReducer,
         usersPage: usersReducer,
         auth: authReducer,
         app: appReducer,

@@ -5,9 +5,11 @@ import {compose} from "@reduxjs/toolkit";
 
 function mapStateToProps(state) {
     return {
-        sidebarPage: state.sidebarPage,
+        friendsPage: state.friendsPage,
     }
 }
+
+export default compose(connect(mapStateToProps), withAuthRedirect)(Friends);
 
 // function mapDispatchToProps (dispatch) {
 //     return {
@@ -19,5 +21,3 @@ function mapStateToProps(state) {
 // let AuthRedirectComponent = withAuthRedirect(Friends);//HOC to check auth
 // const FriendsContainer = connect(mapStateToProps, ) (AuthRedirectComponent);
 // export default FriendsContainer;
-
-export default compose(connect(mapStateToProps), withAuthRedirect)(Friends);

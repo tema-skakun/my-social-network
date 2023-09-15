@@ -1,7 +1,7 @@
-import style from './UserItems.module.css'
+import style from './UserItem.module.css'
 import {NavLink} from "react-router-dom";
 
-const UserItems = (props) => {
+const UserItem = (props) => {
     return (
         <div className={style.user}>
             <NavLink to={'/profile/' + props.id}>
@@ -31,12 +31,9 @@ const UserItems = (props) => {
                 <div>
                     {props.status}
                 </div>
-                <div>
-                    {'props.location.country'}
-                </div>
             </div>
         </div>
     )
 }
 
-export default UserItems;
+export default UserItem;

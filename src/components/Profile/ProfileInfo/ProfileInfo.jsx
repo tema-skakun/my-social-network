@@ -2,19 +2,19 @@ import style from './ProfileInfo.module.css'
 import ProfileAvatar from "./ProfileAvatar";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
-const ProfileInfo = (props) => {
+const ProfileInfo = ({profile, updateAvatar, status, updateStatus}) => {
     return (
         <div className={style.main}>
-            <ProfileAvatar avatar={props.propfile.photos.large} updateAvatar={props.updateAvatar}/>
+            <ProfileAvatar avatar={profile.photos.large} updateAvatar={updateAvatar}/>
             <div className={style.description}>
-                <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
-                <div>{"name: " + props.propfile.fullName}</div>
-                <div>{"about me: " + props.propfile.aboutMe}</div>
-                <div>{"looking for a job: " + props.propfile.lookingForAJobDescription}</div>
+                <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
+                <div>{"name: " + profile.fullName}</div>
+                <div>{"about me: " + profile.aboutMe}</div>
+                <div>{"looking for a job: " + profile.lookingForAJobDescription}</div>
                 <div>links</div>
-                <div>{"facebook: " + props.propfile.contacts.facebook}</div>
-                <div>{"website: " + props.propfile.contacts.website}</div>
-                <div>{"github: " + props.propfile.contacts.github}</div>
+                <div>{"facebook: " + profile.contacts.facebook}</div>
+                <div>{"website: " + profile.contacts.website}</div>
+                <div>{"github: " + profile.contacts.github}</div>
             </div>
         </div>
     )

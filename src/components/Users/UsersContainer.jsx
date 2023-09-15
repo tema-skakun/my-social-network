@@ -49,6 +49,10 @@ function mapStateToProps(state) {
         followingInProgress: getFollowingInProgress(state),
     }
 }
+export default compose(
+    connect(mapStateToProps, {follow, unfollow, setCurrentPage, getUsers: requestUsers}),
+    // withAuthRedirect
+)(UsersContainer);
 
 // function mapStateToProps(state) {
 //     return {
@@ -87,8 +91,3 @@ function mapStateToProps(state) {
 
 // let AuthRedirectComponent = withAuthRedirect(UsersContainer);//HOC to check auth
 // export default connect(mapStateToProps, {follow, unfollow, setCurrentPage, getUsers})(AuthRedirectComponent);
-
-export default compose(
-    connect(mapStateToProps, {follow, unfollow, setCurrentPage, getUsers: requestUsers}),
-    // withAuthRedirect
-)(UsersContainer);
