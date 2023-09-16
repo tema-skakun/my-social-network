@@ -88,7 +88,7 @@ const dialogsReducer = (state = initialState, action) => {
     }
 }
 
-export const addMessageAC = (newMessageBody) => {
+export const addMessage = (newMessageBody) => {
     return {type: ADD_MESSAGE, newMessageBody}
 }
 export const deleteMessage = (id) => {

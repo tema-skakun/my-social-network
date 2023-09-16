@@ -7,13 +7,10 @@ function mapStateToProps (state){
 		profilePage: state.profilePage
 	}
 }
-
 function mapDispatchToProps (dispatch) {
 	return {
 		addPost: (newPostBody) => dispatch(addPostAC(newPostBody)),
 	}
 }
-
 const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps) (MyPosts);
-
 export default MyPostsContainer;

@@ -63,19 +63,19 @@ export const deletePost = (id) => {
 
 export const getUserProfile = (userId) => {//thunk
     return async (dispatch) => {
-        let response = await ProfileAPI.getProfile(userId);//.then(response => {
+        let response = await ProfileAPI.getProfile(userId);
         dispatch(setUserProfile(response));
     }
 }
 export const getStatus = (userId) => {//thunk
     return async (dispatch) => {
-        let response = await ProfileAPI.getStatus(userId);//.then(response => {
+        let response = await ProfileAPI.getStatus(userId);
         dispatch(setStatus(response.data));
     }
 }
 export const updateStatus = (status) => {//thunk
     return async (dispatch) => {
-        let response = await ProfileAPI.updateStatus(status);//.then(response => {
+        let response = await ProfileAPI.updateStatus(status);
         if (response.data.resultCode === 0) {
             dispatch(setStatus(status));
         }
@@ -83,7 +83,7 @@ export const updateStatus = (status) => {//thunk
 }
 export const updateAvatar = (avatar) => {//thunk
     return async (dispatch) => {
-        let response = await ProfileAPI.updateAvatar(avatar);//.then(response => {
+        let response = await ProfileAPI.updateAvatar(avatar);
         if (response.data.resultCode === 0) {
             dispatch(setAvatar(avatar));
         }

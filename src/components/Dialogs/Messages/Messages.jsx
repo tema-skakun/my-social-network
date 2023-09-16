@@ -3,11 +3,11 @@ import React from "react";
 import MessageItem from "./MessageItem/MessageItem";
 import {AddMessageReduxForm} from "./AddMessage/AddMessage";
 
-const Messages = ({dialogsPage, sendMessage}) => {
+const Messages = ({dialogsPage, addMessage}) => {
     let messagesElements = dialogsPage.messages.map(m => <MessageItem message={m.message} key={m.id}/>);
 
     let addNewMessageBody = (values) => {
-        sendMessage(values.newMessageBody);
+        addMessage(values.newMessageBody);
     }
 
     return (
