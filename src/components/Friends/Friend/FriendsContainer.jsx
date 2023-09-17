@@ -8,16 +8,4 @@ function mapStateToProps(state) {
         friendsPage: state.friendsPage,
     }
 }
-
 export default compose(connect(mapStateToProps), withAuthRedirect)(Friends);
-
-// function mapDispatchToProps (dispatch) {
-//     return {
-//         onMsgBodyChange: (text) => dispatch(onMsgChangeAC(text)),
-//         sendMessage: () => dispatch(addMessageAC()),
-//     }
-// }
-
-// let AuthRedirectComponent = withAuthRedirect(Friends);//HOC to check auth
-// const FriendsContainer = connect(mapStateToProps, ) (AuthRedirectComponent);
-// export default FriendsContainer;

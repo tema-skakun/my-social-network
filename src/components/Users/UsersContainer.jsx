@@ -40,7 +40,6 @@ class UsersContainer extends React.Component {
         </>
     }
 }
-
 function mapStateToProps(state) {
     return {
         usersPage: getUsers(state),

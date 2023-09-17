@@ -36,5 +36,4 @@ let Users = ({
         </div>
     )
 }
-
 export default Users;

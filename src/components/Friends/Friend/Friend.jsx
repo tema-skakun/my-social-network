@@ -1,10 +1,10 @@
 import style from './Friend.module.css'
 
-const Friend = (props) => {
+const Friend = ({avatarLink, name}) => {
     return (
         <div className={style.friend}>
-            <img src={props.avatarLink} alt={props.name}/>
-            {props.name}
+            <img src={avatarLink} alt={name}/>
+            {name}
         </div>
     )
 }

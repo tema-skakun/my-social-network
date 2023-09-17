@@ -35,5 +35,4 @@ const UserItem = (props) => {
         </div>
     )
 }
-
 export default UserItem;

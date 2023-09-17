@@ -1,4 +1,4 @@
-import dialogsReducer, {addDialog, addMessageAC, deleteDialog, deleteMessage} from "./dialogsReducer";
+import dialogsReducer, {addDialog, addMessage, deleteDialog, deleteMessage} from "./dialogsReducer";
 
 // 1.1. test data
 let state = {
@@ -59,7 +59,7 @@ let state = {
 
 it(`length of messages should be incremented`, () => {
     // 1.2. test action
-    let action = addMessageAC("my-social-network");
+    let action = addMessage("my-social-network");
     // 2. action
     let newState = dialogsReducer(state, action);
     // 3. expectation
@@ -68,7 +68,7 @@ it(`length of messages should be incremented`, () => {
 
 it(`message should be correct`, () => {
     // 1.2. test action
-    let action = addMessageAC("my-social-network");
+    let action = addMessage("my-social-network");
     // 2. action
     let newState = dialogsReducer(state, action);
     // 3. expectation
