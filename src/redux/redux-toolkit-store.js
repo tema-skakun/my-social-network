@@ -22,6 +22,6 @@ const store = configureStore({
     applyMiddleware: [thunkMiddleware],
 });
 
-window.store = store;//to view the store in the console
+window.__store__ = store;//just to view the store in the console
 
 export default store;
