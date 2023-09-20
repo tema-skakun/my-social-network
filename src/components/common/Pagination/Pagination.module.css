@@ -1,6 +1,6 @@
 .pageNumber.selectedPage {
     font-weight: bold;
-    border-color: #1c0202;
+    border: 1px solid black;
 }
 
 .notSelectedPage {}
@@ -11,6 +11,6 @@
 
 .pageNumber {
     padding: 2px;
-    border: 1px solid darkslategrey;
+    border: 1px solid grey;
 }
 
