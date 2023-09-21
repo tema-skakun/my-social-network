@@ -5,6 +5,10 @@ The backend is implemented as a REST API ([API documentation](https://social-net
 
 ![project architecture](https://github.com/tema-skakun/my-social-network/blob/main/public/architecture_of_project.png)
 
+ - UI - user interface;
+ - BLL - business logic layer;
+ - DAL - data access layer.
+
 As part of this project, I want to implement:
   - user profile;
   - messenger;
