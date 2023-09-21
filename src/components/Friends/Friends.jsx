@@ -3,7 +3,7 @@ import Friend from "./Friend/Friend";
 import React from "react";
 
 const Friends = ({friendsPage}) => {
-    let friendsElements = friendsPage.friends.map(f =>
+    const friendsElements = friendsPage.friends.map(f =>
         <Friend name={f.name} avatarLink={f.avatarLink} key={f.id}/>);
 
     return (

@@ -1,9 +1,9 @@
-import style from './Item.module.css'
+import style from './DialogItem.module.css'
 import React from "react";
 import {NavLink} from "react-router-dom";
 
-const Item = ({ava, name, id}) => {
-    let path = "/dialogs/" + id;
+const DialogItem = ({ava, name, id}) => {
+    const path = "/dialogs/" + id;
     return (
         <div className={style.dialogsItems}>
             <img src={ava} alt={'avatar'}/>
@@ -12,4 +12,4 @@ const Item = ({ava, name, id}) => {
     )
 }
 
-export default Item;
+export default DialogItem;

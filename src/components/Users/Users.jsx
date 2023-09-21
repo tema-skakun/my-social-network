@@ -4,12 +4,12 @@ import userImg from "../../assets/images/user.jpeg";
 import style from "./Users.module.css";
 import Pagination from "../common/Pagination/Pagination";
 
-let Users = ({
+const Users = ({
                  usersPage, follow, unfollow,
                  toggleFollowingProgress, followingInProgress,
                  totalUsersCount, pageSize, currentPage, onPageChanged
              }) => {
-    let usersElement = usersPage.users.map(u =>
+    const usersElement = usersPage.users.map(u =>
         <UserItem
             id={u.id}
             fullName={u.name}

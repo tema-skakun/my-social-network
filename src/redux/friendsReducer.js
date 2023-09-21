@@ -1,4 +1,4 @@
-let initialState =  {
+const initialState =  {
     friends: [
         {id: 1, name: 'Flash', avatarLink: 'https://avatarfiles.alphacoders.com/257/257694.jpg'},
         {

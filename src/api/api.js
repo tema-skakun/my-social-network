@@ -26,10 +26,6 @@ export const UsersAPI = {
                 return response.data;
             })
     },
-    // getProfile(id) {
-    //     console.warn('Obsolete method. Please use ProfileAPI object.')//added notification
-    //     return ProfileAPI.getProfile(id);//added new object, but kept compatibility
-    // }
 }
 
 export const ProfileAPI = {

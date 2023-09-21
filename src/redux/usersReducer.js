@@ -8,7 +8,7 @@ const SET_TOTAL_USERS_COUNT = 'users/SET-TOTAL-USERS-COUNT';
 const TOGGLE_IS_FETCHING = 'users/TOGGLE-IS-FETCHING';
 const TOGGLE_IS_FOLLOWING = 'users/TOGGLE-IS-FOLLOWING';
 
-let initialState = {
+const initialState = {
     users: [],
     pageSize: 10,
     totalUsersCount: 0,
@@ -77,7 +77,7 @@ export const toggleFollowingProgress = (isFetching, userId) => ({type: TOGGLE_IS
 export const requestUsers = (pageNumber, pageSize) => {//thunk
     return async (dispatch) => {
         dispatch(toggleIsFetching(true));
-        let data = await UsersAPI.getUsers(pageNumber, pageSize);//.then(data => {
+        const data = await UsersAPI.getUsers(pageNumber, pageSize);//.then(data => {
         dispatch(setCurrentPage(pageNumber));
         dispatch(toggleIsFetching(false));
         dispatch(setUsers(data.items));
@@ -88,7 +88,7 @@ export const requestUsers = (pageNumber, pageSize) => {//thunk
 }
 const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator) => {
     dispatch(toggleFollowingProgress(true, userId));//запрещаю повторное нажатие кнопки
-    let response = await apiMethod(userId);//.then(response => {
+    const response = await apiMethod(userId);//.then(response => {
     if (response.resultCode === 0)
         dispatch(actionCreator(userId));
     dispatch(toggleFollowingProgress(false, userId));//разрешаю повторное нажатие кнопки
@@ -103,5 +103,4 @@ export const unfollow = (userId) => {
         followUnfollowFlow(dispatch, userId, UsersAPI.unfollow.bind(UsersAPI), unfollowSuccess);
     };
 }
-
 export default usersReducer;

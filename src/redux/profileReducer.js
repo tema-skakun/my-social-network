@@ -6,7 +6,7 @@ const SET_STATUS = 'my-social-network/profile/SET-STATUS';
 const SET_AVATAR = 'my-social-network/profile/SET-AVATAR';
 const DELETE_POST = 'my-social-network/profile/DELETE-POST';
 
-let initialState = {
+const initialState = {
     posts: [
         {id: 1, message: 'Hello world!', likesCount: 10},
         {id: 2, message: "It's my first post", likesCount: 30},
@@ -20,7 +20,7 @@ const profileReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case ADD_POST:
-            let newPost = {
+            const newPost = {
                 id: 3,
                 message: action.newPostBody,
                 likesCount: 100
@@ -63,19 +63,19 @@ export const deletePost = (id) => {
 
 export const getUserProfile = (userId) => {//thunk
     return async (dispatch) => {
-        let response = await ProfileAPI.getProfile(userId);
+        const response = await ProfileAPI.getProfile(userId);
         dispatch(setUserProfile(response));
     }
 }
 export const getStatus = (userId) => {//thunk
     return async (dispatch) => {
-        let response = await ProfileAPI.getStatus(userId);
+        const response = await ProfileAPI.getStatus(userId);
         dispatch(setStatus(response.data));
     }
 }
 export const updateStatus = (status) => {//thunk
     return async (dispatch) => {
-        let response = await ProfileAPI.updateStatus(status);
+        const response = await ProfileAPI.updateStatus(status);
         if (response.data.resultCode === 0) {
             dispatch(setStatus(status));
         }
@@ -83,7 +83,7 @@ export const updateStatus = (status) => {//thunk
 }
 export const updateAvatar = (avatar) => {//thunk
     return async (dispatch) => {
-        let response = await ProfileAPI.updateAvatar(avatar);
+        const response = await ProfileAPI.updateAvatar(avatar);
         if (response.data.resultCode === 0) {
             dispatch(setAvatar(avatar));
         }

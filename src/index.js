@@ -7,9 +7,9 @@ import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-export let rerenderEntireTree = () => {
+export const rerenderEntireTree = () => {
     root.render(
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
             <React.StrictMode>
                 <Provider store={store}>
                     <App/>

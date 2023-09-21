@@ -2,7 +2,7 @@ import dialogsReducer from "./dialogsReducer";
 import profileReducer from "./profileReducer";
 import sidebarReducer from "./friendsReducer";
 
-let store = {
+const store = {
     _state: {
         profilePage: {
             posts: [

@@ -4,9 +4,9 @@ import MessageItem from "./MessageItem/MessageItem";
 import {AddMessageReduxForm} from "./AddMessage/AddMessage";
 
 const Messages = ({dialogsPage, addMessage}) => {
-    let messagesElements = dialogsPage.messages.map(m => <MessageItem message={m.message} key={m.id}/>);
+    const messagesElements = dialogsPage.messages.map(m => <MessageItem message={m.message} key={m.id}/>);
 
-    let addNewMessageBody = (values) => {
+    const addNewMessageBody = (values) => {
         addMessage(values.newMessageBody);
     }
 

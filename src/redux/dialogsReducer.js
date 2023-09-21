@@ -3,7 +3,7 @@ const DELETE_MESSAGE = 'my-social-network/dialogs/DELETE-MESSAGE';
 const ADD_DIALOG = 'my-social-network/dialogs/ADD-DIALOG';
 const DELETE_DIALOG = 'my-social-network/dialogs/DELETE-DIALOG';
 
-let initialState = {
+const initialState = {
     dialogs: [
         {
             id: 1,
@@ -61,7 +61,7 @@ let initialState = {
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_MESSAGE:
-            let newMsg = {
+            const newMsg = {
                 id: 8,
                 message: action.newMessageBody
             };
@@ -72,7 +72,7 @@ const dialogsReducer = (state = initialState, action) => {
         case DELETE_MESSAGE:
             return {...state, messages: state.messages.filter(m => m.id !== action.id)};
         case ADD_DIALOG:
-            let newDlg = {
+            const newDlg = {
                 id: action.id,
                 name: action.name,
                 avatarLink: action.avatar

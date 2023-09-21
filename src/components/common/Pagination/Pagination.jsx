@@ -2,18 +2,18 @@ import React, {useState} from "react";
 import style from "./Pagination.module.css";
 import cn from "classnames";
 
-let Pagination = ({totalItemsCount, pageSize, currentPage, onPageChanged, portionSize = 10}) => {
+const Pagination = ({totalItemsCount, pageSize, currentPage, onPageChanged, portionSize = 10}) => {
 
-    let pagesCount = Math.ceil(totalItemsCount / pageSize);
+    const pagesCount = Math.ceil(totalItemsCount / pageSize);
     let pages = [];
     for (let i = 1; i <= pagesCount; ++i) {
         pages.push(i);
     }
 
-    let portionCount = Math.ceil(pagesCount / portionSize);
-    let [portionNumber, setPortionNumber] = useState(Math.ceil(currentPage / portionSize));
-    let leftSideOfPortion = (portionNumber - 1) * portionSize + 1;
-    let rightSideOfPortion = portionNumber * portionSize;
+    const portionCount = Math.ceil(pagesCount / portionSize);
+    const [portionNumber, setPortionNumber] = useState(Math.ceil(currentPage / portionSize));
+    const leftSideOfPortion = (portionNumber - 1) * portionSize + 1;
+    const rightSideOfPortion = portionNumber * portionSize;
 
     return (
         <div className={style.paginator}>
