@@ -5,7 +5,7 @@ import cn from "classnames";
 const Pagination = ({totalItemsCount, pageSize, currentPage, onPageChanged, portionSize = 10}) => {
 
     const pagesCount = Math.ceil(totalItemsCount / pageSize);
-    let pages = [];
+    const pages = [];
     for (let i = 1; i <= pagesCount; ++i) {
         pages.push(i);
     }
