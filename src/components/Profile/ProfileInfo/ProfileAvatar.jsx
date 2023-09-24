@@ -46,7 +46,7 @@ export default class ProfileAvatar extends React.Component {
                 {!this.state.editMode &&
                     <div className={style.avatar}>
                         <img onDoubleClick={this.activateEditMode}
-                             src={this.props.avatar ? this.props.avatar : userImg}
+                             src={this.props.avatar || userImg}
                              alt={'avatar'}
                         />
                     </div>
