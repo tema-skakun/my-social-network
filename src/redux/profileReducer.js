@@ -3,7 +3,7 @@ import {ProfileAPI} from "../api/api";
 const ADD_POST = 'my-social-network/profile/ADD-POST';
 const SET_USER_PROFILE = 'my-social-network/profile/SET-USER-PROFILE';
 const SET_STATUS = 'my-social-network/profile/SET-STATUS';
-const SET_AVATAR = 'my-social-network/profile/SET-AVATAR';
+const SET_AVATAR_SUCCESS = 'my-social-network/profile/SET-AVATAR-SUCCESS';
 const DELETE_POST = 'my-social-network/profile/DELETE-POST';
 
 const initialState = {
@@ -13,7 +13,7 @@ const initialState = {
     ],
     profile: null,
     status: '',
-    avatar: null,
+    // avatar: null,
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -33,8 +33,8 @@ const profileReducer = (state = initialState, action) => {
             return {...state, profile: action.profile};
         case SET_STATUS:
             return {...state, status: action.status};
-        case SET_AVATAR:
-            return {...state, avatar: action.avatar};
+        case SET_AVATAR_SUCCESS:
+            return {...state, profile: {...state.profile, photos: action.avatar}};
         case DELETE_POST:
             return {...state, posts: state.posts.filter(p => p.id !== action.id)};
         default:
@@ -45,14 +45,17 @@ const profileReducer = (state = initialState, action) => {
 export const addPostAC = (newPostBody) => {
     return {type: ADD_POST, newPostBody}
 }
+
 export const setUserProfile = (profile) => {
     return {type: SET_USER_PROFILE, profile}
 }
+
 export const setStatus = (status) => {
     return {type: SET_STATUS, status}
 }
-export const setAvatar = (avatar) => {
-    return {type: SET_AVATAR, avatar}
+
+export const setAvatarSuccess = (avatar) => {
+    return {type: SET_AVATAR_SUCCESS, avatar}
 }
 
 export const deletePost = (id) => {
@@ -67,12 +70,14 @@ export const getUserProfile = (userId) => {//thunk
         dispatch(setUserProfile(response));
     }
 }
+
 export const getStatus = (userId) => {//thunk
     return async (dispatch) => {
         const response = await ProfileAPI.getStatus(userId);
         dispatch(setStatus(response.data));
     }
 }
+
 export const updateStatus = (status) => {//thunk
     return async (dispatch) => {
         const response = await ProfileAPI.updateStatus(status);
@@ -81,14 +86,14 @@ export const updateStatus = (status) => {//thunk
         }
     }
 }
+
 export const updateAvatar = (avatar) => {//thunk
     return async (dispatch) => {
         const response = await ProfileAPI.updateAvatar(avatar);
         if (response.data.resultCode === 0) {
-            dispatch(setAvatar(avatar));
+            dispatch(setAvatarSuccess(response.data.data.photos));
         }
     }
 }
-
 
 export default profileReducer;

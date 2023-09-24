@@ -2,12 +2,12 @@ import style from './ProfileInfo.module.css'
 import ProfileAvatar from "./ProfileAvatar";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
-const ProfileInfo = ({profile, updateAvatar, status, updateStatus}) => {
+const ProfileInfo = ({profile, updateAvatar, status, updateStatus, isOwner}) => {
     return (
         <div className={style.main}>
-            <ProfileAvatar avatar={profile.photos.large} updateAvatar={updateAvatar}/>
+            <ProfileAvatar avatar={profile.photos.large} updateAvatar={updateAvatar} isOwner={isOwner}/>
             <div className={style.description}>
-                <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
+                <ProfileStatusWithHooks status={status} updateStatus={updateStatus} isOwner={isOwner}/>
                 <div>{"name: " + profile.fullName}</div>
                 <div>{"about me: " + profile.aboutMe}</div>
                 <div>{"looking for a job: " + profile.lookingForAJobDescription}</div>

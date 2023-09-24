@@ -41,11 +41,10 @@ export const ProfileAPI = {
     updateStatus(status) {
         return instance.put(`profile/status/`, {status: status});
     },
-    updateAvatar(avatar) {
+    updateAvatar(avatarFile) {
         const formData = new FormData();
-        formData.append('image', avatar);
-        return instance.put(`profile/photo`, formData,
-            {
+        formData.append('image', avatarFile);
+        return instance.put(`profile/photo`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data"
                 }

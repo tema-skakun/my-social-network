@@ -6,33 +6,24 @@ export default class ProfileAvatar extends React.Component {
 
     state = {
         editMode: false,
-        avatar: this.props.avatar
     }
 
     activateEditMode = () => {
-        this.setState(
-            {
-                editMode: true,
-            }
-        )
-    }
-    deactivateEditMode = () => {
-        this.setState(
-            {
-                editMode: false,
-            }
-        );
-        this.props.updateAvatar(this.state.avatar);
+        if (this.props.isOwner)
+            this.setState({editMode: true})
     }
 
+    deactivateEditMode = () => {
+        this.setState({editMode: false});
+    }
 
     onAvatarChange = (e) => {
-        this.setState({
-            avatar: e.target.files[0],
-        });
+        if (e.target.files.length)
+            this.props.updateAvatar(e.target.files[0]);
+        this.deactivateEditMode();
     }
 
-    componentDidUpdate(prevProps) {
+    componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps.avatar !== this.props.avatar) {
             this.setState({
                 avatar: this.props.avatar,
@@ -56,7 +47,6 @@ export default class ProfileAvatar extends React.Component {
                         <input type="file"
                                onChange={this.onAvatarChange}
                                accept="/image/*,.png,.jpeg,.jpg,.gif,.web"
-                               onBlur={this.deactivateEditMode}
                         />
                     </div>
                 }

@@ -25,9 +25,11 @@ class ProfileContainer extends React.Component {
         this.props.getUserProfile(userId);
         this.props.getStatus(userId);
     }
+
     componentDidMount() {
         this.refreshProfile();
     }
+
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.match.params.userId !== prevProps.match.params.userId)
             this.refreshProfile();
@@ -38,7 +40,9 @@ class ProfileContainer extends React.Component {
             <Profile {...this.props}
                      profile={this.props.profile}
                      status={this.props.status}
-                     updateStatus={this.props.updateStatus}/>
+                     updateStatus={this.props.updateStatus}
+                     isOwner={!this.props.match.params.userId}
+            />
         )
     }
 }
