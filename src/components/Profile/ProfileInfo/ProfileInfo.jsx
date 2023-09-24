@@ -1,11 +1,11 @@
 import style from './ProfileInfo.module.css'
-import ProfileAvatar from "./ProfileAvatar";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
+import ProfileAvatarWithHooks from "./ProfileAvatarWithHooks";
 
 const ProfileInfo = ({profile, updateAvatar, status, updateStatus, isOwner}) => {
     return (
         <div className={style.main}>
-            <ProfileAvatar avatar={profile.photos.large} updateAvatar={updateAvatar} isOwner={isOwner}/>
+            <ProfileAvatarWithHooks avatar={profile.photos.large} updateAvatar={updateAvatar} isOwner={isOwner}/>
             <div className={style.description}>
                 <ProfileStatusWithHooks status={status} updateStatus={updateStatus} isOwner={isOwner}/>
                 <div>{"name: " + profile.fullName}</div>
