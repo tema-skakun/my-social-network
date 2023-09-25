@@ -9,7 +9,7 @@ const Profile = ({profile, status, updateStatus, updateAvatar, isOwner}) => {
 		return <Preloader/>
 	return (
 		<div className={style.profile}>
-			<div className={style.description}>
+			<div className={style.info}>
 				<ProfileInfo profile={profile}
 							 status={status}
 							 updateStatus={updateStatus}
