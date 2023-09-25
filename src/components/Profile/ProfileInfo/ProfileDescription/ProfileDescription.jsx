@@ -1,9 +1,10 @@
 import style from "../ProfileInfo.module.css";
 import Contact from "../Contact/Contact";
 
-const ProfileDescription = ({profile}) => {
+const ProfileDescription = ({profile, startEdit, isOwner}) => {
     return (
         <div className={style.description}>
+            {isOwner && <div><button onClick={startEdit}>edit</button></div>}
             <div>
                 <b>Full name: </b>{profile.fullName}
             </div>
@@ -12,7 +13,7 @@ const ProfileDescription = ({profile}) => {
             </div>
             {profile.lookingForAJob &&
                 <div>
-                    <b>My professional skils: </b>{profile.lookingForAJobDescription}
+                    <b>My professional skills: </b>{profile.lookingForAJobDescription}
                 </div>
             }
             <div>

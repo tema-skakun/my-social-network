@@ -1,10 +1,12 @@
-import {ProfileAPI} from "../api/api";
+import {AuthAPI, ProfileAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const ADD_POST = 'my-social-network/profile/ADD-POST';
 const SET_USER_PROFILE = 'my-social-network/profile/SET-USER-PROFILE';
 const SET_STATUS = 'my-social-network/profile/SET-STATUS';
 const SET_AVATAR_SUCCESS = 'my-social-network/profile/SET-AVATAR-SUCCESS';
 const DELETE_POST = 'my-social-network/profile/DELETE-POST';
+const SET_PROFILE_SUCCESS = 'my-social-network/profile/SET-PROFILE-SUCCESS';
 
 const initialState = {
     posts: [
@@ -37,6 +39,13 @@ const profileReducer = (state = initialState, action) => {
             return {...state, profile: {...state.profile, photos: action.avatar}};
         case DELETE_POST:
             return {...state, posts: state.posts.filter(p => p.id !== action.id)};
+        case SET_PROFILE_SUCCESS:
+            return {...state, profile: {...state.profile,
+                    aboutMe: action.aboutMe,
+                    fullName: action.fullName,
+                    lookingForAJob: action.lookingForAJob,
+                    lookingForAJobDescription: action.lookingForAJobDescription,
+                }};
         default:
             return state;
     }
@@ -56,6 +65,9 @@ export const setStatus = (status) => {
 
 export const setAvatarSuccess = (avatar) => {
     return {type: SET_AVATAR_SUCCESS, avatar}
+}
+export const setProfileSuccess = (aboutMe, fullName, lookingForAJob, lookingForAJobDescription) => {
+    return {type: SET_PROFILE_SUCCESS, aboutMe, fullName, lookingForAJob, lookingForAJobDescription}
 }
 
 export const deletePost = (id) => {
@@ -93,6 +105,16 @@ export const updateAvatar = (avatar) => {//thunk
         if (response.data.resultCode === 0) {
             dispatch(setAvatarSuccess(response.data.data.photos));
         }
+    }
+}
+
+export const updateProfile = (aboutMe, fullName, lookingForAJob, lookingForAJobDescription) => async (dispatch) => {
+    const response = await ProfileAPI.updateProfile(aboutMe, fullName, lookingForAJob, lookingForAJobDescription);//.then(response => {
+    if (response.data.resultCode === 0) {
+        dispatch(setProfileSuccess(aboutMe, fullName, lookingForAJob, lookingForAJobDescription));
+    } else {
+        const message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
+        dispatch(stopSubmit("updateProfile", {_error: message}));
     }
 }
 
