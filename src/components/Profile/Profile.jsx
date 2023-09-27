@@ -4,7 +4,7 @@ import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import Preloader from "../common/Preloader/Preloader";
 import style from "./Profile.module.css"
 
-const Profile = ({profile, status, updateStatus, updateAvatar, isOwner}) => {
+const Profile = ({profile, status, updateStatus, updateAvatar, isOwner, updateProfile}) => {
 	if(!profile)
 		return <Preloader/>
 	return (
@@ -14,6 +14,7 @@ const Profile = ({profile, status, updateStatus, updateAvatar, isOwner}) => {
 							 status={status}
 							 updateStatus={updateStatus}
 							 updateAvatar={updateAvatar}
+							 updateProfile={updateProfile}
 							 isOwner={isOwner}
 				/>
 			</div>

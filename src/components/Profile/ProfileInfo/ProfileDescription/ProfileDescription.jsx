@@ -4,7 +4,7 @@ import Contact from "../Contact/Contact";
 const ProfileDescription = ({profile, startEdit, isOwner}) => {
     return (
         <div className={style.description}>
-            {isOwner && <div><button onClick={startEdit}>edit</button></div>}
+            {isOwner && <div><button onClick={startEdit}>Edit</button></div>}
             <div>
                 <b>Full name: </b>{profile.fullName}
             </div>

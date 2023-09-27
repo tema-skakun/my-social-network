@@ -1,18 +1,24 @@
-// import Contact from "../Contact/Contact";
-
 import {Input, Textarea} from "../../../common/FormControls/FormControls";
 import {maxLengthCreator, required} from "../../../../utils/validators";
 import {Field, reduxForm} from "redux-form";
 import React from "react";
+import style from "../Contact/Contact.module.css"
+import styleForm from "../../../common/FormControls/FormControls.module.css"
+import styleInfo from "../ProfileInfo.module.css";
+
 
 const maxLength30 = maxLengthCreator(30);
 
-const ProfileDescriptionForm = ({handleSubmit, profile}) => {
+const ProfileDescriptionForm = ({handleSubmit, profile, error}) => {
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styleInfo.description}>
             <div>
-                <button>save</button>
+                <button>Save</button>
             </div>
+            {error &&
+                <div className={styleForm.formSummaryError}>
+                    {error}
+                </div>}
             <div>
                 <b>Full name: </b>
                 <Field component={Input}
@@ -39,21 +45,24 @@ const ProfileDescriptionForm = ({handleSubmit, profile}) => {
                     />
                 </div>
             <div>
-                <b>About me: </b>{profile.aboutMe}
+                <b>About me: </b>
                 <Field component={Textarea}
                        placeholder={"About me"}
                        name={"aboutMe"}
                        validate={[required, maxLength30]}
                 />
             </div>
-            {/*<div>*/}
-            {/*    <b>Contacts: </b> {Object.keys(profile.contacts).map(key => {*/}
-            {/*    return <Contact*/}
-            {/*        key={key}*/}
-            {/*        contactTitle={key}*/}
-            {/*        contactValue={profile.contacts[key]}/>*/}
-            {/*})}*/}
-            {/*</div>*/}
+            <div>
+                <b>Contacts: </b> {Object.keys(profile.contacts).map(key => {
+                return <div className={style.contact} key={key}>
+                    <b>{key}: </b><Field component={Input}
+                                     placeholder={key}
+                                     name={"contacts." + key}
+                                     validate={[required, maxLength30]}
+                    />
+                    </div>
+            })}
+            </div>
         </form>
     )
 }

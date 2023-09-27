@@ -4,19 +4,17 @@ import ProfileAvatarWithHooks from "./ProfileAvatarWithHooks";
 import ProfileDescription from "./ProfileDescription/ProfileDescription";
 import {useState} from "react";
 import ProfileDescriptionForm from "./ProfileDescriptionForm/ProfileDescriptionForm";
-import {connect} from "react-redux";
-import {updateProfile} from "../../../redux/profileReducer";
 
 const ProfileInfo = ({profile, updateAvatar, status, updateStatus, isOwner, updateProfile}) => {
 
     const [editMode, setEditMode] = useState(false);
 
     const onSubmit = (formData) => {
-        console.log(formData);
-        updateProfile(formData.aboutMe,
-            formData.fullName,
-            formData.lookingForAJob,
-            formData.lookingForAJobDescription)
+        updateProfile(formData).then(
+            () => {
+                setEditMode(false);
+            }
+        );
     }
 
     return (
@@ -25,8 +23,9 @@ const ProfileInfo = ({profile, updateAvatar, status, updateStatus, isOwner, upda
             <ProfileStatusWithHooks status={status} updateStatus={updateStatus} isOwner={isOwner}/>
             {editMode
                 ? <ProfileDescriptionForm
-                    onSubmit={onSubmit}
-                    profile={profile}/>
+                    initialValues={profile}
+                    profile={profile}
+                    onSubmit={onSubmit}/>
                 : <ProfileDescription
                     profile={profile}
                     isOwner={isOwner}
@@ -38,6 +37,4 @@ const ProfileInfo = ({profile, updateAvatar, status, updateStatus, isOwner, upda
     )
 }
 
-const mapStateToProps = (state) => ({state});
-
-export default connect(mapStateToProps, {updateProfile})(ProfileInfo);
+export default ProfileInfo;
