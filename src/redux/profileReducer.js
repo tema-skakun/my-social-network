@@ -6,7 +6,6 @@ const SET_USER_PROFILE = 'my-social-network/profile/SET-USER-PROFILE';
 const SET_STATUS = 'my-social-network/profile/SET-STATUS';
 const SET_AVATAR_SUCCESS = 'my-social-network/profile/SET-AVATAR-SUCCESS';
 const DELETE_POST = 'my-social-network/profile/DELETE-POST';
-// const SET_PROFILE_SUCCESS = 'my-social-network/profile/SET-PROFILE-SUCCESS';
 
 const initialState = {
     posts: [
@@ -38,13 +37,6 @@ const profileReducer = (state = initialState, action) => {
             return {...state, profile: {...state.profile, photos: action.avatar}};
         case DELETE_POST:
             return {...state, posts: state.posts.filter(p => p.id !== action.id)};
-        // case SET_PROFILE_SUCCESS:
-        //     return {...state, profile: {...state.profile,
-        //             aboutMe: action.aboutMe,
-        //             fullName: action.fullName,
-        //             lookingForAJob: action.lookingForAJob,
-        //             lookingForAJobDescription: action.lookingForAJobDescription,
-        //         }};
         default:
             return state;
     }
@@ -105,7 +97,7 @@ export const updateAvatar = (avatar) => {//thunk
 }
 
 export const updateProfile = (profile) => async (dispatch, getState) => {
-        const userId = getState().auth.userId;
+    const userId = getState().auth.userId;
     const response = await ProfileAPI.updateProfile(profile);//.then(response => {
     if (response.data.resultCode === 0) {
         dispatch(getUserProfile(userId));

@@ -7,6 +7,7 @@ const instance = axios.create({
         "API-KEY": "9255c4a4-776e-460a-8548-63eec6171ae7"
     }
 })
+
 export const UsersAPI = {
     getUsers(currentPage, pageSize) {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`)
@@ -35,24 +36,27 @@ export const ProfileAPI = {
                 return response.data;
             })
     },
+
     getStatus(id) {
         return instance.get(`profile/status/` + id);
     },
+
     updateStatus(status) {
         return instance.put(`profile/status/`, {status: status});
     },
+
     updateAvatar(avatarFile) {
         const formData = new FormData();
         formData.append('image', avatarFile);
         return instance.put(`profile/photo`, formData, {
-                headers: {
-                    "Content-Type": "multipart/form-data"
-                }
-            });
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        });
     },
+
     updateProfile(profile) {
         return instance.put(`profile/`, profile)
-            // .then(response => response.data)
     }
 }
 
@@ -63,16 +67,21 @@ export const AuthAPI = {
                 .then(response => response.data)
         )
     },
-    login(email, password, rememberMe = false) {
+
+    login(email, password, rememberMe = false, captcha = null) {
         return (
-            instance.post(`auth/login`, {email, password, rememberMe})
+            instance.post(`auth/login`, {email, password, rememberMe, captcha})
             // .then(response => response.data)
         )
     },
+
     logout() {
-        return (
-            instance.delete(`auth/login`)
-            // .then(response => response.data)
-        )
+        return instance.delete(`auth/login`);
     },
+}
+
+export const SecurityAPI = {
+    getCaptchaUrl() {
+        return instance.get(`security/get-captcha-url`);
+    }
 }
