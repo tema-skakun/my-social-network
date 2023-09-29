@@ -1,6 +1,6 @@
 import './App.css';
 import React, {Component} from "react";
-import {Route, Routes} from "react-router-dom";
+import {Navigate, Route, Routes} from "react-router-dom";
 import {connect} from "react-redux";
 import {compose} from "@reduxjs/toolkit";
 import {initialApp} from "./redux/appReducer";
@@ -32,6 +32,7 @@ class App extends Component {
                 <div className='app-wrapper-content'>
                     <React.Suspense fallback={<Preloader/>}>
                         <Routes>
+                            <Route exact path="/" element={<Navigate to={'/profile'} /> } />
                             <Route path='/profile/:userId?' element={<ProfileContainer/>}/>
                             <Route path='/dialogs/*' element={<DialogsContainer/>}/>
                             <Route path='/friends' element={<FriendsContainer/>}/>
@@ -40,6 +41,7 @@ class App extends Component {
                             <Route path='/music' element={<Music/>}/>
                             <Route path='/settings' element={<Settings/>}/>
                             <Route path='/login' element={<Login/>}/>
+                            <Route path='*' element={<div>404 NOT FOUND</div>}/>
                         </Routes>
                     </React.Suspense>
                 </div>
