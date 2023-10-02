@@ -9,13 +9,11 @@ import {Provider} from "react-redux";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 export const rerenderEntireTree = () => {
     root.render(
-        // <HashRouter> {/*this is only necessary for the app to work correctly on github-pages*/}
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
             <Provider store={store}>
                 <App/>
             </Provider>
         </BrowserRouter>
-        // </HashRouter>
     );
 };
 
