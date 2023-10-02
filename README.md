@@ -17,3 +17,7 @@ As part of this project, I want to implement:
   - page with music;
   - profile settings;
   - changing the application language.
+
+You can see the realization at the [link](https://tema-skakun.github.io/my-social-network/)
+Email: free@samuraijs.com
+Password: free
