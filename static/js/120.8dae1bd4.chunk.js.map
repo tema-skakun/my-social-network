@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/120.8dae1bd4.chunk.js","mappings":"+IAOA,UAPa,WACT,OACIA,EAAAA,EAAAA,KAAA,OAAAC,SAAK,QAIb,C","sources":["components/News/News.jsx"],"sourcesContent":["const News = () => {\n    return (\n        <div>\n            News\n        </div>\n    )\n}\nexport default News;\n"],"names":["_jsx","children"],"sourceRoot":""}

@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/357.a5b05f90.chunk.js","mappings":"+IAQA,UARiB,WACb,OACIA,EAAAA,EAAAA,KAAA,OAAAC,SAAK,YAIb,C","sources":["components/Settings/Settings.jsx"],"sourcesContent":["const Settings = () => {\n    return (\n        <div>\n            Settings\n        </div>\n    )\n}\n\nexport default Settings;\n"],"names":["_jsx","children"],"sourceRoot":""}
