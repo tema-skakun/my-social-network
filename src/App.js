@@ -20,7 +20,6 @@ class App extends Component {
     componentDidMount() {
         this.props.initialApp();
     }
-
     render() {
         if (!this.props.initialized)
             return <Preloader/>
