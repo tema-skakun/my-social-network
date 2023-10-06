@@ -1,6 +1,19 @@
 ## my-social-network
 
-This is a Single Page Application is implemented on the React library, state management is implemented using Redux-Toolkit.
+Hello =)
+
+
+### link to gh-pages and login information
+
+You can see the realization at the [link](https://tema-skakun.github.io/my-social-network/) 
+To log in to the application, you can use this:
+ - Email: free@samuraijs.com
+ - Password: free
+
+
+### description
+
+This is a Single Page Application is implemented on the React library, state management is implemented using Redux-Toolkit. I used AntD as the UI framework.
 The backend is implemented as a REST API ([API documentation](https://social-network.samuraijs.com/docs)), and I interact with it using the Axios library.
 
 ![project architecture](https://github.com/tema-skakun/my-social-network/blob/main/public/architecture_of_project.png)
@@ -17,7 +30,3 @@ As part of this project, I want to implement:
   - page with music;
   - profile settings;
   - changing the application language.
-
-You can see the realization at the [link](https://tema-skakun.github.io/my-social-network/)
- - Email: free@samuraijs.com
- - Password: free
