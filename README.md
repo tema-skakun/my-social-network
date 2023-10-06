@@ -5,8 +5,7 @@ Hello =)
 
 ### link to gh-pages and login information
 
-You can see the realization at the [link](https://tema-skakun.github.io/my-social-network/) 
-To log in to the application, you can use this:
+You can see the realization at the [link](https://tema-skakun.github.io/my-social-network/). To log in to the application, you can use this:
  - Email: free@samuraijs.com
  - Password: free
 
