@@ -28,14 +28,14 @@ const {
     Footer,
 } = Layout;
 
-const App = ({ initialized, initialApp }) => {
+const App = ({initialized, initialApp}) => {
 
     useEffect(() => {
         initialApp();
     }, [initialApp]);
 
     if (!initialized) {
-        return <Preloader />;
+        return <Preloader/>;
     }
 
     return (
@@ -74,5 +74,4 @@ const mapStateToProps = (state) => ({
     initialized: state.app.initialized,
 });
 
-export default compose(connect(mapStateToProps, { initialApp }))(App);
-// export default App;
+export default compose(connect(mapStateToProps, {initialApp}))(App);

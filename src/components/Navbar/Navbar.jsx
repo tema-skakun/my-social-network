@@ -1,20 +1,36 @@
-import {Link} from 'react-router-dom';
+import React, {useState, useEffect} from "react";
 import {Layout, Menu} from "antd";
-import {MessageOutlined, SmileOutlined, TeamOutlined, UserOutlined} from "@ant-design/icons";
-import React from "react";
+import {Link, useLocation} from "react-router-dom";
+import {MessageOutlined, SmileOutlined, TeamOutlined, UserOutlined,} from "@ant-design/icons";
 import {
-    DIALOGS_PAGE,
-    DIALOGS_PATH,
-    FRIENDS_PAGE,
-    FRIENDS_PATH,
-    PROFILE_PAGE,
+    DIALOGS_PATH, FRIENDS_PAGE,
+    FRIENDS_PATH, PROFILE_PAGE,
     PROFILE_PATH, USERS_PAGE,
-    USERS_PATH
+    USERS_PATH, DIALOGS_PAGE,
 } from "../../data/constants";
 
 const {Sider} = Layout;
 
 const Navbar = () => {
+    const location = useLocation();
+    const [selectedKeys, setSelectedKeys] = useState([]);
+
+    useEffect(() => {
+        const path = location.pathname;
+
+        if (path === PROFILE_PATH) {
+            setSelectedKeys(["profile"]);
+        } else if (path === DIALOGS_PATH) {
+            setSelectedKeys(["messages"]);
+        } else if (path === FRIENDS_PATH) {
+            setSelectedKeys(["friends"]);
+        } else if (path === USERS_PATH) {
+            setSelectedKeys(["users"]);
+        } else {
+            setSelectedKeys([]);
+        }
+    }, [location.pathname]);
+
     return (
         <Sider
             breakpoint="lg"
@@ -26,9 +42,8 @@ const Navbar = () => {
                 console.log(collapsed, type);
             }}
         >
-            <div className="demo-logo-vertical"/>
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-                <Menu.Item key='profile' icon={<UserOutlined/>}>
+            <Menu theme="dark" mode="inline" selectedKeys={selectedKeys}>
+                <Menu.Item key="profile" icon={<UserOutlined/>}>
                     <Link to={PROFILE_PATH}>{PROFILE_PAGE}</Link>
                 </Menu.Item>
                 <Menu.Item key="messages" icon={<MessageOutlined/>}>
@@ -42,7 +57,7 @@ const Navbar = () => {
                 </Menu.Item>
             </Menu>
         </Sider>
-    )
-}
+    );
+};
 
 export default Navbar;
