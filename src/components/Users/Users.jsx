@@ -2,10 +2,11 @@ import React from "react";
 import UserItem from "./UserItems/UserItem";
 import userImg from "../../assets/images/user.jpeg";
 import style from "./Users.module.css";
-import Pagination from "../common/Pagination/Pagination";
+import {Pagination} from 'antd';
+import Preloader from "../common/Preloader/Preloader";
 
 const Users = ({
-                 usersPage, follow, unfollow,
+                 usersPage, follow, unfollow, isFetching,
                  toggleFollowingProgress, followingInProgress,
                  totalUsersCount, pageSize, currentPage, onPageChanged
              }) => {
@@ -26,12 +27,14 @@ const Users = ({
     return (
         <div className={style.users}>
             <Pagination
-                totalItemsCount={totalUsersCount}
+                total={totalUsersCount}
+                current={currentPage}
+                onChange={onPageChanged}
+                onShowSizeChange={onPageChanged}
                 pageSize={pageSize}
-                currentPage={currentPage}
-                onPageChanged={onPageChanged}
+                pageSizeOptions={[5, 10, 20, 50, 100]}
             />
-            Users
+            {isFetching ? <Preloader/> : null}
             {usersElement}
         </div>
     )
