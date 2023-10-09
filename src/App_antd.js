@@ -3,7 +3,7 @@ import Preloader from "./components/common/Preloader/Preloader";
 import {Navigate, Route, Routes} from "react-router-dom";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import UsersContainer from "./components/Users/UsersContainer";
-import {Layout, theme} from 'antd';
+import {Layout} from 'antd';
 import Navbar from "./components/Navbar/Navbar";
 import {
     AUTHOR,
@@ -15,31 +15,27 @@ import {
     PROJECT_NAME,
     USERS_PATH
 } from "./data/constants";
+import Header from "./components/Header/Header";
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const FriendsContainer = React.lazy(() => import('./components/Friends/Friend/FriendsContainer'));
 const Login = React.lazy(() => import('./components/Login/Login'));
 const {
-    Header,
     Content,
     Footer,
 } = Layout;
 
 const App = () => {
-    const {
-        token: {colorBgContainer},
-    } = theme.useToken();
-
     return (
         <Layout>
             <Navbar/>
             <Layout>
-                <Header style={{padding: 0, background: colorBgContainer,}}/>
+                <Header/>
                 <Content style={{margin: '24px 16px 0',}}>
                     <div>
                         <React.Suspense fallback={<Preloader/>}>
                             <Routes>
-                                <Route exact path="/" element={<Navigate to={PROFILE_PATH} /> } />
+                                <Route exact path="/" element={<Navigate to={PROFILE_PATH}/>}/>
                                 <Route path={PROFILE_PATH + '/:userId?'} element={<ProfileContainer/>}/>
                                 <Route path={DIALOGS_PATH + '/*'} element={<DialogsContainer/>}/>
                                 <Route path={FRIENDS_PATH} element={<FriendsContainer/>}/>

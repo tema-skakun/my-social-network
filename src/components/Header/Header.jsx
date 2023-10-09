@@ -1,26 +1,54 @@
 import style from './Header.module.css'
-import {NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
 import logo from '../../assets/images/logo.png'
 import {LOGIN_BUTTON, LOGIN_PATH, LOGOUT_BUTTON, PROFILE_PATH, PROJECT_NAME} from "../../data/constants";
+import {Avatar, Button, Col, Layout, Row, theme} from "antd";
+import {UserOutlined} from "@ant-design/icons";
+import React from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {selectCurrentUserLogin, selectIsAuth} from "../../redux/authSelectors";
+import {logout} from "../../redux/authReducer";
+
 
 const Header = (props) => {
+    const isAuth = useSelector(selectIsAuth);
+    const login = useSelector(selectCurrentUserLogin);
+
+    const dispatch = useDispatch();
+
+    const logoutCallback = () => {
+        dispatch(logout());
+    }
+
+    const {token: {colorBgContainer},} = theme.useToken();
+    const {Header,} = Layout;
     return (
-        <header className={style.header}>
-            <div>
-                <NavLink to={PROFILE_PATH}>
-                    <img
-                        src={logo}
-                        alt={PROJECT_NAME}
-                    />
-                </NavLink>
-            </div>
-            <div className={style.loginBlock}>
-                {props.isAuth
-                    ? <div>{props.login} <button onClick={props.logout}>{LOGOUT_BUTTON}</button></div>
-                    : <NavLink to={LOGIN_PATH}>{LOGIN_BUTTON}</NavLink>}
-            </div>
-        </header>
+        <Header style={{padding: 0, background: colorBgContainer,}}>
+            <Row>
+                <Col span={19}>
+                    <div className={style.header}>
+                        <Link to={PROFILE_PATH}>
+                            <img src={logo} alt={PROJECT_NAME}/>
+                        </Link>
+                    </div>
+                </Col>
+                {isAuth
+                    ?
+                    <>
+                        <Col span={1}>
+                            <Avatar title={login} style={{backgroundColor: '#87d068'}} icon={<UserOutlined/>}/>
+                        </Col>
+                        <Col span={4}>
+                            <Button onClick={logoutCallback}>{LOGOUT_BUTTON}</Button>
+                        </Col>
+                    </>
+                    :
+                    <Col span={5}>
+                        <Button> <Link to={LOGIN_PATH}>{LOGIN_BUTTON}</Link> </Button>
+                    </Col>
+                }
+            </Row>
+        </Header>
     )
 }
-
 export default Header;

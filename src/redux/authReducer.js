@@ -5,7 +5,7 @@ const SET_USER_DATA = 'my-social-network/auth/SET-USER-DATA';
 const GET_CAPTCHA_URL_SUCCESS = 'my-social-network/auth/GET-CAPTCHA-URL-SUCCESS';
 
 const initialState = {
-    usersId: null,
+    userId: null,
     email: null,
     login: null,
     isAuth: false,
