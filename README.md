@@ -3,13 +3,6 @@
 Hello =)
 
 
-### link to gh-pages and login information
-
-You can see the realization at the [link](https://tema-skakun.github.io/my-social-network/). To log in to the application, you can use this:
- - Email: free@samuraijs.com
- - Password: free
-
-
 ### description
 
 This is a Single Page Application is implemented on the React library, state management is implemented using Redux-Toolkit. I used AntD as the UI framework.
@@ -29,3 +22,15 @@ As part of this project, I want to implement:
   - page with music;
   - profile settings;
   - changing the application language.
+
+
+### board with project tree
+
+You can see the component tree at the [link](https://miro.com/app/board/uXjVP4Dnjek=/?share_link_id=589316820549)
+
+
+### gh-pages and login information
+
+You can see the realization at the [link](https://tema-skakun.github.io/my-social-network/). To log in to the application, you can use this:
+ - Email: free@samuraijs.com
+ - Password: free
