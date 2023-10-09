@@ -1,10 +1,11 @@
 import style from './UserItem.module.css'
 import {NavLink} from "react-router-dom";
+import {FOLLOW_BUTTON, PROFILE_PATH, UNFOLLOW_BUTTON} from "../../../data/constants";
 
 const UserItem = (props) => {
     return (
         <div className={style.user}>
-            <NavLink to={'/profile/' + props.id}>
+            <NavLink to={PROFILE_PATH + '/' + props.id}>
                 <img src={props.photoUrl} alt={props.fullName}/>
             </NavLink>
             <div>
@@ -18,14 +19,14 @@ const UserItem = (props) => {
                             onClick={() => {
                                 props.unfollow(props.id);
                             }}>
-                            unfollow
+                            {UNFOLLOW_BUTTON}
                         </button>
                         : <button
                             disabled={props.followingInProgress.some(id => id === props.id)}
                             onClick={() => {
                                 props.follow(props.id);
                             }}>
-                            follow
+                            {FOLLOW_BUTTON}
                         </button>}
                 </div>
                 <div>

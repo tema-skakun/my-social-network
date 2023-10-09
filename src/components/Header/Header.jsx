@@ -1,21 +1,23 @@
 import style from './Header.module.css'
 import {NavLink} from "react-router-dom";
+import logo from '../../assets/images/logo.png'
+import {LOGIN_BUTTON, LOGIN_PATH, LOGOUT_BUTTON, PROFILE_PATH, PROJECT_NAME} from "../../data/constants";
 
 const Header = (props) => {
     return (
         <header className={style.header}>
             <div>
-                <NavLink to={'/profile'}>
+                <NavLink to={PROFILE_PATH}>
                     <img
-                        src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPHRvtFUvNT9Rrpz2HE4gu05hPPg8m7DweCg&usqp=CAU'
-                        alt={'my-social-network'}
+                        src={logo}
+                        alt={PROJECT_NAME}
                     />
                 </NavLink>
             </div>
             <div className={style.loginBlock}>
                 {props.isAuth
-                    ? <div>{props.login} <button onClick={props.logout}>Logout</button></div>
-                    : <NavLink to={'/login'}>Login</NavLink>}
+                    ? <div>{props.login} <button onClick={props.logout}>{LOGOUT_BUTTON}</button></div>
+                    : <NavLink to={LOGIN_PATH}>{LOGIN_BUTTON}</NavLink>}
             </div>
         </header>
     )

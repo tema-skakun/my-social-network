@@ -1,26 +1,35 @@
 import style from "../ProfileInfo.module.css";
 import Contact from "../Contact/Contact";
+import {
+    ABOUT_ME_TITLE, CONTACTS_TITLE,
+    EDIT_BUTTON,
+    LOOKING_JOB_TITLE,
+    NAME_TITLE,
+    NO,
+    PROFESSION_SKILLS_TITLE,
+    YES
+} from "../../../../data/constants";
 
 const ProfileDescription = ({profile, startEdit, isOwner}) => {
     return (
         <div className={style.description}>
-            {isOwner && <div><button onClick={startEdit}>Edit</button></div>}
+            {isOwner && <div><button onClick={startEdit}>{EDIT_BUTTON}</button></div>}
             <div>
-                <b>Full name: </b>{profile.fullName}
+                <b>{NAME_TITLE}</b>{profile.fullName}
             </div>
             <div>
-                <b>Looking for a job: </b>{profile.lookingForAJob ? "yes" : "no"}
+                <b>{LOOKING_JOB_TITLE}</b>{profile.lookingForAJob ? YES : NO}
             </div>
             {profile.lookingForAJob &&
                 <div>
-                    <b>My professional skills: </b>{profile.lookingForAJobDescription}
+                    <b>{PROFESSION_SKILLS_TITLE}</b>{profile.lookingForAJobDescription}
                 </div>
             }
             <div>
-                <b>About me: </b>{profile.aboutMe}
+                <b>{ABOUT_ME_TITLE}</b>{profile.aboutMe}
             </div>
             <div>
-                <b>Contacts: </b> {Object.keys(profile.contacts).map(key => {
+                <b>{CONTACTS_TITLE}</b> {Object.keys(profile.contacts).map(key => {
                 return <Contact
                     key={key}
                     contactTitle={key}

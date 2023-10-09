@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import userImg from "../../../assets/images/user.jpeg";
 import style from "./ProfileInfo.module.css";
+import {AVATAR_ALT} from "../../../data/constants";
 
 const ProfileAvatarWithHooks = ({isOwner, updateAvatar, avatar,}) => {
 
@@ -27,7 +28,7 @@ const ProfileAvatarWithHooks = ({isOwner, updateAvatar, avatar,}) => {
                 <div className={style.avatar}>
                     <img onDoubleClick={activateEditMode}
                          src={avatar || userImg}
-                         alt={'avatar'}
+                         alt={AVATAR_ALT}
                     />
                 </div>
             }

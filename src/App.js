@@ -9,6 +9,16 @@ import Navbar from './components/Navbar/Navbar';
 import ProfileContainer, {withRouter} from "./components/Profile/ProfileContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import Preloader from "./components/common/Preloader/Preloader";
+import {
+    DIALOGS_PATH,
+    FRIENDS_PATH,
+    LOGIN_PATH,
+    MUSIC_PATH,
+    NEWS_PATH, NOT_FOUND_MESSAGE,
+    PROFILE_PATH,
+    SETTINGS_PATH,
+    USERS_PATH
+} from "./data/constants";
 const DialogsContainer = React.lazy( () => import('./components/Dialogs/DialogsContainer'));
 const FriendsContainer = React.lazy( () => import('./components/Friends/Friend/FriendsContainer'));
 const Login = React.lazy( () => import('./components/Login/Login'));
@@ -31,16 +41,16 @@ class App extends Component {
                 <div className='app-wrapper-content'>
                     <React.Suspense fallback={<Preloader/>}>
                         <Routes>
-                            <Route exact path="/" element={<Navigate to={'/profile'} /> } />
-                            <Route path='/profile/:userId?' element={<ProfileContainer/>}/>
-                            <Route path='/dialogs/*' element={<DialogsContainer/>}/>
-                            <Route path='/friends' element={<FriendsContainer/>}/>
-                            <Route path='/users' element={<UsersContainer/>}/>
-                            <Route path='/news' element={<News/>}/>
-                            <Route path='/music' element={<Music/>}/>
-                            <Route path='/settings' element={<Settings/>}/>
-                            <Route path='/login' element={<Login/>}/>
-                            <Route path='*' element={<div>404 NOT FOUND</div>}/>
+                            <Route exact path="/" element={<Navigate to={PROFILE_PATH} /> } />
+                            <Route path={PROFILE_PATH + '/:userId?'} element={<ProfileContainer/>}/>
+                            <Route path={DIALOGS_PATH + '/*'} element={<DialogsContainer/>}/>
+                            <Route path={FRIENDS_PATH} element={<FriendsContainer/>}/>
+                            <Route path={USERS_PATH} element={<UsersContainer/>}/>
+                            <Route path={NEWS_PATH} element={<News/>}/>
+                            <Route path={MUSIC_PATH} element={<Music/>}/>
+                            <Route path={SETTINGS_PATH} element={<Settings/>}/>
+                            <Route path={LOGIN_PATH} element={<Login/>}/>
+                            <Route path='*' element={<div>{NOT_FOUND_MESSAGE}</div>}/>
                         </Routes>
                     </React.Suspense>
                 </div>

@@ -6,6 +6,13 @@ import {login} from "../../redux/authReducer";
 import React from "react";
 import {Navigate} from "react-router-dom";
 import style from "../common/FormControls/FormControls.module.css"
+import {
+    CAPTCHA_PLACEHOLDER,
+    EMAIL_PLACEHOLDER,
+    LOGIN_BUTTON,
+    PASSWORD_PLACEHOLDER,
+    PROFILE_PATH
+} from "../../data/constants";
 
 const maxLength30 = maxLengthCreator(30);
 
@@ -14,14 +21,14 @@ const LoginForm = ({handleSubmit, error, captchaUrl}) => {
         <form onSubmit={handleSubmit}>
             <div>
                 <Field component={Input}
-                       placeholder={"Email"}
+                       placeholder={EMAIL_PLACEHOLDER}
                        name={"email"}
                        validate={[required, maxLength30]}
                 />
             </div>
             <div>
                 <Field component={Input}
-                       placeholder={"Password"}
+                       placeholder={PASSWORD_PLACEHOLDER}
                        name={"password"}
                        validate={[required, maxLength30]}
                        type={"password"}
@@ -40,13 +47,13 @@ const LoginForm = ({handleSubmit, error, captchaUrl}) => {
             {captchaUrl && <img src={captchaUrl} alt={'captchaUrl'}/>}
             {captchaUrl && <div>
                 <Field component={Input}
-                       placeholder={"Symbols from image"}
+                       placeholder={CAPTCHA_PLACEHOLDER}
                        name={"captcha"}
                        validate={[required, maxLength30]}
                 />
             </div>}
             <div>
-                <button>Login</button>
+                <button>{LOGIN_BUTTON}</button>
             </div>
         </form>
     )
@@ -59,7 +66,7 @@ const Login = ({login, isAuth, captchaUrl}) => {
         login(formData.email, formData.password, formData.rememberMe, formData.captcha);
     }
     if (isAuth)
-        return <Navigate to={"/profile"}/>
+        return <Navigate to={PROFILE_PATH}/>
     return (
         <div>
             <LoginReduxForm onSubmit={onSubmit} captchaUrl={captchaUrl}/>

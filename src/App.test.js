@@ -3,7 +3,7 @@ import App from "./App";
 import {unmountComponentAtNode} from "react-dom";
 import React from "react";
 import {Provider} from "react-redux";
-import store from "./data/redux-toolkit-store";
+import store from "./redux/redux-toolkit-store";
 import {BrowserRouter} from "react-router-dom";
 
 it('renders without crashing', () => {

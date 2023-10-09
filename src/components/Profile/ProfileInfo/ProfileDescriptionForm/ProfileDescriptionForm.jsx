@@ -5,6 +5,15 @@ import React from "react";
 import style from "../Contact/Contact.module.css"
 import styleForm from "../../../common/FormControls/FormControls.module.css"
 import styleInfo from "../ProfileInfo.module.css";
+import {
+    ABOUT_ME_PLACEHOLDER,
+    ABOUT_ME_TITLE,
+    CONTACTS_TITLE,
+    LOOKING_JOB_TITLE, NAME_PLACEHOLDER,
+    NAME_TITLE, PROFESSION_SKILLS_PLACEHOLDER,
+    PROFESSION_SKILLS_TITLE,
+    SAVE_BUTTON
+} from "../../../../data/constants";
 
 
 const maxLength30 = maxLengthCreator(30);
@@ -13,22 +22,22 @@ const ProfileDescriptionForm = ({handleSubmit, profile, error}) => {
     return (
         <form onSubmit={handleSubmit} className={styleInfo.description}>
             <div>
-                <button>Save</button>
+                <button>{SAVE_BUTTON}</button>
             </div>
             {error &&
                 <div className={styleForm.formSummaryError}>
                     {error}
                 </div>}
             <div>
-                <b>Full name: </b>
+                <b>{NAME_TITLE}</b>
                 <Field component={Input}
-                       placeholder={"Full name"}
+                       placeholder={NAME_PLACEHOLDER}
                        name={"fullName"}
                        validate={[required, maxLength30]}
                 />
             </div>
             <div>
-                <b>Looking for a job: </b>
+                <b>{LOOKING_JOB_TITLE}</b>
                 <div>
                     <Field component={"input"}
                            type={"checkbox"}
@@ -37,23 +46,23 @@ const ProfileDescriptionForm = ({handleSubmit, profile, error}) => {
                 </div>
             </div>
                 <div>
-                    <b>My professional skills: </b>
+                    <b>{PROFESSION_SKILLS_TITLE}</b>
                     <Field component={Textarea}
-                           placeholder={"My professional skills"}
+                           placeholder={PROFESSION_SKILLS_PLACEHOLDER}
                            name={"lookingForAJobDescription"}
                            validate={[required, maxLength30]}
                     />
                 </div>
             <div>
-                <b>About me: </b>
+                <b>{ABOUT_ME_TITLE}</b>
                 <Field component={Textarea}
-                       placeholder={"About me"}
+                       placeholder={ABOUT_ME_PLACEHOLDER}
                        name={"aboutMe"}
                        validate={[required, maxLength30]}
                 />
             </div>
             <div>
-                <b>Contacts: </b> {Object.keys(profile.contacts).map(key => {
+                <b>{CONTACTS_TITLE}</b> {Object.keys(profile.contacts).map(key => {
                 return <div className={style.contact} key={key}>
                     <b>{key}: </b><Field component={Input}
                                      placeholder={key}

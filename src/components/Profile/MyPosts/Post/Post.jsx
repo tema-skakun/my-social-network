@@ -1,11 +1,13 @@
 import style from './Post.module.css'
+import {AVATAR_ALT} from "../../../../data/constants";
+import avatar from "../../../../assets/images/female-avatar.jpg"
 
 const Post = (props) => {
 	return (
 		<div className={style.item}>
 			<div className={style.avatar}>
-				<img alt={'avatar'}
-					  src='https://static.vecteezy.com/system/resources/previews/004/819/322/non_2x/female-avatar-woman-profile-icon-for-network-vector.jpg' />
+				<img alt={AVATAR_ALT}
+					  src={avatar}/>
 			</div>
 			<div className={style.msg}>
 				{props.message}
