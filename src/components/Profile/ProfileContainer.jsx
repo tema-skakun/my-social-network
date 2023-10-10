@@ -19,7 +19,7 @@ class ProfileContainer extends React.Component {
             userId = this.props.authorizedUserId;
             if (!userId) {
                 userId = 29693;// - my id, need fix it
-                // this.props.history.push("/login")//history is undefined
+                // this.props.history.push({LOGIN_PATH})//history is undefined
             }
         }
         this.props.getUserProfile(userId);
@@ -53,7 +53,7 @@ const mapStateToProps = (state) => {
         {
             profile: state.profilePage.profile,
             status: state.profilePage.status,
-            authorizedUserId: state.auth.usersId,
+            authorizedUserId: state.auth.userId,
             isAuth: state.auth.isAuth,
         }
     )

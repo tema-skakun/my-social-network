@@ -3,7 +3,6 @@ import {Link} from "react-router-dom";
 import logo from '../../assets/images/logo.png'
 import {LOGIN_BUTTON, LOGIN_PATH, LOGOUT_BUTTON, PROFILE_PATH, PROJECT_NAME} from "../../data/constants";
 import {Avatar, Button, Col, Layout, Row, theme} from "antd";
-import {UserOutlined} from "@ant-design/icons";
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {selectCurrentUserLogin, selectIsAuth} from "../../redux/authSelectors";
@@ -36,7 +35,9 @@ const Header = (props) => {
                     ?
                     <>
                         <Col span={1}>
-                            <Avatar title={login} style={{backgroundColor: '#87d068'}} icon={<UserOutlined/>}/>
+                            <Avatar title={login} style={{backgroundColor: '#032abe'}}>
+                                {login[0]}
+                            </Avatar>
                         </Col>
                         <Col span={4}>
                             <Button onClick={logoutCallback}>{LOGOUT_BUTTON}</Button>
