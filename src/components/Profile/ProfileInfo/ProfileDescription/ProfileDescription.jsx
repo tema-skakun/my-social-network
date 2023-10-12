@@ -9,11 +9,12 @@ import {
     PROFESSION_SKILLS_TITLE,
     YES
 } from "../../../../data/constants";
+import {Button} from "antd";
 
 const ProfileDescription = ({profile, startEdit, isOwner}) => {
     return (
         <div className={style.description}>
-            {isOwner && <div><button onClick={startEdit}>{EDIT_BUTTON}</button></div>}
+            {isOwner && <div><Button onClick={startEdit}>{EDIT_BUTTON}</Button></div>}
             <div>
                 <b>{NAME_TITLE}</b>{profile.fullName}
             </div>

@@ -3,6 +3,7 @@ import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../../utils/validators";
 import {Textarea} from "../../../common/FormControls/FormControls";
 import {MESSAGE_PLACEHOLDER, SEND_MESSAGE_BUTTON} from "../../../../data/constants";
+import {Button} from "antd";
 
 const maxLength30 = maxLengthCreator(30);
 
@@ -17,7 +18,7 @@ const AddMessageForm = (props) => {
                 />
             </div>
             <div>
-                <button>{SEND_MESSAGE_BUTTON}</button>
+                <Button type="primary" htmlType="submit" >{SEND_MESSAGE_BUTTON}</Button>
             </div>
         </form>
     )

@@ -3,6 +3,7 @@ import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../../utils/validators";
 import {Textarea} from "../../../common/FormControls/FormControls";
 import {ADD_POST_BUTTON, POST_PLACEHOLDER} from "../../../../data/constants";
+import {Button} from "antd";
 
 const maxLength10 = maxLengthCreator(10);
 const AddPostForm = (props) => {
@@ -14,7 +15,7 @@ const AddPostForm = (props) => {
                    name={"newPostText"}
                    validate={[required, maxLength10]}
             />
-            <button>{ADD_POST_BUTTON}</button>
+            <Button type="primary" htmlType="submit">{ADD_POST_BUTTON}</Button>
         </form>
     )
 }

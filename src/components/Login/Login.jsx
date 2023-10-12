@@ -13,6 +13,7 @@ import {
     PASSWORD_PLACEHOLDER,
     PROFILE_PATH
 } from "../../data/constants";
+import {Button} from "antd";
 
 const maxLength30 = maxLengthCreator(30);
 
@@ -53,7 +54,7 @@ const LoginForm = ({handleSubmit, error, captchaUrl}) => {
                 />
             </div>}
             <div>
-                <button>{LOGIN_BUTTON}</button>
+                <Button type="primary" htmlType="submit">{LOGIN_BUTTON}</Button>
             </div>
         </form>
     )

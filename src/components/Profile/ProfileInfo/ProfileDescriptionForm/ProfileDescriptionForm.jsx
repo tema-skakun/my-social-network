@@ -14,6 +14,7 @@ import {
     PROFESSION_SKILLS_TITLE,
     SAVE_BUTTON
 } from "../../../../data/constants";
+import {Button} from "antd";
 
 
 const maxLength30 = maxLengthCreator(30);
@@ -22,7 +23,7 @@ const ProfileDescriptionForm = ({handleSubmit, profile, error}) => {
     return (
         <form onSubmit={handleSubmit} className={styleInfo.description}>
             <div>
-                <button>{SAVE_BUTTON}</button>
+                <Button type="primary" htmlType="submit">{SAVE_BUTTON}</Button>
             </div>
             {error &&
                 <div className={styleForm.formSummaryError}>

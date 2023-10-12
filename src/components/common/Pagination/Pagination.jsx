@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import style from "./Pagination.module.css";
 import cn from "classnames";
+import {Button} from "antd";
 
 const Pagination = ({totalItemsCount, pageSize, currentPage, onPageChanged, portionSize = 10}) => {
 
@@ -18,7 +19,7 @@ const Pagination = ({totalItemsCount, pageSize, currentPage, onPageChanged, port
     return (
         <div className={style.paginator}>
             {portionNumber > 1 &&
-            <button onClick={() => {setPortionNumber(portionNumber - 1)}}>PREV</button> }
+            <Button onClick={() => {setPortionNumber(portionNumber - 1)}}>PREV</Button> }
             {pages
                 .filter(p => p >= leftSideOfPortion && p <= rightSideOfPortion)
                 .map(p => {
@@ -31,7 +32,7 @@ const Pagination = ({totalItemsCount, pageSize, currentPage, onPageChanged, port
                     }}>{p}</span>)
             })}
             {portionCount > portionNumber &&
-            <button onClick={() => {setPortionNumber(portionNumber + 1)}}>NEXT</button> }
+            <Button onClick={() => {setPortionNumber(portionNumber + 1)}}>NEXT</Button> }
         </div>
     )
 }
