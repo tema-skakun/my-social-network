@@ -42,7 +42,7 @@ class ProfileContainer extends React.Component {
                      status={this.props.status}
                      updateStatus={this.props.updateStatus}
                      updateProfile={this.props.updateProfile}
-                     isOwner={!!this.props.authorizedUserId}
+                     isOwner={!!this.props.authorizedUserId && !this.props.match.params.userId}
             />
         )
     }
