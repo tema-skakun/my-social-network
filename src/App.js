@@ -8,7 +8,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Header from "./components/Header/Header";
 import {compose} from "@reduxjs/toolkit";
 import {connect} from "react-redux";
-import {initialApp} from "./redux/appReducer";
+import {initialApp} from "./redux/appReducer.ts";
 import {
     AUTHOR,
     DIALOGS_PATH,
