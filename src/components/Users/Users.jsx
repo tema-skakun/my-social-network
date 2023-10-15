@@ -24,8 +24,7 @@ const Users = ({
             key={u.id}
         />)
 
-    return (
-        <div className={style.users}>
+    const paginationElement = (
             <Pagination
                 total={totalUsersCount}
                 current={currentPage}
@@ -34,8 +33,14 @@ const Users = ({
                 pageSize={pageSize}
                 pageSizeOptions={[5, 10, 20, 50, 100]}
             />
+)
+
+    return (
+        <div className={style.users}>
+            {paginationElement}
             {isFetching ? <Preloader/> : null}
             {usersElement}
+            {paginationElement}
         </div>
     )
 }
