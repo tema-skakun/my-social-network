@@ -4,12 +4,13 @@ import {maxLengthCreator, required} from "../../../../utils/validators";
 import {Textarea} from "../../../common/FormControls/FormControls";
 import {MESSAGE_PLACEHOLDER, SEND_MESSAGE_BUTTON} from "../../../../data/constants";
 import {Button} from "antd";
+import {onFormSubmit} from "../../../../utils/formSubmitHandlers";
 
 const maxLength30 = maxLengthCreator(30);
 
-const AddMessageForm = (props) => {
+const AddMessageForm = ({handleSubmit, reset, pristine, onSubmit}) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit(onFormSubmit(reset, pristine, onSubmit))}>
             <div>
                 <Field component={Textarea}
                        placeholder={MESSAGE_PLACEHOLDER}
