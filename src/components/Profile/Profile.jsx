@@ -1,16 +1,16 @@
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import React from "react";
-import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import Preloader from "../common/Preloader/Preloader";
 import style from "./Profile.module.css"
+import MyPosts from "./MyPosts/MyPosts";
 
-const Profile = ({profile, status, updateStatus, updateAvatar, isOwner, updateProfile}) => {
-	if(!profile)
+const Profile = ({profilePage, status, updateStatus, updateAvatar, isOwner, updateProfile, addPost}) => {
+	if(!profilePage.profile)
 		return <Preloader/>
 	return (
 		<div className={style.profile}>
 			<div className={style.info}>
-				<ProfileInfo profile={profile}
+				<ProfileInfo profile={profilePage.profile}
 							 status={status}
 							 updateStatus={updateStatus}
 							 updateAvatar={updateAvatar}
@@ -19,7 +19,9 @@ const Profile = ({profile, status, updateStatus, updateAvatar, isOwner, updatePr
 				/>
 			</div>
 			<div className={style.posts}>
-				<MyPostsContainer/>
+				<MyPosts profilePage={profilePage}
+						 addPost={addPost}
+				/>
 			</div>
 		</div>
 	)

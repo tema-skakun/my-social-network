@@ -1,3 +1,5 @@
+import {DialogsType, MessagesType} from "../types/types";
+
 const ADD_MESSAGE = 'my-social-network/dialogs/ADD-MESSAGE';
 const DELETE_MESSAGE = 'my-social-network/dialogs/DELETE-MESSAGE';
 const ADD_DIALOG = 'my-social-network/dialogs/ADD-DIALOG';
@@ -46,7 +48,7 @@ const initialState = {
             avatarLink: 'https://img.championat.com/s/1350x900/news/big/c/d/entuziast-pokazal-robota-zajca-iz-nu-pogodi-v-vide-bossa-iz-atomic-heart_1681573670651118554.jpg'
         },
 
-    ],
+    ] as Array<DialogsType>,
     messages: [
         {id: 1, message: 'Hi'},
         {id: 2, message: 'How are you?'},
@@ -55,10 +57,12 @@ const initialState = {
         {id: 5, message: 'go dota'},
         {id: 6, message: 'Whatever'},
         {id: 7, message: 'bb gl'}
-    ],
+    ] as Array<MessagesType>,
 };
 
-const dialogsReducer = (state = initialState, action) => {
+export type InitialStateType = typeof initialState;
+
+const dialogsReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case ADD_MESSAGE:
             const newMsg = {
@@ -88,16 +92,20 @@ const dialogsReducer = (state = initialState, action) => {
     }
 }
 
-export const addMessage = (newMessageBody) => {
+type AddMessageActionType = {
+    type: typeof ADD_MESSAGE,
+    newMessageBody: string
+}
+export const addMessage = (newMessageBody: string): AddMessageActionType => {
     return {type: ADD_MESSAGE, newMessageBody}
 }
-export const deleteMessage = (id) => {
+export const deleteMessage = (id: number) => {
     return {type: DELETE_MESSAGE, id}
 }
-export const addDialog = (id, name, avatar) => {
+export const addDialog = (id: number, name: string, avatar: string) => {
     return {type: ADD_DIALOG, id, name, avatar}
 }
-export const deleteDialog = (id) => {
+export const deleteDialog = (id: number) => {
     return {type: DELETE_DIALOG, id}
 }
 export default dialogsReducer;

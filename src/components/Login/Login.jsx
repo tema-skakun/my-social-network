@@ -2,7 +2,7 @@ import {Field, reduxForm} from "redux-form";
 import {Input} from "../common/FormControls/FormControls";
 import {maxLengthCreator, required} from "../../utils/validators";
 import {connect} from "react-redux";
-import {login} from "../../redux/authReducer";
+import {login} from "../../redux/authReducer.ts";
 import React from "react";
 import {Navigate} from "react-router-dom";
 import style from "../common/FormControls/FormControls.module.css"

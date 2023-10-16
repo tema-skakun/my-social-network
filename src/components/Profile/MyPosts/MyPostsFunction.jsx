@@ -8,7 +8,7 @@ import {AddPostReduxForm} from "./AddPost/AddPost";
 // при рендере отрисовывает много раз
 // при добавлении поста - подает
 const MyPostsFunction = React.memo(props => {
-        let postsElements = props.profilePage.posts.map(p => <Post message={p.message}
+        let postsElements = props.profile.posts.map(p => <Post message={p.message}
                                                                    likesCount={p.likesCount}
                                                                    key={p.id}/>);
 

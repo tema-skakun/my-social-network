@@ -6,7 +6,7 @@ import {Avatar, Button, Col, Layout, Row, theme} from "antd";
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {selectCurrentUserLogin, selectIsAuth} from "../../redux/authSelectors";
-import {logout} from "../../redux/authReducer";
+import {logout} from "../../redux/authReducer.ts";
 
 
 const Header = (props) => {

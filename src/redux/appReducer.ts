@@ -1,20 +1,16 @@
-import {getAuthUserData} from "./authReducer";
+import {getAuthUserData} from "./authReducer.ts";
 
-const INITIALIZED_SUCCESS: string = 'my-social-network/app/INITIALIZED-SUCCESS';
+const INITIALIZED_SUCCESS = 'my-social-network/app/INITIALIZED-SUCCESS';
 
-type InitialStateType = {
+export type InitialStateType = {
     initialized: boolean,
-}
-
-type InitializedSuccessType = {
-    type: typeof INITIALIZED_SUCCESS,
 }
 
 const initialState: InitialStateType = {
     initialized: false,
 };
 
-const appReducer = (state: InitialStateType = initialState, action) => {
+const appReducer = (state = initialState, action: any): InitialStateType => {
     switch (action.type) {
         case INITIALIZED_SUCCESS:
             return {...state, initialized: true};
@@ -23,12 +19,12 @@ const appReducer = (state: InitialStateType = initialState, action) => {
     }
 }
 
-const action: InitializedSuccessType = {
-    type: INITIALIZED_SUCCESS
+type InitializedSuccessActionType = {
+    type: typeof INITIALIZED_SUCCESS,
 }
 
-const initializedSuccess = () => (action);
-export const  initialApp = () => (dispatch) => {
+const initializedSuccess = (): InitializedSuccessActionType => ({type: INITIALIZED_SUCCESS});
+export const  initialApp = () => (dispatch: any) => {
     const promise = dispatch(getAuthUserData());
     Promise.all([promise]).then(() => {dispatch(initializedSuccess())})
 }

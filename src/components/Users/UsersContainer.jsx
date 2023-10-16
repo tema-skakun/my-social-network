@@ -1,4 +1,4 @@
-import {follow, requestUsers, setCurrentPage, setPageSize, unfollow} from "../../redux/usersReducer";
+import {follow, requestUsers, setCurrentPage, setPageSize, unfollow} from "../../redux/usersReducer.ts";
 import {connect} from "react-redux";
 import React from "react";
 import Users from "./Users";

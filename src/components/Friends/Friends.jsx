@@ -4,7 +4,7 @@ import React from "react";
 
 const Friends = ({friendsPage}) => {
     const friendsElements = friendsPage.friends.map(f =>
-        <Friend name={f.name} avatarLink={f.avatarLink} key={f.id}/>);
+        <Friend name={f.name} avatarLink={f.photos} key={f.id}/>);
 
     return (
         <div className={style.friends}>

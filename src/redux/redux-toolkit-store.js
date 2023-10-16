@@ -1,15 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
-import profileReducer from "./profileReducer";
-import dialogsReducer from "./dialogsReducer";
-import friendsReducer from "./friendsReducer";
-import usersReducer from "./usersReducer";
-import authReducer from "./authReducer";
+import profileReducer from "./profileReducer.ts";
+import dialogsReducer from "./dialogsReducer.ts";
+import friendsReducer from "./friendsReducer.ts";
+import usersReducer from "./usersReducer.ts";
+import authReducer from "./authReducer.ts";
 import appReducer from "./appReducer.ts";
 import thunkMiddleware from "redux-thunk";
 import {reducer as formReducer} from "redux-form";
 
 const store = configureStore({
-
     reducer: {
         profilePage: profileReducer,
         dialogsPage: dialogsReducer,

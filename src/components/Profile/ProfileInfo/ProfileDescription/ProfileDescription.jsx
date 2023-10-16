@@ -1,7 +1,8 @@
 import style from "../ProfileInfo.module.css";
 import Contact from "../Contact/Contact";
 import {
-    ABOUT_ME_TITLE, CONTACTS_TITLE,
+    ABOUT_ME_TITLE,
+    CONTACTS_TITLE,
     EDIT_BUTTON,
     LOOKING_JOB_TITLE,
     NAME_TITLE,
