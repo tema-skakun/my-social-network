@@ -1,4 +1,4 @@
-import profileReducer, {addPostAC, deletePost} from "./profileReducer";
+import profileReducer, {addPost, deletePost} from "./profileReducer";
 
 // 1.1. test data
 const state = {
@@ -10,7 +10,7 @@ const state = {
 
 it(`length of posts should be incremented`, () => {
     // 1.2. test action
-    const action = addPostAC("my-social-network");
+    const action = addPost("my-social-network");
     // 2. action
     const newState = profileReducer(state, action);
     // 3. expectation
@@ -19,7 +19,7 @@ it(`length of posts should be incremented`, () => {
 
 it(`message of post should be correct`, () => {
     // 1.2. test action
-    const action = addPostAC("my-social-network");
+    const action = addPost("my-social-network");
     // 2. action
     const newState = profileReducer(state, action);
     // 3. expectation
