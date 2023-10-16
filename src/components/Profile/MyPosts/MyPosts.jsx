@@ -12,7 +12,8 @@ class MyPosts extends React.Component {
     render() {
         let postsElements = this.props.profilePage.posts.map(p => <Post message={p.message}
                                                                         likesCount={p.likesCount}
-                                                                        key={p.id}/>);
+                                                                        key={p.id}
+        />);
 
         let onAddPost = (values) => {
             this.props.addPost(values.newPostText);
