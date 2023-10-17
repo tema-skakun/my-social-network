@@ -46,14 +46,14 @@ const Navbar = () => {
                 <Menu.Item key="profile" icon={<UserOutlined/>}>
                     <Link to={PROFILE_PATH}>{PROFILE_PAGE}</Link>
                 </Menu.Item>
-                <Menu.Item key="messages" icon={<MessageOutlined/>}>
-                    <Link to={DIALOGS_PATH}>{DIALOGS_PAGE}</Link>
+                <Menu.Item key="users" icon={<TeamOutlined/>}>
+                    <Link to={USERS_PATH}>{USERS_PAGE}</Link>
                 </Menu.Item>
                 <Menu.Item key="friends" icon={<SmileOutlined/>}>
                     <Link to={FRIENDS_PATH}>{FRIENDS_PAGE}</Link>
                 </Menu.Item>
-                <Menu.Item key="users" icon={<TeamOutlined/>}>
-                    <Link to={USERS_PATH}>{USERS_PAGE}</Link>
+                <Menu.Item key="messages" icon={<MessageOutlined/>}>
+                    <Link to={DIALOGS_PATH}>{DIALOGS_PAGE}</Link>
                 </Menu.Item>
             </Menu>
         </Sider>

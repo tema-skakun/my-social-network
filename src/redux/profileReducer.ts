@@ -10,8 +10,8 @@ const DELETE_POST = 'my-social-network/profile/DELETE-POST';
 
 const initialState = {
     posts: [
-        {id: 1, message: 'Hello world!', likesCount: 10},
-        {id: 2, message: "It's my first post", likesCount: 30},
+        {id: 1, message: "It's my first post", likesCount: 30},
+        {id: 2, message: 'Hello world!', likesCount: 10},
     ] as Array<PostsType>,
     profile: null as ProfileType | null,
     status: '',

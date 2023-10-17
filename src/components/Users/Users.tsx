@@ -1,17 +1,30 @@
-import React from "react";
 import UserItem from "./UserItems/UserItem";
 import userImg from "../../assets/images/user.jpeg";
 import style from "./Users.module.css";
 import {Pagination} from 'antd';
 import Preloader from "../common/Preloader/Preloader";
+import {UsersType} from "../../types/types";
+import {FC} from "react";
 
-const Users = ({
-                 usersPage, follow, unfollow, isFetching,
-                 toggleFollowingProgress, followingInProgress,
+type PropsType = {
+    users: Array<UsersType>
+    follow: (userId: number) => void
+    unfollow: (userId: number) => void
+    isFetching: boolean
+    followingInProgress: Array<number>
+    totalUsersCount: number
+    pageSize: number
+    currentPage: number
+    onPageChanged: (pageNumber: number, pageSize: number) => void
+}
+
+const Users: FC<PropsType> = ({
+                 users, follow, unfollow, isFetching, followingInProgress,
                  totalUsersCount, pageSize, currentPage, onPageChanged
              }) => {
-    const usersElement = usersPage.users.map(u =>
+    const usersElement = users.map(u =>
         <UserItem
+            key={u.id}
             id={u.id}
             fullName={u.name}
             followed={u.followed}
@@ -19,9 +32,7 @@ const Users = ({
             photoUrl={u.photos.small ? u.photos.small : userImg}
             follow={follow}
             unfollow={unfollow}
-            toggleFollowingProgress={toggleFollowingProgress}
-            followingInProgress={followingInProgress}
-            key={u.id}
+             followingInProgress={followingInProgress}
         />)
 
     const paginationElement = (

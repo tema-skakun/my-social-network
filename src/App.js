@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import Preloader from "./components/common/Preloader/Preloader";
 import {Navigate, Route, Routes} from "react-router-dom";
 import ProfileContainer from "./components/Profile/ProfileContainer";
-import UsersContainer from "./components/Users/UsersContainer";
+import UsersContainer from "./components/Users/UsersContainer.tsx";
 import {Layout} from 'antd';
 import Navbar from "./components/Navbar/Navbar";
 import Header from "./components/Header/Header";
@@ -49,9 +49,9 @@ const App = ({initialized, initialApp}) => {
                             <Routes>
                                 <Route exact path="/" element={<Navigate to={PROFILE_PATH}/>}/>
                                 <Route path={PROFILE_PATH + '/:userId?'} element={<ProfileContainer/>}/>
-                                <Route path={DIALOGS_PATH + '/*'} element={<DialogsContainer/>}/>
+                                <Route path={USERS_PATH} element={<UsersContainer mainTitle={'SamuraiTS'}/>}/>
                                 <Route path={FRIENDS_PATH} element={<FriendsContainer/>}/>
-                                <Route path={USERS_PATH} element={<UsersContainer/>}/>
+                                <Route path={DIALOGS_PATH + '/*'} element={<DialogsContainer/>}/>
                                 <Route path={LOGIN_PATH} element={<Login/>}/>
                                 <Route path='*' element={<div>{NOT_FOUND_MESSAGE}</div>}/>
                             </Routes>
