@@ -1,9 +1,15 @@
-import React, {useState} from "react";
+import {FC, useState} from "react";
 import userImg from "../../../assets/images/user.jpeg";
 import style from "./ProfileInfo.module.css";
 import {AVATAR_ALT} from "../../../data/constants";
 
-const ProfileAvatarWithHooks = ({isOwner, updateAvatar, avatar,}) => {
+type PropsType = {
+    avatar: string
+    updateAvatar: (photos: any) => void
+    isOwner: boolean
+}
+
+const ProfileAvatarWithHooks: FC<PropsType> = ({isOwner, updateAvatar, avatar}) => {
 
     const [editMode, setEditMode] = useState(false);
 
@@ -15,8 +21,7 @@ const ProfileAvatarWithHooks = ({isOwner, updateAvatar, avatar,}) => {
     const deactivateEditMode = () => {
         setEditMode(false);
     };
-
-    const onAvatarChange = (e) => {
+    const onAvatarChange = (e: any) => {
         if (e.target.files.length)
             updateAvatar(e.target.files[0]);
         deactivateEditMode();

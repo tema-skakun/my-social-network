@@ -105,7 +105,7 @@ export const updateStatus = (status: string) => {//thunk
     }
 }
 
-export const updateAvatar = (photos: PhotosType) => {//thunk
+export const updateAvatar = (photos: any) => {//thunk
     return async (dispatch: any) => {
         const response = await ProfileAPI.updateAvatar(photos);
         if (response.data.resultCode === 0) {

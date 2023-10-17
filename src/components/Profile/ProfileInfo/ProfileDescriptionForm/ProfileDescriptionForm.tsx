@@ -1,10 +1,10 @@
+import {FC} from "react";
 import {Input, Textarea} from "../../../common/FormControls/FormControls";
 import {maxLengthCreator, required} from "../../../../utils/validators";
 import {Field, reduxForm} from "redux-form";
-import React from "react";
-import style from "../Contact/Contact.module.css"
-import styleForm from "../../../common/FormControls/FormControls.module.css"
-import styleInfo from "../ProfileInfo.module.css";
+import style from "../Contact/Contact.module.css"//причесать
+import styleForm from "../../../common/FormControls/FormControls.module.css"//причесать
+import styleInfo from "../ProfileInfo.module.css";//причесать - оставить один
 import {
     ABOUT_ME_PLACEHOLDER,
     ABOUT_ME_TITLE,
@@ -15,11 +15,17 @@ import {
     SAVE_BUTTON
 } from "../../../../data/constants";
 import {Button} from "antd";
+import {ProfileType} from "../../../../types/types";
 
+type PropsType = {
+    profile: ProfileType
+    handleSubmit: any
+    error: any
+}
 
 const maxLength30 = maxLengthCreator(30);
 
-const ProfileDescriptionForm = ({handleSubmit, profile, error}) => {
+const ProfileDescriptionForm: FC<PropsType> = ({handleSubmit, profile, error}) => {
     return (
         <form onSubmit={handleSubmit} className={styleInfo.description}>
             <div>
@@ -77,6 +83,6 @@ const ProfileDescriptionForm = ({handleSubmit, profile, error}) => {
     )
 }
 
-const ProfileDescriptionReduxForm = reduxForm({form: 'edit-profile'})(ProfileDescriptionForm);
-
-export default ProfileDescriptionReduxForm;
+export const ProfileDescriptionReduxForm = reduxForm({
+    form: 'edit-profile'
+})(ProfileDescriptionForm);

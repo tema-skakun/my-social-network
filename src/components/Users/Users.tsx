@@ -1,4 +1,4 @@
-import UserItem from "./UserItems/UserItem";
+import UserItem from "./UserItems/UserItem.tsx";
 import userImg from "../../assets/images/user.jpeg";
 import style from "./Users.module.css";
 import {Pagination} from 'antd';
@@ -19,9 +19,9 @@ type PropsType = {
 }
 
 const Users: FC<PropsType> = ({
-                 users, follow, unfollow, isFetching, followingInProgress,
-                 totalUsersCount, pageSize, currentPage, onPageChanged
-             }) => {
+                                  users, follow, unfollow, isFetching, followingInProgress,
+                                  totalUsersCount, pageSize, currentPage, onPageChanged
+                              }) => {
     const usersElement = users.map(u =>
         <UserItem
             key={u.id}
@@ -32,19 +32,19 @@ const Users: FC<PropsType> = ({
             photoUrl={u.photos.small ? u.photos.small : userImg}
             follow={follow}
             unfollow={unfollow}
-             followingInProgress={followingInProgress}
+            followingInProgress={followingInProgress}
         />)
 
     const paginationElement = (
-            <Pagination
-                total={totalUsersCount}
-                current={currentPage}
-                onChange={onPageChanged}
-                onShowSizeChange={onPageChanged}
-                pageSize={pageSize}
-                pageSizeOptions={[5, 10, 20, 50, 100]}
-            />
-)
+        <Pagination
+            total={totalUsersCount}
+            current={currentPage}
+            onChange={onPageChanged}
+            onShowSizeChange={onPageChanged}
+            pageSize={pageSize}
+            pageSizeOptions={[5, 10, 20, 50, 100]}
+        />
+    )
 
     return (
         <div className={style.users}>

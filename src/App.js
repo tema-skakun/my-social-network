@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import Preloader from "./components/common/Preloader/Preloader";
 import {Navigate, Route, Routes} from "react-router-dom";
-import ProfileContainer from "./components/Profile/ProfileContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer.tsx";
 import UsersContainer from "./components/Users/UsersContainer.tsx";
 import {Layout} from 'antd';
 import Navbar from "./components/Navbar/Navbar";
