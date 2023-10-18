@@ -6,19 +6,19 @@ import MyPosts from "./MyPosts/MyPosts.tsx";
 import {PostsType, ProfileType} from "../../types/types";
 
 type PropsType = {
-    userId?: number | string// ???
-    authorizedUserId: number
     profile: ProfileType
     posts: Array<PostsType>
-    status: string
-    isAuth: boolean
-    getUserProfile: (userId: number | string) => void
-    getStatus: (userId: number | string) => void
     updateAvatar: (photos: any) => void
     addPost: (newPostBody: string) => void
+    status: string
     updateStatus: (status: string) => void
     updateProfile: (profile: ProfileType) => void
     isOwner: boolean
+    userId?: number | string// ???
+    authorizedUserId?: number
+    isAuth?: boolean
+    getUserProfile?: (userId: number | string) => void
+    getStatus?: (userId: number | string) => void
 }
 
 const Profile: FC<PropsType> = ({

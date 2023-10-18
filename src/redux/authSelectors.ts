@@ -6,3 +6,6 @@ export const getAuthorizedUserIdSelector = (state: AppStateType) => {
 export const getIsAuthSelector = (state: AppStateType) => {
     return state.auth.isAuth;
 }
+export const getCurrentUserLoginSelector = (state: AppStateType) => {
+    return state.auth.login;
+}

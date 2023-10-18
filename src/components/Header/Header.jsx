@@ -5,13 +5,12 @@ import {LOGIN_BUTTON, LOGIN_PATH, LOGOUT_BUTTON, PROFILE_PATH, PROJECT_NAME} fro
 import {Avatar, Button, Col, Layout, Row, theme} from "antd";
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {selectCurrentUserLogin, selectIsAuth} from "../../redux/authSelectors";
+import {getCurrentUserLoginSelector, getIsAuthSelector} from "../../redux/authSelectors.ts";
 import {logout} from "../../redux/authReducer.ts";
 
-
 const Header = (props) => {
-    const isAuth = useSelector(selectIsAuth);
-    const login = useSelector(selectCurrentUserLogin);
+    const isAuth = useSelector(getIsAuthSelector);
+    const login = useSelector(getCurrentUserLoginSelector);
 
     const dispatch = useDispatch();
 
