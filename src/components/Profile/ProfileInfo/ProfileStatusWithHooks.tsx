@@ -1,6 +1,6 @@
 import {FC, useEffect, useState} from "react";
 import style from "./ProfileInfo.module.css";
-import {STATUS_ALT} from "../../../data/constants";
+import {STATUS_ALT} from "../../../data/constants.ts";
 
 type PropsType = {
     status: string

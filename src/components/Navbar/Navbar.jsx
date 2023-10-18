@@ -7,7 +7,7 @@ import {
     FRIENDS_PATH, PROFILE_PAGE,
     PROFILE_PATH, USERS_PAGE,
     USERS_PATH, DIALOGS_PAGE,
-} from "../../data/constants";
+} from "../../data/constants.ts";
 
 const {Sider} = Layout;
 

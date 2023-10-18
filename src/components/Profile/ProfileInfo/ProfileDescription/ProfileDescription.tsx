@@ -9,10 +9,18 @@ import {
     NO,
     PROFESSION_SKILLS_TITLE,
     YES
-} from "../../../../data/constants";
+} from "../../../../data/constants.ts";
 import {Button} from "antd";
+import {ProfileType} from "../../../../types/types";
+import {FC} from "react";
 
-const ProfileDescription = ({profile, startEdit, isOwner}) => {
+type PropsType = {
+    profile: ProfileType
+    isOwner: boolean
+    startEdit: (photos: any) => void
+}
+
+const ProfileDescription: FC<PropsType> = ({profile, startEdit, isOwner}) => {
     return (
         <div className={style.description}>
             {isOwner && <div><Button onClick={startEdit}>{EDIT_BUTTON}</Button></div>}

@@ -1,7 +1,7 @@
 import style from './DialogItem.module.css'
 import React from "react";
 import {NavLink} from "react-router-dom";
-import {AVATAR_ALT, DIALOGS_PATH} from "../../../../data/constants";
+import {AVATAR_ALT, DIALOGS_PATH} from "../../../../data/constants.ts";
 
 const DialogItem = ({ava, name, id}) => {
     const path = DIALOGS_PATH + '/' + id;

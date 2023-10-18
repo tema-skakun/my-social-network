@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import Preloader from "./components/common/Preloader/Preloader";
+import Preloader from "./components/common/Preloader/Preloader.tsx";
 import {Navigate, Route, Routes} from "react-router-dom";
 import ProfileContainer from "./components/Profile/ProfileContainer.tsx";
 import UsersContainer from "./components/Users/UsersContainer.tsx";
@@ -18,7 +18,7 @@ import {
     PROFILE_PATH,
     PROJECT_NAME,
     USERS_PATH
-} from "./data/constants";
+} from "./data/constants.ts";
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const FriendsContainer = React.lazy(() => import('./components/Friends/Friend/FriendsContainer'));

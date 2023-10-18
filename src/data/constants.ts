@@ -38,3 +38,5 @@ export const LOOKING_JOB_TITLE = 'Looking for a job: ';
 export const PROFESSION_SKILLS_TITLE = 'My professional skills: ';
 export const ABOUT_ME_TITLE = 'About me: ';
 export const CONTACTS_TITLE = 'Contacts: ';
+export const LIKE_TITLE = 'like(s) ';
+export const LOADING_TITLE = 'loading...';

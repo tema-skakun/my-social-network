@@ -1,5 +1,5 @@
 import style from './MyPosts.module.css';
-import Post from './Post/Post.jsx';
+import Post from './Post/Post.tsx';
 import {Component} from "react";
 import {AddPostReduxForm} from "./AddPost/AddPost.tsx";
 import {PostsType} from "../../../types/types";
@@ -24,7 +24,7 @@ class MyPosts extends Component<PropsType> {
         let onAddPost = (values: any): void => {
             const newPostBody: string = values.newPostText;
             this.props.addPost(newPostBody);
-        }
+        }//need refactor
 
         return (
             <div className={style.postsBlock}>

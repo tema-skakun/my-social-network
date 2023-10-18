@@ -1,6 +1,6 @@
 import style from './UserItem.module.css'
 import {NavLink} from "react-router-dom";
-import {FOLLOW_BUTTON, PROFILE_PATH, UNFOLLOW_BUTTON} from "../../../data/constants";
+import {FOLLOW_BUTTON, PROFILE_PATH, UNFOLLOW_BUTTON} from "../../../data/constants.ts";
 import {Button} from "antd";
 import {FC} from "react";
 

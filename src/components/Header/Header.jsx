@@ -1,7 +1,7 @@
 import style from './Header.module.css'
 import {Link} from "react-router-dom";
 import logo from '../../assets/images/logo.png'
-import {LOGIN_BUTTON, LOGIN_PATH, LOGOUT_BUTTON, PROFILE_PATH, PROJECT_NAME} from "../../data/constants";
+import {LOGIN_BUTTON, LOGIN_PATH, LOGOUT_BUTTON, PROFILE_PATH, PROJECT_NAME} from "../../data/constants.ts";
 import {Avatar, Button, Col, Layout, Row, theme} from "antd";
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";

@@ -2,26 +2,26 @@ import {FC, useState} from "react";
 import style from './ProfileInfo.module.css'
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks.tsx";
 import ProfileAvatarWithHooks from "./ProfileAvatarWithHooks.tsx";
-import ProfileDescription from "./ProfileDescription/ProfileDescription";
+import ProfileDescription from "./ProfileDescription/ProfileDescription.tsx";
 import {ProfileDescriptionReduxForm} from "./ProfileDescriptionForm/ProfileDescriptionForm.tsx";
 import {ProfileType} from "../../../types/types";
 
 type PropsType = {
     profile: ProfileType
     status: string
-    updateAvatar: (photos: any) => void
+    isOwner: boolean
     updateStatus: (status: string) => void
     updateProfile: (profile: ProfileType) => any
-    isOwner: boolean
+    updateAvatar: (photos: any) => void
 }
 
 const ProfileInfo: FC<PropsType> = ({
                                         profile,
-                                        updateAvatar,
                                         status,
-                                        updateStatus,
                                         isOwner,
-                                        updateProfile
+                                        updateStatus,
+                                        updateProfile,
+                                        updateAvatar,
                                     }) => {
 
     const [editMode, setEditMode] = useState(false);
@@ -41,7 +41,7 @@ const ProfileInfo: FC<PropsType> = ({
             {editMode
                 ? <ProfileDescriptionReduxForm
                     initialValues={profile}
-                    profile={profile}
+                    contacts={profile.contacts}
                     onSubmit={onSubmit}/>
                 : <ProfileDescription
                     profile={profile}

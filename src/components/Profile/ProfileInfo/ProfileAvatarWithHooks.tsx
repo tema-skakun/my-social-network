@@ -1,7 +1,7 @@
 import {FC, useState} from "react";
 import userImg from "../../../assets/images/user.jpeg";
 import style from "./ProfileInfo.module.css";
-import {AVATAR_ALT} from "../../../data/constants";
+import {AVATAR_ALT} from "../../../data/constants.ts";
 
 type PropsType = {
     avatar: string

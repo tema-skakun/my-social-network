@@ -1,6 +1,6 @@
 import ProfileInfo from './ProfileInfo/ProfileInfo.tsx';
 import {FC} from "react";
-import Preloader from "../common/Preloader/Preloader";
+import Preloader from "../common/Preloader/Preloader.tsx";
 import style from "./Profile.module.css"
 import MyPosts from "./MyPosts/MyPosts.tsx";
 import {PostsType, ProfileType} from "../../types/types";
@@ -8,28 +8,23 @@ import {PostsType, ProfileType} from "../../types/types";
 type PropsType = {
     profile: ProfileType
     posts: Array<PostsType>
-    updateAvatar: (photos: any) => void
-    addPost: (newPostBody: string) => void
     status: string
+    isOwner: boolean
+    addPost: (newPostBody: string) => void
     updateStatus: (status: string) => void
     updateProfile: (profile: ProfileType) => void
-    isOwner: boolean
-    userId?: number | string// ???
-    authorizedUserId?: number
-    isAuth?: boolean
-    getUserProfile?: (userId: number | string) => void
-    getStatus?: (userId: number | string) => void
+    updateAvatar: (photos: any) => void
 }
 
 const Profile: FC<PropsType> = ({
                                     profile,
+                                    posts,
                                     status,
-                                    updateStatus,
-                                    updateAvatar,
                                     isOwner,
-                                    updateProfile,
                                     addPost,
-                                    posts
+                                    updateStatus,
+                                    updateProfile,
+                                    updateAvatar,
                                 }) => {
     if (!profile)
         return <Preloader/>
@@ -38,10 +33,10 @@ const Profile: FC<PropsType> = ({
             <div className={style.info}>
                 <ProfileInfo profile={profile}
                              status={status}
-                             updateStatus={updateStatus}
-                             updateAvatar={updateAvatar}
-                             updateProfile={updateProfile}
                              isOwner={isOwner}
+                             updateStatus={updateStatus}
+                             updateProfile={updateProfile}
+                             updateAvatar={updateAvatar}
                 />
             </div>
             <div className={style.posts}>

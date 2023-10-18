@@ -2,7 +2,7 @@ import {FC} from "react";
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../../utils/validators";
 import {Textarea} from "../../../common/FormControls/FormControls";
-import {ADD_POST_BUTTON, POST_PLACEHOLDER} from "../../../../data/constants";
+import {ADD_POST_BUTTON, POST_PLACEHOLDER} from "../../../../data/constants.ts";
 import {Button} from "antd";
 import {onFormSubmit} from "../../../../utils/formSubmitHandlers";
 
@@ -10,7 +10,7 @@ type PropsType = {
     handleSubmit: any
     reset: any
     pristine: any
-    onSubmit: any
+    onSubmit: (values: any) => void
 }
 
 const maxLength50 = maxLengthCreator(50);

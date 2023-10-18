@@ -3,8 +3,8 @@ import {Input, Textarea} from "../../../common/FormControls/FormControls";
 import {maxLengthCreator, required} from "../../../../utils/validators";
 import {Field, reduxForm} from "redux-form";
 import style from "../Contact/Contact.module.css"//причесать
-import styleForm from "../../../common/FormControls/FormControls.module.css"//причесать
-import styleInfo from "../ProfileInfo.module.css";//причесать - оставить один
+import styleForm from "../../../common/FormControls/FormControls.module.css" //причесать
+import styleInfo from "../ProfileInfo.module.css"; //причесать - оставить один
 import {
     ABOUT_ME_PLACEHOLDER,
     ABOUT_ME_TITLE,
@@ -13,19 +13,20 @@ import {
     NAME_TITLE, PROFESSION_SKILLS_PLACEHOLDER,
     PROFESSION_SKILLS_TITLE,
     SAVE_BUTTON
-} from "../../../../data/constants";
+} from "../../../../data/constants.ts";
 import {Button} from "antd";
-import {ProfileType} from "../../../../types/types";
+import {ContactsType} from "../../../../types/types";
 
 type PropsType = {
-    profile: ProfileType
-    handleSubmit: any
-    error: any
+    contacts: ContactsType
+    error?: any
+    onSubmit: (formData: any) => void;
+    handleSubmit?: (formData: any) => void
 }
 
 const maxLength30 = maxLengthCreator(30);
 
-const ProfileDescriptionForm: FC<PropsType> = ({handleSubmit, profile, error}) => {
+const ProfileDescriptionForm: FC<PropsType> = ({handleSubmit, contacts, error}) => {
     return (
         <form onSubmit={handleSubmit} className={styleInfo.description}>
             <div>
@@ -69,7 +70,7 @@ const ProfileDescriptionForm: FC<PropsType> = ({handleSubmit, profile, error}) =
                 />
             </div>
             <div>
-                <b>{CONTACTS_TITLE}</b> {Object.keys(profile.contacts).map(key => {
+                <b>{CONTACTS_TITLE}</b> {Object.keys(contacts).map(key => {
                 return <div className={style.contact} key={key}>
                     <b>{key}: </b><Field component={Input}
                                      placeholder={key}
@@ -82,7 +83,6 @@ const ProfileDescriptionForm: FC<PropsType> = ({handleSubmit, profile, error}) =
         </form>
     )
 }
-
-export const ProfileDescriptionReduxForm = reduxForm({
+export const ProfileDescriptionReduxForm: any = reduxForm({
     form: 'edit-profile'
 })(ProfileDescriptionForm);

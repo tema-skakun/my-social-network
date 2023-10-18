@@ -12,7 +12,7 @@ import {
     LOGIN_BUTTON,
     PASSWORD_PLACEHOLDER,
     PROFILE_PATH
-} from "../../data/constants";
+} from "../../data/constants.ts";
 import {Button} from "antd";
 
 const maxLength30 = maxLengthCreator(30);

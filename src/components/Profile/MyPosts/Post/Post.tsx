@@ -1,8 +1,14 @@
+import {FC} from "react";
 import style from './Post.module.css'
-import {AVATAR_ALT} from "../../../../data/constants";
+import {AVATAR_ALT, LIKE_TITLE} from "../../../../data/constants.ts";
 import avatar from "../../../../assets/images/female-avatar.jpg"
 
-const Post = ({message, likesCount}) => {
+export type PropsType = {
+	message: string,
+	likesCount: number
+}
+
+const Post: FC<PropsType> = ({message, likesCount}) => {
 	return (
 		<div className={style.item}>
 			<div className={style.avatar}>
@@ -12,7 +18,7 @@ const Post = ({message, likesCount}) => {
 				{message}
 			</div>
 			<div className={style.like}>
-				<span>like(s) </span>
+				<span>{LIKE_TITLE}</span>
 				{likesCount}
 			</div>
 		</div>

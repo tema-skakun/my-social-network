@@ -11,13 +11,9 @@ import {
 import {useParams} from 'react-router-dom';
 import {compose} from "@reduxjs/toolkit";
 import {Component, FC} from "react";
-import {PostsType, ProfileType} from "../../types/types";
+import {PostsType, ProfileType} from "../../types/types.ts";
 import {AppStateType} from "../../redux/redux-toolkit-store";
-import {
-    getPostsSelector,
-    getProfileSelector,
-    getStatusSelector
-} from "../../redux/profileSelectors.ts";
+import {getPostsSelector, getProfileSelector, getStatusSelector} from "../../redux/profileSelectors.ts";
 import {getAuthorizedUserIdSelector, getIsAuthSelector} from "../../redux/authSelectors.ts";
 
 export function withRouter(Children: FC<PropsType>) {
@@ -28,7 +24,7 @@ export function withRouter(Children: FC<PropsType>) {
 }
 
 type MapStatePropsType = {
-    userId?: number | string// ???
+    userId?: number | string// is ok string???
     authorizedUserId: number
     profile: ProfileType
     posts: Array<PostsType>

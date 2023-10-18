@@ -2,7 +2,7 @@ import UserItem from "./UserItems/UserItem.tsx";
 import userImg from "../../assets/images/user.jpeg";
 import style from "./Users.module.css";
 import {Pagination} from 'antd';
-import Preloader from "../common/Preloader/Preloader";
+import Preloader from "../common/Preloader/Preloader.tsx";
 import {UsersType} from "../../types/types";
 import {FC} from "react";
 
