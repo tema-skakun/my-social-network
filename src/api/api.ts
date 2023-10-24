@@ -1,4 +1,11 @@
 import axios from "axios";
+import {
+    CaptchaUrlResponseType,
+    LoginResponseType,
+    LogoutResponseType,
+    MeResponseType,
+    ProfileType, UpdateAvatarResponseType, UpdateProfileResponseType
+} from "../types/types";
 
 // facade pattern
 const instance = axios.create({
@@ -16,13 +23,13 @@ export const UsersAPI = {
                 return response.data;
             })
     },
-    unfollow(id) {
+    unfollow(id: number) {
         return instance.delete(`follow/${id}`)
             .then(response => {
                 return response.data;
             })
     },
-    follow(id) {
+    follow(id: number) {
         return instance.post(`follow/${id}`)
             .then(response => {
                 return response.data;
@@ -31,58 +38,57 @@ export const UsersAPI = {
 }
 
 export const ProfileAPI = {
-    getProfile(id) {
+    getProfile(id: number) {
         return instance.get(`profile/${id}`)
             .then(response => {
                 return response.data;
             })
     },
 
-    getStatus(id) {
+    getStatus(id: number) {
         return instance.get(`profile/status/` + id);
     },
 
-    updateStatus(status) {
+    updateStatus(status: string) {
         return instance.put(`profile/status/`, {status: status});
     },
 
-    updateAvatar(avatarFile) {
+    updateAvatar(avatarFile: any) {
         const formData = new FormData();
         formData.append('image', avatarFile);
-        return instance.put(`profile/photo`, formData, {
+        return instance.put<UpdateAvatarResponseType>(`profile/photo`, formData, {
             headers: {
                 "Content-Type": "multipart/form-data"
             }
-        });
+        })
+            .then(res => res.data);
     },
 
-    updateProfile(profile) {
-        return instance.put(`profile/`, profile)
+    updateProfile(profile: ProfileType) {
+        return instance.put<UpdateProfileResponseType>(`profile/`, profile)
+            .then(res => res.data);
     }
 }
 
 export const AuthAPI = {
     me() {
-        return (
-            instance.get(`auth/me`)
-                .then(response => response.data)
-        )
+        return instance.get<MeResponseType>(`auth/me`)
+                .then(res => res.data);
     },
 
-    login(email, password, rememberMe = false, captcha = null) {
-        return (
-            instance.post(`auth/login`, {email, password, rememberMe, captcha})
-            // .then(response => response.data)
-        )
+    login(email: string, password: string, rememberMe = false, captcha: null | string = null) {
+        return instance.post<LoginResponseType>(`auth/login`, {email, password, rememberMe, captcha})
+                .then(res => res.data);
     },
 
     logout() {
-        return instance.delete(`auth/login`);
+        return instance.delete<LogoutResponseType>(`auth/login`)
+            .then(res => res.data);
     },
 }
 
 export const SecurityAPI = {
     getCaptchaUrl() {
-        return instance.get(`security/get-captcha-url`);
+        return instance.get<CaptchaUrlResponseType>(`security/get-captcha-url`);
     }
 }

@@ -1,6 +1,6 @@
-import {ProfileAPI} from "../api/api";
+import {ProfileAPI} from "../api/api.ts";
 import {stopSubmit} from "redux-form";
-import {PhotosType, PostsType, ProfileType} from "../types/types";
+import {PhotosType, PostsType, ProfileType, ResultCodesEnum} from "../types/types.ts";
 
 const ADD_POST = 'my-social-network/profile/ADD-POST';
 const SET_USER_PROFILE = 'my-social-network/profile/SET-USER-PROFILE';
@@ -108,8 +108,8 @@ export const updateStatus = (status: string) => {//thunk
 export const updateAvatar = (photos: any) => {//thunk
     return async (dispatch: any) => {
         const response = await ProfileAPI.updateAvatar(photos);
-        if (response.data.resultCode === 0) {
-            dispatch(setAvatarSuccess(response.data.data.photos));
+        if (response.resultCode === 0) {
+            dispatch(setAvatarSuccess(response.data));
         }
     }
 }
@@ -117,12 +117,12 @@ export const updateAvatar = (photos: any) => {//thunk
 export const updateProfile = (profile: ProfileType) => async (dispatch: any, getState: any) => {
     const userId = getState().auth.userId;
     const response = await ProfileAPI.updateProfile(profile);//.then(response => {
-    if (response.data.resultCode === 0) {
+    if (response.resultCode === ResultCodesEnum.Success) {
         dispatch(getUserProfile(userId));
     } else {
-        const message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
+        const message = response.messages.length > 0 ? response.messages[0] : "Some error";
         dispatch(stopSubmit('edit-profile', {_error: message}));
-        return Promise.reject(response.data.messages[0]);
+        return Promise.reject(response.messages[0]);
     }
 }
 

@@ -48,3 +48,45 @@ export type MessagesType = {
     id: number,
     message: string
 }
+
+export enum ResultCodesEnum {
+    Success = 0,
+    Error = 1,
+}
+export enum ResultCodeForCaptchaEnum {
+    CaptchaIsRequired = 10,
+}
+
+export type MeResponseType = {
+    data: {id: number, email: string, login: string},
+    resultCode: ResultCodesEnum,
+    messages: Array<string>
+}
+
+export type LoginResponseType = {
+    data: {userId: number},
+    resultCode: ResultCodesEnum | ResultCodeForCaptchaEnum,
+    messages: Array<string>
+}
+
+export type LogoutResponseType = {
+    data: any,
+    resultCode: ResultCodesEnum,
+    messages: Array<string>
+}
+
+export type CaptchaUrlResponseType = {
+    url: string
+}
+
+export type UpdateProfileResponseType = {
+    data: any,
+    resultCode: ResultCodesEnum,
+    messages: Array<string>
+}
+
+export type UpdateAvatarResponseType = {
+    data: PhotosType,
+    resultCode: ResultCodesEnum,
+    messages: Array<string>
+}

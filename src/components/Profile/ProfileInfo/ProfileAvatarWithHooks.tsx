@@ -5,7 +5,7 @@ import {AVATAR_ALT} from "../../../data/constants.ts";
 
 type PropsType = {
     avatar: string
-    updateAvatar: (photos: any) => void
+    updateAvatar: (photoFile: any) => void
     isOwner: boolean
 }
 

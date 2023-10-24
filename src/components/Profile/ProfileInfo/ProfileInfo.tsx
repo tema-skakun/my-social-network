@@ -23,7 +23,6 @@ const ProfileInfo: FC<PropsType> = ({
                                         updateProfile,
                                         updateAvatar,
                                     }) => {
-
     const [editMode, setEditMode] = useState(false);
 
     const onSubmit = (formData: any) => {

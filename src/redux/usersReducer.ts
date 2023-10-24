@@ -1,4 +1,4 @@
-import {UsersAPI} from "../api/api";
+import {UsersAPI} from "../api/api.ts";
 import {UsersType} from "../types/types";
 import {AppStateType} from "./redux-toolkit-store";
 import {Dispatch, ThunkAction} from "@reduxjs/toolkit";
@@ -128,7 +128,7 @@ export const toggleFollowingProgress = (isFetching: boolean, userId: number): To
     {type: TOGGLE_IS_FOLLOWING, isFetching, userId});
 
 //thunks
-type GetStateType = () => AppStateType
+// type GetStateType = () => AppStateType
 type DispatchType = Dispatch<ActionsTypes>
 type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsTypes>
 
