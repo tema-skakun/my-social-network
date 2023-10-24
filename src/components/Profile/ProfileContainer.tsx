@@ -1,5 +1,10 @@
-import {connect} from "react-redux";
-import Profile from "./Profile.tsx";
+import {useCallback, useEffect} from 'react';
+import {connect, useDispatch} from 'react-redux';
+import Profile from './Profile.tsx';
+import {useParams} from 'react-router-dom';
+import {compose} from '@reduxjs/toolkit';
+import {getPostsSelector, getProfileSelector, getStatusSelector} from '../../redux/profileSelectors.ts';
+import {getAuthorizedUserIdSelector, getIsAuthSelector} from '../../redux/authSelectors.ts';
 import {
     addPost,
     getStatus,
@@ -7,101 +12,93 @@ import {
     updateAvatar,
     updateProfile,
     updateStatus
-} from "../../redux/profileReducer.ts";
-import {useParams} from 'react-router-dom';
-import {compose} from "@reduxjs/toolkit";
-import {Component, FC} from "react";
-import {PostsType, ProfileType} from "../../types/types.ts";
-import {AppStateType} from "../../redux/redux-toolkit-store";
-import {getPostsSelector, getProfileSelector, getStatusSelector} from "../../redux/profileSelectors.ts";
-import {getAuthorizedUserIdSelector, getIsAuthSelector} from "../../redux/authSelectors.ts";
-
-export function withRouter(Children: FC<PropsType>) {
-    return (props: PropsType) => {
-        const match: any = {params: useParams()};
-        return <Children {...props} userId={match.params.userId}/>
-    }
-}
+} from '../../redux/profileReducer.ts';
+import {AppStateType} from '../../redux/redux-toolkit-store';
+import {PostsType, ProfileType} from '../../types/types.ts';
 
 type MapStatePropsType = {
-    userId?: number | string// is ok string???
-    authorizedUserId: number
-    profile: ProfileType
-    posts: Array<PostsType>
-    status: string
-    isAuth: boolean
-}
+    userId?: number | string;
+    authorizedUserId: number;
+    profile: ProfileType;
+    posts: Array<PostsType>;
+    status: string;
+    isAuth: boolean;
+};
 
 type MapDispatchPropsType = {
-    getUserProfile: (userId: number | string) => void
-    getStatus: (userId: number | string) => void
-    updateAvatar: (photos: any) => void
-    addPost: (newPostBody: string) => void
-    updateStatus: (status: string) => void
-    updateProfile: (profile: ProfileType) => void
-}
+    getUserProfile: (userId: number | string) => void;
+    getStatus: (userId: number | string) => void;
+    updateAvatar: (photos: any) => void;
+    addPost: (newPostBody: string) => void;
+    updateStatus: (status: string) => void;
+    updateProfile: (profile: ProfileType) => void;
+};
 
 type PropsType = MapStatePropsType & MapDispatchPropsType;
 
+function ProfileContainer(props: PropsType) {
+    const dispatch = useDispatch();
+    const { userId } = useParams();
 
-class ProfileContainer extends Component<PropsType> {
-    refreshProfile() {
-        let userId = this.props.userId;
-        if (!userId) {
-            userId = this.props.authorizedUserId;
-            if (!userId) {
-                userId = 2;// - logout cause - samurai Dimych
-            }
+    const refreshProfile = useCallback(() => {
+        let profileUserId: number | string = userId;
+        if (!profileUserId) {
+            profileUserId = props.authorizedUserId || 2; // if logout
         }
-        this.props.getUserProfile(userId);
-        this.props.getStatus(userId);
-    }
+        // calling another user's profile
+        dispatch(getUserProfile(profileUserId));
+        dispatch(getStatus(profileUserId));
+    }, [userId, props.authorizedUserId, dispatch]);
 
-    componentDidMount() {
-        this.refreshProfile();
-    }
+    useEffect(() => {
+        refreshProfile();
+    }, [refreshProfile]);
 
-    componentDidUpdate(prevProps: PropsType) {
-        if (this.props.userId !== prevProps.userId)
-            this.refreshProfile();
-    }
+    // const refreshProfile = () => {
+    //     let profileUserId: number | string = userId;
+    //     if (!profileUserId) {
+    //         profileUserId = props.authorizedUserId || 2; // if logout
+    //     }
+    //     dispatch(getUserProfile(profileUserId));
+    //     dispatch(getStatus(profileUserId));
+    // };
+    //
+    // useEffect(() => {
+    //     refreshProfile();
+    // }, [userId, props.authorizedUserId]);
 
-    render() {
-        return (
-            <Profile profile={this.props.profile}
-                     posts={this.props.posts}
-                     updateAvatar={this.props.updateAvatar}
-                     addPost={this.props.addPost}
-                     status={this.props.status}
-                     updateStatus={this.props.updateStatus}
-                     updateProfile={this.props.updateProfile}
-                     isOwner={!!this.props.authorizedUserId && !this.props.userId}
-            />
-        )
-    }
+    // necessary to avoid prop drilling
+    return (
+        <Profile
+            profile={props.profile}
+            posts={props.posts}
+            updateAvatar={props.updateAvatar}
+            addPost={props.addPost}
+            status={props.status}
+            updateStatus={props.updateStatus}
+            updateProfile={props.updateProfile}
+            isOwner={!!props.authorizedUserId && !userId}
+        />
+    );
 }
 
 const mapStateToProps = (state: AppStateType): MapStatePropsType => {
-    return (
-        {
-            posts: getPostsSelector(state),
-            profile: getProfileSelector(state),
-            status: getStatusSelector(state),
-            authorizedUserId: getAuthorizedUserIdSelector(state),
-            isAuth: getIsAuthSelector(state),
-        }
-    )
-}
+    return {
+        posts: getPostsSelector(state),
+        profile: getProfileSelector(state),
+        status: getStatusSelector(state),
+        authorizedUserId: getAuthorizedUserIdSelector(state),
+        isAuth: getIsAuthSelector(state),
+    };
+};
 
 export default compose(
-    connect<MapStatePropsType, MapDispatchPropsType, AppStateType>(
-        mapStateToProps, {
+    connect(mapStateToProps, {
         getUserProfile,
         getStatus,
         updateStatus,
         updateAvatar,
         updateProfile,
-        addPost
-    }),
-    withRouter,//added userId={match.params.userId}
+        addPost,
+    })
 )(ProfileContainer);

@@ -1,5 +1,7 @@
 import {UsersAPI} from "../api/api";
 import {UsersType} from "../types/types";
+import {AppStateType} from "./redux-toolkit-store";
+import {Dispatch, ThunkAction} from "@reduxjs/toolkit";
 
 const FOLLOW = 'users/FOLLOW';
 const UNFOLLOW = 'users/UNFOLLOW';
@@ -75,6 +77,10 @@ const usersReducer = (state = initialState, action: any): InitialStateType => {
     }
 }
 
+type ActionsTypes = FollowSuccessActionType | UnfollowSuccessActionType |
+    SetUsersActionType | SetCurrentPageActionType | SetPageSizeActionType |
+    SetUsersTotalCountActionType | ToggleIsFetchingActionType
+
 type FollowSuccessActionType = {
     type: typeof FOLLOW,
     userId: number
@@ -122,8 +128,12 @@ export const toggleFollowingProgress = (isFetching: boolean, userId: number): To
     {type: TOGGLE_IS_FOLLOWING, isFetching, userId});
 
 //thunks
-export const requestUsers = (pageNumber: number, pageSize: number) => {//thunk
-    return async (dispatch: any) => {
+type GetStateType = () => AppStateType
+type DispatchType = Dispatch<ActionsTypes>
+type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsTypes>
+
+export const requestUsers = (pageNumber: number, pageSize: number): ThunkType => {//thunk
+    return async (dispatch) => {
         dispatch(toggleIsFetching(true));
         const data = await UsersAPI.getUsers(pageNumber, pageSize);
         dispatch(setCurrentPage(pageNumber));
@@ -134,21 +144,24 @@ export const requestUsers = (pageNumber: number, pageSize: number) => {//thunk
         dispatch(setUsersTotalCount(data.totalCount));
     }
 }
-const followUnfollowFlow = async (dispatch: any, userId: number, apiMethod: any, actionCreator: any) => {
+const _followUnfollowFlow = async (dispatch: DispatchType,
+                                   userId: number,
+                                   apiMethod: any,
+                                   actionCreator: any) => {
     dispatch(toggleFollowingProgress(true, userId));//prohibit pressing the button again
     const response = await apiMethod(userId);
     if (response.resultCode === 0)
         dispatch(actionCreator(userId));
     dispatch(toggleFollowingProgress(false, userId));//allow the button to be pressed again
 }
-export const follow = (userId: number) => {
-    return (dispatch: any) => {
-        followUnfollowFlow(dispatch, userId, UsersAPI.follow.bind(UsersAPI), followSuccess);
+export const follow = (userId: number): ThunkType => {
+    return (dispatch) => {
+        _followUnfollowFlow(dispatch, userId, UsersAPI.follow.bind(UsersAPI), followSuccess);
     };
 }
 export const unfollow = (userId: number) => {
     return (dispatch: any) => {
-        followUnfollowFlow(dispatch, userId, UsersAPI.unfollow.bind(UsersAPI), unfollowSuccess);
+        _followUnfollowFlow(dispatch, userId, UsersAPI.unfollow.bind(UsersAPI), unfollowSuccess);
     };
 }
 export default usersReducer;
