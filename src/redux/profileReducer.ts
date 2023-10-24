@@ -109,14 +109,14 @@ export const updateAvatar = (photos: any) => {//thunk
     return async (dispatch: any) => {
         const response = await ProfileAPI.updateAvatar(photos);
         if (response.resultCode === 0) {
-            dispatch(setAvatarSuccess(response.data));
+            dispatch(setAvatarSuccess(response.data.photos));
         }
     }
 }
 
 export const updateProfile = (profile: ProfileType) => async (dispatch: any, getState: any) => {
     const userId = getState().auth.userId;
-    const response = await ProfileAPI.updateProfile(profile);//.then(response => {
+    const response = await ProfileAPI.updateProfile(profile);
     if (response.resultCode === ResultCodesEnum.Success) {
         dispatch(getUserProfile(userId));
     } else {

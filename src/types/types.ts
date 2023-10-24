@@ -86,7 +86,7 @@ export type UpdateProfileResponseType = {
 }
 
 export type UpdateAvatarResponseType = {
-    data: PhotosType,
+    data: any,
     resultCode: ResultCodesEnum,
     messages: Array<string>
 }
