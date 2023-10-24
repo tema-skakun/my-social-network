@@ -1,7 +1,7 @@
 import {FC, useState} from "react";
 import style from './ProfileInfo.module.css'
-import ProfileStatusWithHooks from "./ProfileStatusWithHooks.tsx";
-import ProfileAvatarWithHooks from "./ProfileAvatarWithHooks.tsx";
+import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks.tsx";
+import ProfileAvatar from "./ProfileAvatar/ProfileAvatar.tsx";
 import ProfileDescription from "./ProfileDescription/ProfileDescription.tsx";
 import {ProfileDescriptionReduxForm} from "./ProfileDescriptionForm/ProfileDescriptionForm.tsx";
 import {ProfileType} from "../../../types/types";
@@ -35,7 +35,7 @@ const ProfileInfo: FC<PropsType> = ({
 
     return (
         <div className={style.main}>
-            <ProfileAvatarWithHooks avatar={profile.photos.large} updateAvatar={updateAvatar} isOwner={isOwner}/>
+            <ProfileAvatar avatar={profile.photos.large} updateAvatar={updateAvatar} isOwner={isOwner}/>
             <ProfileStatusWithHooks status={status} updateStatus={updateStatus} isOwner={isOwner}/>
             {editMode
                 ? <ProfileDescriptionReduxForm

@@ -1,7 +1,7 @@
 import {FC, useState} from "react";
-import userImg from "../../../assets/images/user.jpeg";
-import style from "./ProfileInfo.module.css";
-import {AVATAR_ALT} from "../../../data/constants.ts";
+import userImg from "../../../../assets/images/user.jpeg";
+import style from "../ProfileInfo.module.css";
+import {AVATAR_ALT} from "../../../../data/constants.ts";
 
 type PropsType = {
     avatar: string
@@ -9,7 +9,7 @@ type PropsType = {
     isOwner: boolean
 }
 
-const ProfileAvatarWithHooks: FC<PropsType> = ({isOwner, updateAvatar, avatar}) => {
+const ProfileAvatar: FC<PropsType> = ({isOwner, updateAvatar, avatar}) => {
 
     const [editMode, setEditMode] = useState(false);
 
@@ -49,4 +49,4 @@ const ProfileAvatarWithHooks: FC<PropsType> = ({isOwner, updateAvatar, avatar}) 
     )
 }
 
-export default ProfileAvatarWithHooks;
+export default ProfileAvatar;
