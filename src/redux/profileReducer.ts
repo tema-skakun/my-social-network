@@ -84,22 +84,22 @@ export const deletePost = (id: number): DeletePostActionType => {
 //thunks
 export const getUserProfile = (userId: number) => {//thunk
     return async (dispatch: any) => {
-        const response = await ProfileAPI.getProfile(userId);
-        dispatch(setUserProfile(response));
+        const userProfileData = await ProfileAPI.getProfile(userId);
+        dispatch(setUserProfile(userProfileData));
     }
 }
 
 export const getStatus = (userId: number) => {//thunk
     return async (dispatch: any) => {
-        const response = await ProfileAPI.getStatus(userId);
-        dispatch(setStatus(response.data));
+        const statusData = await ProfileAPI.getStatus(userId);
+        dispatch(setStatus(statusData));
     }
 }
 
 export const updateStatus = (status: string) => {//thunk
     return async (dispatch: any) => {
         const response = await ProfileAPI.updateStatus(status);
-        if (response.data.resultCode === 0) {
+        if (response.data.resultCode === ResultCodesEnum.Success) {
             dispatch(setStatus(status));
         }
     }
@@ -108,7 +108,7 @@ export const updateStatus = (status: string) => {//thunk
 export const updateAvatar = (photos: any) => {//thunk
     return async (dispatch: any) => {
         const response = await ProfileAPI.updateAvatar(photos);
-        if (response.resultCode === 0) {
+        if (response.resultCode === ResultCodesEnum.Success) {
             dispatch(setAvatarSuccess(response.data.photos));
         }
     }

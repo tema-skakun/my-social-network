@@ -90,3 +90,15 @@ export type UpdateAvatarResponseType = {
     resultCode: ResultCodesEnum,
     messages: Array<string>
 }
+
+export type GetUsersResponseType = {
+    items: Array<UsersType>
+    totalCount: number,
+    error: string | null
+}
+
+export type FollowUnfollowUpdateStatusType = {
+    resultCode: ResultCodesEnum,
+    messages: Array<string>,
+    data: any
+}
