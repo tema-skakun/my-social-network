@@ -54,19 +54,6 @@ function ProfileContainer(props: PropsType) {
         refreshProfile();
     }, [refreshProfile]);
 
-    // const refreshProfile = () => {
-    //     let profileUserId: number | string = userId;
-    //     if (!profileUserId) {
-    //         profileUserId = props.authorizedUserId || 2; // if logout
-    //     }
-    //     dispatch(getUserProfile(profileUserId));
-    //     dispatch(getStatus(profileUserId));
-    // };
-    //
-    // useEffect(() => {
-    //     refreshProfile();
-    // }, [userId, props.authorizedUserId]);
-
     // necessary to avoid prop drilling
     return (
         <Profile

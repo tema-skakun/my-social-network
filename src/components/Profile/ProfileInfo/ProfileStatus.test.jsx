@@ -1,6 +1,7 @@
 import {create} from "react-test-renderer";
 import ProfileStatus from "./ProfileStatus";
 
+// need to change tests for ProfileStatusWithHooks
 describe("ProfileStatus component", () => {
     test("status from props should be in state", () => {
         const component = create(<ProfileStatus status={"cowabunga"}/>);

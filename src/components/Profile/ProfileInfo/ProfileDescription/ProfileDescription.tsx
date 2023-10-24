@@ -1,5 +1,5 @@
 import style from "../ProfileInfo.module.css";
-import Contact from "../Contact/Contact";
+import Contact from "../Contact/Contact.tsx";
 import {
     ABOUT_ME_TITLE,
     CONTACTS_TITLE,
