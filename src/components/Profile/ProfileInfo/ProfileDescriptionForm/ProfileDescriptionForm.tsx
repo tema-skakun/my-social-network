@@ -1,16 +1,18 @@
 import {FC} from "react";
-import {Input, Textarea} from "../../../common/FormControls/FormControls";
-import {maxLengthCreator, required} from "../../../../utils/validators";
+import {Input, Textarea} from "../../../common/FormControls/FormControls.tsx";
+import {maxLengthCreator, required} from "../../../../utils/validators.ts";
 import {Field, reduxForm} from "redux-form";
-import style from "../Contact/Contact.module.css"//причесать
+import style from "../Contact/Contact.module.css" //причесать
 import styleForm from "../../../common/FormControls/FormControls.module.css" //причесать
 import styleInfo from "../ProfileInfo.module.css"; //причесать - оставить один
 import {
     ABOUT_ME_PLACEHOLDER,
     ABOUT_ME_TITLE,
     CONTACTS_TITLE,
-    LOOKING_JOB_TITLE, NAME_PLACEHOLDER,
-    NAME_TITLE, PROFESSION_SKILLS_PLACEHOLDER,
+    LOOKING_JOB_TITLE,
+    NAME_PLACEHOLDER,
+    NAME_TITLE,
+    PROFESSION_SKILLS_PLACEHOLDER,
     PROFESSION_SKILLS_TITLE,
     SAVE_BUTTON
 } from "../../../../data/constants.ts";

@@ -1,10 +1,10 @@
 import {FC} from "react";
 import {Field, reduxForm} from "redux-form";
-import {maxLengthCreator, required} from "../../../../utils/validators";
-import {Textarea} from "../../../common/FormControls/FormControls";
+import {maxLengthCreator, required} from "../../../../utils/validators.ts";
+import {Textarea} from "../../../common/FormControls/FormControls.tsx";
 import {ADD_POST_BUTTON, POST_PLACEHOLDER} from "../../../../data/constants.ts";
 import {Button} from "antd";
-import {onFormSubmit} from "../../../../utils/formSubmitHandlers";
+import {onFormSubmit} from "../../../../utils/formSubmitHandlers.ts";
 
 type PropsType = {
     handleSubmit: any

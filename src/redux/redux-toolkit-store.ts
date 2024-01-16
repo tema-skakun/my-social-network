@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import {configureStore} from '@reduxjs/toolkit';
 import profileReducer from "./profileReducer.ts";
 import dialogsReducer from "./dialogsReducer.ts";
 import friendsReducer from "./friendsReducer.ts";
@@ -22,7 +22,7 @@ const store = configureStore({
 });
 
 // @ts-ignore
-window.__store__ = store;//just to view the store in the console
+window.__store__ = store;// just to view the store in the console
 
 export default store;
 

@@ -22,7 +22,7 @@ import {
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const FriendsContainer = React.lazy(() => import('./components/Friends/Friend/FriendsContainer'));
-const Login = React.lazy(() => import('./components/Login/Login'));
+const Login = React.lazy(() => import('./components/Login/Login.tsx'));
 const {
     Content,
     Footer,
