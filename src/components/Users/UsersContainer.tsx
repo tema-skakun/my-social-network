@@ -1,7 +1,7 @@
 import {Component, ReactNode} from "react";
 import {connect} from "react-redux";
 import {compose} from "@reduxjs/toolkit";
-import {follow, requestUsers, setPageSize, unfollow} from "../../redux/usersReducer.ts";
+import {actions, follow, requestUsers, unfollow} from "../../redux/usersReducer.ts";
 import Users from "./Users.tsx";
 import {
     getCurrentPageSelector,
@@ -79,6 +79,6 @@ function mapStateToProps(state: AppStateType): MapStatePropsType {
 
 export default compose(
     connect<MapStatePropsType, MapDispatchPropsType, OwnPropsType, AppStateType>(
-        mapStateToProps, {follow, unfollow, setPageSize, getUsers: requestUsers}),
+        mapStateToProps, {follow, unfollow, setPageSize: actions.setPageSize, getUsers: requestUsers}),
     // withAuthRedirect
 )(UsersContainer);
