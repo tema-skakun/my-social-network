@@ -39,7 +39,7 @@ const App = ({initialized, initialApp}) => {
     }
 
     return (
-        <Layout>
+        <Layout style={{ minHeight: '100vh' }}>
             <Navbar/>
             <Layout>
                 <Header/>
@@ -63,7 +63,7 @@ const App = ({initialized, initialApp}) => {
                         textAlign: 'center',
                     }}
                 >
-                    {PROJECT_NAME}©2023 Created by {AUTHOR}
+                    {PROJECT_NAME}©2023-2024 Created by {AUTHOR}
                 </Footer>
             </Layout>
         </Layout>

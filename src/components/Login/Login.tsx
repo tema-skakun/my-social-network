@@ -5,7 +5,8 @@ import {connect} from "react-redux";
 import {login} from "../../redux/authReducer.ts";
 import React from "react";
 import {Navigate} from "react-router-dom";
-import style from "../common/FormControls/FormControls.module.css"
+// import style from "../common/FormControls/FormControls.module.css"
+import style from "./Login.module.css"
 import {
     CAPTCHA_PLACEHOLDER,
     EMAIL_PLACEHOLDER,
@@ -26,14 +27,14 @@ const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType, LoginFormOwnPro
     ({handleSubmit, error, captchaUrl}) => {
         return (
             <form onSubmit={handleSubmit}>
-                <div>
+                <div className={style.div}>
                     <Field component={Input}
                            placeholder={EMAIL_PLACEHOLDER}
                            name={"email"}
                            validate={[required, maxLength30]}
                     />
                 </div>
-                <div>
+                <div className={style.div}>
                     <Field component={Input}
                            placeholder={PASSWORD_PLACEHOLDER}
                            name={"password"}
@@ -41,7 +42,7 @@ const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType, LoginFormOwnPro
                            type={"password"}
                     />
                 </div>
-                <div>
+                <div className={style.div}>
                     <Field component={"input"}
                            type={"checkbox"}
                            name={"rememberMe"}
@@ -51,15 +52,15 @@ const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType, LoginFormOwnPro
                     <div className={style.formSummaryError}>
                         {error}
                     </div>}
-                {captchaUrl && <img src={captchaUrl} alt={'captchaUrl'}/>}
-                {captchaUrl && <div>
+                {captchaUrl && <img src={captchaUrl} alt={'captchaUrl'} className={style.div}/>}
+                {captchaUrl && <div className={style.div}>
                     <Field component={Input}
                            placeholder={CAPTCHA_PLACEHOLDER}
                            name={"captcha"}
                            validate={[required, maxLength30]}
                     />
                 </div>}
-                <div>
+                <div className={style.div}>
                     <Button type="primary" htmlType="submit">{LOGIN_BUTTON}</Button>
                 </div>
             </form>
@@ -94,7 +95,8 @@ const Login: React.FC<MapStatePropsType & MapDispatchPropsType> = ({login, isAut
     if (isAuth)
         return <Navigate to={PROFILE_PATH}/>
     return (
-        <div>
+        <div className={style.formContainer}>
+        {/*<div>*/}
             <LoginReduxForm onSubmit={onSubmit} captchaUrl={captchaUrl}/>
         </div>
     )
