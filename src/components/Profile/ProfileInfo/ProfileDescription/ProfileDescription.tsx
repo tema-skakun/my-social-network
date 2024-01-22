@@ -12,7 +12,7 @@ import {
 } from "../../../../data/constants.ts";
 import {Button} from "antd";
 import {ProfileType} from "../../../../types/types";
-import {FC} from "react";
+import React, {FC} from "react";
 
 type PropsType = {
     profile: ProfileType
@@ -21,6 +21,9 @@ type PropsType = {
 }
 
 const ProfileDescription: FC<PropsType> = ({profile, startEdit, isOwner}) => {
+    const contactsElements = Object.keys(profile.contacts).map(key =>
+        <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>)
+
     return (
         <div className={style.description}>
             {isOwner && <div><Button onClick={startEdit}>{EDIT_BUTTON}</Button></div>}
@@ -39,12 +42,8 @@ const ProfileDescription: FC<PropsType> = ({profile, startEdit, isOwner}) => {
                 <b>{ABOUT_ME_TITLE}</b>{profile.aboutMe}
             </div>
             <div>
-                <b>{CONTACTS_TITLE}</b> {Object.keys(profile.contacts).map(key => {
-                return <Contact
-                    key={key}
-                    contactTitle={key}
-                    contactValue={profile.contacts[key]}/>
-            })}
+                <b>{CONTACTS_TITLE}</b>
+                {contactsElements}
             </div>
         </div>
     )

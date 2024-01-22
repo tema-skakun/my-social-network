@@ -49,7 +49,7 @@ const App = ({initialized, initialApp}) => {
                             <Routes>
                                 <Route exact path="/" element={<Navigate to={PROFILE_PATH}/>}/>
                                 <Route path={PROFILE_PATH + '/:userId?'} element={<ProfileContainer/>}/>
-                                <Route path={USERS_PATH} element={<UsersContainer mainTitle={'SamuraiTS'}/>}/>
+                                <Route path={USERS_PATH} element={<UsersContainer mainTitle={'Developers'}/>}/>
                                 <Route path={FRIENDS_PATH} element={<FriendsContainer/>}/>
                                 <Route path={DIALOGS_PATH + '/*'} element={<DialogsContainer/>}/>
                                 <Route path={LOGIN_PATH} element={<Login/>}/>

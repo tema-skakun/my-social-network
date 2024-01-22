@@ -1,0 +1,25 @@
+.main {
+    display: grid;
+    grid-template-rows: auto auto; /* Update the grid-template-rows */
+    align-items: center; /* Vertically center the content */
+}
+
+.head {
+    grid-row: 1 / 2;
+}
+
+.form {
+    grid-row: 2 / 3;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    align-items: center; /* Vertically center the content */
+    gap: 5px; /* Add a 5-pixel gap between the columns */
+}
+
+.form .textarea {
+    grid-column: 1 / 2;
+}
+
+.form .button {
+    grid-column: 2 / 3;
+}

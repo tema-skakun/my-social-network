@@ -7,11 +7,13 @@ type PropsType = {
 }
 
 const Contact: FC<PropsType> = ({contactTitle, contactValue}) => {
-    return (
-        <div className={style.contact}>
-            <b>{contactTitle}: </b>{contactValue}
-        </div>
-    )
+    if (contactValue) {
+        return (
+            <div className={style.contact}>
+                <b>{contactTitle}: </b>{contactValue}
+            </div>
+        )
+    }
 }
 
 export default Contact;

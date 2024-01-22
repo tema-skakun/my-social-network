@@ -1,6 +1,5 @@
 .profile {
     display: grid;
-    grid-template-rows: 350px 1fr;
 }
 
 .info {

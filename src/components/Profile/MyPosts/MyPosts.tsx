@@ -27,7 +27,9 @@ const MyPosts: FC<PropsType> = ({ posts, addPost }) => {
             <div className={style.newPost}>
                 <AddPostReduxForm onSubmit={onAddPost} />
             </div>
-            <div className={style.posts}>{postsElements}</div>
+            <div className={style.posts}>
+                {postsElements}
+            </div>
         </div>
     );
 };

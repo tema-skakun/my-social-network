@@ -13,6 +13,7 @@ import {
 } from "../../redux/usersSelectors.ts";
 import {UsersType} from "../../types/types";
 import {AppStateType} from "../../redux/redux-toolkit-store";
+import style from './Users.module.css'
 
 type MapStatePropsType = {
     currentPage: number
@@ -49,20 +50,26 @@ class UsersContainer extends Component<PropsType> {
     }
 
     render(): ReactNode {
-        return <>
-            <h2>{this.props.mainTitle}</h2>
-            <Users
-                isFetching={this.props.isFetching}
-                users={this.props.users}
-                totalUsersCount={this.props.totalUsersCount}
-                pageSize={this.props.pageSize}
-                currentPage={this.props.currentPage}
-                onPageChanged={this.onPageChanged}
-                follow={this.props.follow}
-                unfollow={this.props.unfollow}
-                followingInProgress={this.props.followingInProgress}
-            />
-        </>
+        return (
+            <div>
+                <h3>
+                    {this.props.mainTitle}
+                </h3>
+                <div className={style.main}>
+                    <Users
+                        isFetching={this.props.isFetching}
+                        users={this.props.users}
+                        totalUsersCount={this.props.totalUsersCount}
+                        pageSize={this.props.pageSize}
+                        currentPage={this.props.currentPage}
+                        onPageChanged={this.onPageChanged}
+                        follow={this.props.follow}
+                        unfollow={this.props.unfollow}
+                        followingInProgress={this.props.followingInProgress}
+                    />
+                </div>
+            </div>
+        )
     }
 }
 
