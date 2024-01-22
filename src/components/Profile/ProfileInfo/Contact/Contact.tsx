@@ -14,6 +14,7 @@ const Contact: FC<PropsType> = ({contactTitle, contactValue}) => {
             </div>
         )
     }
+    return <></>
 }
 
 export default Contact;

@@ -10,11 +10,11 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 export const rerenderEntireTree = () => {
     root.render(
         <BrowserRouter basename={process.env.PUBLIC_URL}>
-            {/*<HashRouter>*/} {/*for correct work on github-pages*/}
+        {/*<HashRouter>*/}
             <Provider store={store}>
                 <App/>
             </Provider>
-            {/*</HashRouter>*/}
+        {/*</HashRouter>*/}
         </BrowserRouter>
     );
 };
